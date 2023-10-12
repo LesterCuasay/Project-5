@@ -15,7 +15,7 @@ class Task(models.Model):
     task_description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    due_date = models.DateField(auto_now_add=True)
+    due_date = models.DateField()
     status = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,
@@ -25,6 +25,9 @@ class Task(models.Model):
     @property
     def is_overdue(self):
         return self.due_date < timezone.now().date()
+
+    class Meta:
+        ordering = ['-created_at']
 
     def __str__(self):
         return self.task_name
