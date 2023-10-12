@@ -10,7 +10,9 @@ from taskmaster_api.permissions import IsOwnerOrReadOnly
 class ProfileList(APIView):
     def get(self, request):
         profiles = Profile.objects.all()
-        serializer = ProfileSerializer(profiles, many=True)
+        serializer = ProfileSerializer(
+            profiles, many=True, context={'request': request}
+            )
         return Response(serializer.data)
 
 
@@ -28,12 +30,14 @@ class ProfileDetail(APIView):
 
     def get(self, request, pk):
         profile = self.get_object(pk)
-        serializer = ProfileSerializer(profile)
+        serializer = ProfileSerializer(profile, context={'request': request})
         return Response(serializer.data)
 
     def put(self, request, pk):
         profile = self.get_object(pk)
-        serializer = ProfileSerializer(profile, data=request.data)
+        serializer = ProfileSerializer(
+            profile, data=request.data, context={'request': request}
+        )
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
