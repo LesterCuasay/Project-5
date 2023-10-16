@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from notes.models import Notes
+from .models import Notes
 
 
 class NotesSerializer(serializers.ModelSerializer):
@@ -15,11 +15,11 @@ class NotesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notes
         fields = [
-            'owner', 'is_owner', 'profile_id', 'profile_image', 'task',
-            'created_at', 'updated_at', 'task_requirements',
+            'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
+            'task', 'created_at', 'updated_at', 'task_description',
         ]
 
 
-class NotesDetailSerializer(serializers.ModelSerializer):
+class NotesDetailSerializer(NotesSerializer):
 
     task = serializers.ReadOnlyField(source='task.id')
