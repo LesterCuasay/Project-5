@@ -19,6 +19,7 @@ class TaskList(APIView):
         return Response(serializer.data)
 
     def post(self, request):
+
         serializer = TaskSerializer(
             data=request.data, context={'request': request}
         )

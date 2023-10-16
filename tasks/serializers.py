@@ -13,10 +13,11 @@ class TaskSerializer(serializers.ModelSerializer):
         return request.user == obj.owner
 
     def validate_attachment(self, value):
-        if value.size > 1024 * 1024 * 2:
-            raise serializers.ValidationError(
-                'File size larger than 2MB!'
-            )
+        if value:
+            if value.size > 1024 * 1024 * 2:
+                raise serializers.ValidationError(
+                    'File size larger than 2MB!'
+                )
         return value
 
     class Meta:

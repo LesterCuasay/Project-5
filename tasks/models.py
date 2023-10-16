@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from datetime import date
 from cloudinary_storage.storage import RawMediaCloudinaryStorage
 
 
@@ -16,7 +17,7 @@ class Task(models.Model):
     task_description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    due_date = models.DateField()
+    due_date = models.DateField(default=date.today)
     status = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,
