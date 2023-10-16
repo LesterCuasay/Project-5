@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from cloudinary_storage.storage import RawMediaCloudinaryStorage
 
 
 class Task(models.Model):
@@ -20,6 +21,12 @@ class Task(models.Model):
         max_length=20,
         choices=STATUS_CHOICES,
         default='TODO',
+    )
+    attachment = models.FileField(
+        upload_to='task_attachments/',
+        blank=True,
+        null=True,
+        storage=RawMediaCloudinaryStorage(),
     )
 
     @property
