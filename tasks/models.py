@@ -21,11 +21,6 @@ class Task(models.Model):
         choices=STATUS_CHOICES,
         default='TODO',
     )
-    attachment = models.FileField(
-        upload_to='task_attachments/',
-        blank=True,
-        null=True,
-    )
 
     @property
     def is_overdue(self):
