@@ -7,6 +7,7 @@ class TaskSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    notes_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -26,4 +27,5 @@ class TaskSerializer(serializers.ModelSerializer):
             'id', 'owner', 'task_name', 'task_description',
             'due_date', 'created_at', 'updated_at', 'status', 'attachment',
             'profile_id', 'profile_image', 'is_owner', 'is_overdue',
+            'notes_count',
         ]
