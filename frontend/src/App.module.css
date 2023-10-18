@@ -9,6 +9,12 @@
     padding-top: 6rem;
 }
 
+.Content {
+    background-color: var(--second-bg-color);
+    padding: 30px;
+    border-radius: 30px;
+}
+
 .App {
     font-family: "Poppins", sans-serif;
     background-color: var(--bg-color);

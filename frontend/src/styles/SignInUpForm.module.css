@@ -1,0 +1,13 @@
+.Header {
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    text-align: center;
+}
+
+.Input {
+    background: #ffffff;
+    border: 1px solid var(--second-bg-color);
+    padding: 10px;
+    border-radius: 10px;
+    width: 500px;
+}
