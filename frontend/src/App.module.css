@@ -5,6 +5,10 @@
     --second-text: #55524E;
 }
 
+.Main {
+    padding-top: 6rem;
+}
+
 .App {
     font-family: "Poppins", sans-serif;
     background-color: var(--bg-color);
