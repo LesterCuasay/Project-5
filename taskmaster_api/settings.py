@@ -37,6 +37,10 @@ JWT_AUTH_SECURE = True
 JWT_AUTH_COOKIE = 'taskmaster-api-auth'
 JWT_AUTH_REFRESH_COOKIE = 'taskmaster-api-refresh-token'
 
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'taskmaster_api.serializers.CurrentUserSerializer'
+}
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
