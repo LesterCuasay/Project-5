@@ -1,0 +1,45 @@
+:root {
+    --bg-color: #E5DFDC;
+    --second-bg-color: #EDEAE8;
+    --main-text: #252422;
+    --second-text: #55524E;
+}
+
+.App {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: var(--main-text) !important;
+    font-size: 1.2rem;
+    transition: color ease-in-out 0.3s;
+}
+
+a:hover {
+    color: var(--second-text) !important;
+    text-decoration: none;
+}
+
+a:hover i {
+    color: var(--second-text);
+    transition: color ease-in-out 0.3s;
+}
+
+i {
+    color: var(--main-text);
+    padding: 4px;
+}
+
+i:hover {
+    cursor: pointer;
+    color: var(--second-text);
+    transition: color ease-in-out 0.3s;
+}

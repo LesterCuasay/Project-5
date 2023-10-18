@@ -1,0 +1,19 @@
+.NavBar {
+    background-color: var(--second-bg-color);
+    border: 1px solid #dadadf;
+}
+
+.NavBarBrand {
+    color: var(--main-text);
+    font-size: 2rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.NavLink {
+    padding: 5px;
+}
+
+.Active i {
+    color: var(--bg-color);
+}
