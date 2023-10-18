@@ -3,7 +3,7 @@ from rest_framework import generics, permissions, filters
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Task
 from .serializers import TaskSerializer
-from taskmaster_api.permissions import IsOwner
+from taskmaster_api.permissions import IsOwnerOrReadOnly
 
 
 class TaskList(generics.ListCreateAPIView):
@@ -36,5 +36,7 @@ class TaskList(generics.ListCreateAPIView):
 
 class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TaskSerializer
-    permission_classes = [IsOwner]
-    queryset = Task.objects.all()
+    permission_classes = [IsOwnerOrReadOnly]
+    queryset = Task.objects.annotate(
+            notes_count=Count('notes', distinct=True)
+        ).order_by('-created_at')
