@@ -35,15 +35,7 @@ function TaskCreateForm() {
   const history = useHistory();
 
   const [fileName, setFileName] = useState("");
-  // const handleFileName = () => {
-  //   if (attachment) {
-  //     return (
-  //       <div>
-  //         <p>Selected file: {attachment.name}</p>
-  //       </div>
-  //     )
-  //   }
-  // }
+  
   const handleChange = (event) => {
     setTaskData({
       ...taskData,
@@ -58,7 +50,7 @@ function TaskCreateForm() {
       URL.revokeObjectURL(attachment);
       setTaskData({
         ...taskData,
-        attachment: URL.createObjectURL(selectedFile),
+        attachment: selectedFile,
       });
     }
   };
@@ -71,6 +63,7 @@ function TaskCreateForm() {
     formData.append("task_description", task_description);
     formData.append("status", status);
     formData.append("due_date", due_date);
+    formData.append("attachment", attachment);
 
     try {
       const { data } = await axiosReq.post("/tasks/", formData);
@@ -155,7 +148,7 @@ function TaskCreateForm() {
             <figure>
               {fileName && (
                 <div className={assetStyles.Asset}>
-                  <i class="fa-solid fa-file-arrow-up"></i>
+                  <i className="fa-solid fa-file-arrow-up"></i>
                   <p>Selected file: {fileName}</p>
                 </div>
               )}
