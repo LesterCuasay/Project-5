@@ -11,33 +11,33 @@ import styles from "../../styles/SignInUpForm.module.css";
 
 const SignUpForm = () => {
   return (
-    <Container
-      className={`${appStyles.Content} d-flex justify-content-center align-items-center mt-4`}
-    >
-      <Row>
-        <Col>
-          <h1 className={styles.Header}>Sign Up</h1>
+    <Container className={styles.Container}>
+      <Row className="justify-content-center">
+        <Col md={6} className={appStyles.Content}>
+          <div className={styles.TitleWrapper}>
+            <h1 className={styles.FormTitle}>Sign Up</h1>
+          </div>
           <Form>
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group className={styles.FormGroup} controlId="formBasicEmail">
               <Form.Label>Username</Form.Label>
               <Form.Control
                 className={styles.Input}
-                type="email"
-                placeholder="Enter email"
-              />
+                type="text"
+                placeholder="Username"
+              ></Form.Control>
             </Form.Group>
-
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group
+              className={styles.FormGroup}
+              controlId="formBasicPassword"
+            >
               <Form.Label>Password</Form.Label>
               <Form.Control
                 className={styles.Input}
                 type="password"
-                placeholder="Password"
-              />
+                placeholder="password"
+              ></Form.Control>
             </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
+            <Button className={styles.Submit}>Sign Up</Button>
           </Form>
         </Col>
       </Row>

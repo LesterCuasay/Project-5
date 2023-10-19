@@ -1,4 +1,4 @@
-.Header {
+/* .Header {
     text-transform: uppercase;
     letter-spacing: 0.5rem;
     text-align: center;
@@ -10,4 +10,27 @@
     padding: 10px;
     border-radius: 10px;
     width: 500px;
+} */
+
+.Container {
+    margin-top: 50px;
+    border: 1px solid;
+}
+
+.TitleWrapper {
+    padding: 20px;
+}
+
+.FormTitle {
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    text-align: center;
+}
+
+.Input {
+    background: #fff;
+    border: 1px solid var(--secondary-background-color);
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 300px;
 }
