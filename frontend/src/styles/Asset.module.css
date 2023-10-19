@@ -1,0 +1,14 @@
+.Asset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 120px;
+    background-color: var(--bg-color);
+    border-radius: 50px;
+}
+
+.Asset i {
+    font-size: 5rem;
+    
+}

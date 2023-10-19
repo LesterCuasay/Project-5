@@ -11,8 +11,10 @@ import Alert from "react-bootstrap/Alert";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/TaskCreateEditForm.module.css";
+import assetStyles from "../../styles/Asset.module.css";
 
 import { axiosReq } from "../../api/axiosDefaults";
+import Asset from "../../components/Asset";
 
 function TaskCreateForm() {
   const [errors, setErrors] = useState();
@@ -24,17 +26,41 @@ function TaskCreateForm() {
     task_description: "",
     status: "",
     due_date: today,
+    attachment: "",
   });
 
-  const { task_name, task_description, status, due_date } = taskData;
+  const { task_name, task_description, status, due_date, attachment } =
+    taskData;
 
   const history = useHistory();
 
+  const [fileName, setFileName] = useState("");
+  // const handleFileName = () => {
+  //   if (attachment) {
+  //     return (
+  //       <div>
+  //         <p>Selected file: {attachment.name}</p>
+  //       </div>
+  //     )
+  //   }
+  // }
   const handleChange = (event) => {
     setTaskData({
       ...taskData,
       [event.target.name]: event.target.value,
     });
+  };
+
+  const handleChangeFile = (event) => {
+    if (event.target.files.length) {
+      const selectedFile = event.target.files[0];
+      setFileName(selectedFile.name);
+      URL.revokeObjectURL(attachment);
+      setTaskData({
+        ...taskData,
+        attachment: URL.createObjectURL(selectedFile),
+      });
+    }
   };
 
   const handleSubmit = async (event) => {
@@ -75,7 +101,7 @@ function TaskCreateForm() {
         </Alert>
       ))}
       <Form.Group>
-        <Form.Label>Task Description</Form.Label>
+        <Form.Label>Task Description (optional)</Form.Label>
         <Form.Control
           type="text"
           name="task_description"
@@ -123,7 +149,43 @@ function TaskCreateForm() {
           {message}
         </Alert>
       ))}
-      <Button className={`${btnStyles.Button} ${btnStyles.Wide} mt-2`} type="submit">
+      <Form.Group>
+        {attachment ? (
+          <>
+            <figure>
+              {fileName && (
+                <div className={assetStyles.Asset}>
+                  <i class="fa-solid fa-file-arrow-up"></i>
+                  <p>Selected file: {fileName}</p>
+                </div>
+              )}
+            </figure>
+            <div>
+              <Form.Label
+                className={`${btnStyles.Button} ${btnStyles.Wide} mt-2`}
+                htmlFor="file-upload"
+              >
+                Change File
+              </Form.Label>
+            </div>
+          </>
+        ) : (
+          <Form.Label htmlFor="file-upload">
+            <Asset message="Click or Tap here to upload a file" />
+          </Form.Label>
+        )}
+
+        <Form.File
+          className="d-none"
+          id="file-upload"
+          accept=".docx"
+          onChange={handleChangeFile}
+        />
+      </Form.Group>
+      <Button
+        className={`${btnStyles.Button} ${btnStyles.Wide} mt-2`}
+        type="submit"
+      >
         Create
       </Button>
     </div>
@@ -133,7 +195,9 @@ function TaskCreateForm() {
       <Row className="justify-content-center">
         <Col md={6} className={appStyles.Content}>
           <h1 className={styles.Header}>Create Task</h1>
-          <Form onSubmit={handleSubmit}>{textFields}</Form>
+          <Form className="text-center" onSubmit={handleSubmit}>
+            {textFields}
+          </Form>
         </Col>
       </Row>
     </Container>
