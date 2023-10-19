@@ -50,7 +50,7 @@ const SignUpForm = () => {
             <h1 className={styles.FormTitle}>Sign Up</h1>
           </div>
           <Form onSubmit={handleSubmit}>
-            <Form.Group className={styles.FormGroup} controlId="username">
+            <Form.Group controlId="username">
               <Form.Label className="d-none">Username</Form.Label>
               <Form.Control
                 className={styles.Input}
@@ -68,7 +68,7 @@ const SignUpForm = () => {
               </Alert>
             ))}
 
-            <Form.Group className={styles.FormGroup} controlId="password">
+            <Form.Group controlId="password">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
                 className={styles.Input}
@@ -86,7 +86,7 @@ const SignUpForm = () => {
               </Alert>
             ))}
 
-            <Form.Group className={styles.FormGroup} controlId="password2">
+            <Form.Group controlId="password2">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
                 className={styles.Input}
