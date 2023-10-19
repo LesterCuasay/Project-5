@@ -1,0 +1,11 @@
+.Footer {
+    background: var(--second-bg-color);
+    width: 100%;
+    position: sticky;
+    top: 100vh;
+}
+
+.Footer i {
+    font-size: 2rem;
+    vertical-align: middle;
+}
