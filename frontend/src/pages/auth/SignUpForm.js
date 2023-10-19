@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import appStyles from "../../App.module.css";
+import btnStyles from "../../styles/Button.module.css"
 import styles from "../../styles/SignInUpForm.module.css";
 
 const SignUpForm = () => {
@@ -18,26 +19,34 @@ const SignUpForm = () => {
             <h1 className={styles.FormTitle}>Sign Up</h1>
           </div>
           <Form>
-            <Form.Group className={styles.FormGroup} controlId="formBasicEmail">
-              <Form.Label>Username</Form.Label>
+            <Form.Group className={styles.FormGroup} controlId="username">
+              <Form.Label className="d-none">Username</Form.Label>
               <Form.Control
                 className={styles.Input}
                 type="text"
                 placeholder="Username"
+                name="username"
               ></Form.Control>
             </Form.Group>
-            <Form.Group
-              className={styles.FormGroup}
-              controlId="formBasicPassword"
-            >
-              <Form.Label>Password</Form.Label>
+            <Form.Group className={styles.FormGroup} controlId="password">
+              <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
                 className={styles.Input}
                 type="password"
-                placeholder="password"
+                placeholder="Password"
+                name="password1"
               ></Form.Control>
             </Form.Group>
-            <Button className={styles.Submit}>Sign Up</Button>
+            <Form.Group className={styles.FormGroup} controlId="password2">
+              <Form.Label className="d-none">Password</Form.Label>
+              <Form.Control
+                className={styles.Input}
+                type="password"
+                placeholder="Confirm Password"
+                name="password2"
+              ></Form.Control>
+            </Form.Group>
+            <Button className={`${btnStyles.Wide} ${btnStyles.Button}`}>Sign Up</Button>
           </Form>
         </Col>
       </Row>

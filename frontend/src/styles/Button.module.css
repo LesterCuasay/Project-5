@@ -1,0 +1,31 @@
+.Button {
+    background-color: var(--bg-color);
+    color: var(--main-text);
+    border-radius: 100px;
+    border-color: transparent;
+    align-self: center;
+    padding: 4px 10px;
+    margin: 0 2px 0 2px;
+}
+
+.Button:hover {
+    background-color: var(--card-color);
+    border-color: transparent;
+    color: #fff;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.Button:hover:active {
+    background-color: var(--card-color) !important;
+    border-color: transparent;
+}
+
+.Button:focus {
+    background-color: var(--card-color) !important;
+}
+
+.Wide {
+    padding: 10px 50px;
+    width: 100%;
+}

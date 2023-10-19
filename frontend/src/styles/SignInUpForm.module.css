@@ -14,7 +14,6 @@
 
 .Container {
     margin-top: 50px;
-    border: 1px solid;
 }
 
 .TitleWrapper {
@@ -29,8 +28,9 @@
 
 .Input {
     background: #fff;
-    border: 1px solid var(--secondary-background-color);
+    border: 1px solid var(--second-bg-color);
     padding: 20px;
     border-radius: 10px;
     min-width: 300px;
+    text-align: center;
 }
