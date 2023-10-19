@@ -148,8 +148,8 @@ function TaskCreateForm() {
             <figure>
               {fileName && (
                 <div className={assetStyles.Asset}>
-                  <i className="fa-solid fa-file-arrow-up"></i>
-                  <p>Selected file: {fileName}</p>
+                  <i className="mt-3 fa-solid fa-file-arrow-up"></i>
+                  <p>Selected File: {fileName}</p>
                 </div>
               )}
             </figure>
