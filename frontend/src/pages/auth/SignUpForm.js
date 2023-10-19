@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -103,10 +103,16 @@ const SignUpForm = () => {
                 {message}
               </Alert>
             ))}
-            <Button className={`${btnStyles.Wide} ${btnStyles.Button}`} type="submit">
+            <Button
+              className={`${btnStyles.Wide} ${btnStyles.Button}`}
+              type="submit"
+            >
               Sign Up
             </Button>
           </Form>
+          <Link className={styles.Link} to="/signin">
+            Already have an account? <span>Sign in here</span>
+          </Link>
         </Col>
       </Row>
     </Container>
