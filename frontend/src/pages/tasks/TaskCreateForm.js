@@ -177,6 +177,13 @@ function TaskCreateForm() {
       </Form.Group>
       <Button
         className={`${btnStyles.Button} ${btnStyles.Wide} mt-2`}
+        onClick={() => history.goBack()}
+        type="submit"
+      >
+        Cancel
+      </Button>
+      <Button
+        className={`${btnStyles.Button} ${btnStyles.Wide} mt-2`}
         type="submit"
       >
         Create
@@ -186,7 +193,7 @@ function TaskCreateForm() {
   return (
     <Container className={appStyles.Container}>
       <Row className="justify-content-center">
-        <Col md={6} className={appStyles.Content}>
+        <Col md={6} className={`mb-5 ${appStyles.Content}`}>
           <h1 className={styles.Header}>Create Task</h1>
           <Form className="text-center" onSubmit={handleSubmit}>
             {textFields}

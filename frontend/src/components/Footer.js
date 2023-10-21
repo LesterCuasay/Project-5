@@ -11,7 +11,7 @@ const Footer = () => {
       <Container className="d-flex justify-content-center text-center">
         <Row>
           <Col>
-            <div className="mt-1">
+            <div className="mt-3">
               Developed by &copy;{" "}
               <a
                 className="font-italic"

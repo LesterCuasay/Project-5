@@ -43,7 +43,7 @@ const SignUpForm = () => {
     }
   };
   return (
-    <Container className={styles.Container}>
+    <Container className={`mt-5 ${styles.Container}`}>
       <Row className="justify-content-center">
         <Col md={6} className={appStyles.Content}>
           <div className={styles.TitleWrapper}>
