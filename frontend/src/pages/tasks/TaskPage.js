@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import appStyles from "../../App.module.css";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import Task from "./Task";
 
 const TaskPage = () => {
   const { id } = useParams();
@@ -31,7 +32,7 @@ const TaskPage = () => {
     <Container className={appStyles.Container}>
       <Row className="justify-content-center">
         <Col md={6} className={appStyles.Content}>
-          Tasks
+          <Task {...task.results[0]} setTask={setTask} taskPage/>
         </Col>
       </Row>
     </Container>
