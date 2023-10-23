@@ -15,6 +15,7 @@ import assetStyles from "../../styles/Asset.module.css";
 
 import { axiosReq } from "../../api/axiosDefaults";
 import Asset from "../../components/Asset";
+import Upload from "../../assets/upload.png"
 
 function TaskCreateForm() {
   const [errors, setErrors] = useState();
@@ -164,7 +165,7 @@ function TaskCreateForm() {
           </>
         ) : (
           <Form.Label htmlFor="file-upload">
-            <Asset message="Click or Tap here to upload a file" />
+            <Asset src={Upload} message="Click or Tap here to upload a file" />
           </Form.Label>
         )}
 
