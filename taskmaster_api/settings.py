@@ -96,6 +96,7 @@ INSTALLED_APPS = [
     'tasks',
     'notes',
     'followers',
+    'favourites',
 ]
 
 SITE_ID = 1
