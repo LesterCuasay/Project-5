@@ -75,7 +75,7 @@ const Task = (props) => {
   };
 
   return (
-    <Card className={styles.Task}>
+    <Card className={`mb-4 ${styles.Task}`}>
       <Card.Body>
         <Media className="align-items-center justify-content-between">
           <Link to={`/profiles/${profile_id}`}>

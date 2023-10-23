@@ -3,9 +3,11 @@ import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
 
 import Task from "./Task";
 
+import styles from "../../styles/TasksPage.module.css";
 import appStyles from "../../App.module.css";
 import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -18,10 +20,12 @@ function TasksPage({ message, filter = "" }) {
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
+  const [query, setQuery] = useState("");
+
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const { data } = await axiosReq.get(`/tasks/?${filter}`);
+        const { data } = await axiosReq.get(`/tasks/?${filter}search=${query}`);
         setTasks(data);
         setHasLoaded(true);
       } catch (err) {
@@ -30,12 +34,30 @@ function TasksPage({ message, filter = "" }) {
     };
 
     setHasLoaded(false);
-    fetchTasks();
-  }, [filter, pathname]);
+    const timer = setTimeout(() => {
+      fetchTasks();
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [filter, query, pathname]);
   return (
     <Container className={appStyles.Container}>
       <Row className="justify-content-center">
-        <Col md={6}>
+        <Col lg={12} md={6}>
+          <i className={`fas fa-search ${styles.SearchIcon}`} />
+          <Form
+            className={styles.SearchBar}
+            onSubmit={(event) => event.preventDefault()}
+          >
+            <Form.Control
+              type="text"
+              className="mr-sm-2"
+              placeholder="Search tasks"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+            />
+          </Form>
           {hasLoaded ? (
             <>
               {tasks.results.length ? (
