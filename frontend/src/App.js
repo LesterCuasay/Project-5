@@ -20,21 +20,32 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
         <Switch>
-          <Route exact path="/" render={() => <TasksPage />} />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <TasksPage message="No results found. Adjust the search keyword." 
+              filter={`owner__profile=${profile_id}&`}/>
+            )}
+          />
           <Route
             exact
             path="/feed"
             render={() => (
-              <TasksPage message="No results found, Adjust the search keyword or follow a user."
-              filter={`owner__followed__owner__profile=${profile_id}&`} />
+              <TasksPage
+                message="No results found, Adjust the search keyword or follow a user."
+                filter={`owner__followed__owner__profile=${profile_id}&`}
+              />
             )}
           />
           <Route
             exact
             path="/favourited"
             render={() => (
-              <TasksPage message="No results found, Adjust the search keyword or favourite a task."
-              filter={`favourites__owner__profile=${profile_id}&ordering=-favourites__created_at&`} />
+              <TasksPage
+                message="No results found, Adjust the search keyword or favourite a task."
+                filter={`favourites__owner__profile=${profile_id}&ordering=-favourites__created_at&`}
+              />
             )}
           />
           <Route exact path="/signin" render={() => <SignInForm />} />
