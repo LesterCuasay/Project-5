@@ -11,6 +11,7 @@ import styles from "../../styles/Task.module.css";
 
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
+import { format } from "date-fns"
 
 const Task = (props) => {
   const {
@@ -33,6 +34,9 @@ const Task = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
 
+  const dueDate = new Date(props.due_date)
+  const formattedDueDate = format(dueDate, 'dd MMMM yyyy')
+  
   const handleFavourite = async () => {
     try {
       const { data } = await axiosRes.post("/favourites/", { task: id });
@@ -97,7 +101,7 @@ const Task = (props) => {
           </Card.Title>
         )}
         {due_date && (
-          <Card.Title className="text-center">{due_date}</Card.Title>
+          <Card.Title className="text-center">{formattedDueDate}</Card.Title>
         )}
         {status && <Card.Title className="text-center">{status}</Card.Title>}
         <div>
