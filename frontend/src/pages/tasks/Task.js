@@ -96,7 +96,7 @@ const Task = (props) => {
           <Card.Title className="text-center">{task_name}</Card.Title>
         )}
         {task_description && (
-          <Card.Title className="text-center">{task_description}</Card.Title>
+          <Card.Title className="text-center text-muted">{task_description}</Card.Title>
         )}
         {due_date && (
           <Card.Title className="text-center">{due_date}</Card.Title>
