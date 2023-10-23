@@ -31,7 +31,7 @@ class TaskList(generics.ListCreateAPIView):
     ordering_fields = [
         'favourites_count',
         'notes_count',
-        'favourites_created_at',
+        'favourites__created_at',
     ]
 
     def perform_create(self, serializer):

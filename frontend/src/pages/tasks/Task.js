@@ -25,7 +25,6 @@ const Task = (props) => {
     task_description,
     due_date,
     status,
-    attachment,
     updated_at,
     taskPage,
     setTasks,
@@ -92,9 +91,6 @@ const Task = (props) => {
         <div className="text-center">{task_name}</div>
       </Link>
       <Card.Body>
-        {task_name && (
-          <Card.Title className="text-center">{task_name}</Card.Title>
-        )}
         {task_description && (
           <Card.Title className="text-center text-muted">
             {task_description}
