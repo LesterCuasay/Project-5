@@ -7,6 +7,8 @@ import Media from "react-bootstrap/Media";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
+import styles from "../../styles/Task.module.css";
+
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 
@@ -73,7 +75,7 @@ const Task = (props) => {
   };
 
   return (
-    <Card>
+    <Card className={styles.Task}>
       <Card.Body>
         <Media className="align-items-center justify-content-between">
           <Link to={`/profiles/${profile_id}`}>
@@ -110,11 +112,11 @@ const Task = (props) => {
             </OverlayTrigger>
           ) : favourite_id ? (
             <span onClick={handleUnfavourite}>
-              <i className="fa-solid fa-star"></i>
+              <i className={`fa-solid fa-star ${styles.Star}`}></i>
             </span>
           ) : currentUser ? (
             <span onClick={handleFavourite}>
-              <i className="fa-regular fa-star"></i>
+              <i className={`fa-regular fa-star ${styles.StarOutline}`}></i>
             </span>
           ) : (
             <OverlayTrigger

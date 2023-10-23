@@ -1,0 +1,18 @@
+.Task {
+  background-color: var(--second-bg-color);
+  border: 1px solid var(--bg-color);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.Star {
+  color: #ffd700;
+}
+
+.Star:hover {
+  color: #ffe600;
+}
+
+.StarOutline:hover {
+  color: #ffd700;
+}

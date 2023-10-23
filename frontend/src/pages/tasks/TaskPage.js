@@ -31,8 +31,8 @@ const TaskPage = () => {
   return (
     <Container className={appStyles.Container}>
       <Row className="justify-content-center">
-        <Col md={6} className={appStyles.Content}>
-          <Task {...task.results[0]} setTask={setTask} taskPage/>
+        <Col md={6}>
+          <Task {...task.results[0]} setTasks={setTask} taskPage/>
         </Col>
       </Row>
     </Container>
