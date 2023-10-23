@@ -31,6 +31,7 @@ class TaskList(generics.ListCreateAPIView):
     ordering_fields = [
         'favourites_count',
         'notes_count',
+        'favourites_created_at',
     ]
 
     def perform_create(self, serializer):
@@ -41,5 +42,6 @@ class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TaskSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Task.objects.annotate(
-            notes_count=Count('notes', distinct=True)
+            notes_count=Count('notes', distinct=True),
+            favourites_count=Count('favourites', distinct=True)
         ).order_by('-created_at')
