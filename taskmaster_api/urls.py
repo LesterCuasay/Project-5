@@ -30,4 +30,5 @@ urlpatterns = [
     path('', include('tasks.urls')),
     path('', include('notes.urls')),
     path('', include('followers.urls')),
+    path('', include('favourites.urls')),
 ]
