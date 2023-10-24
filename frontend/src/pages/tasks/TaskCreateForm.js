@@ -15,7 +15,7 @@ import assetStyles from "../../styles/Asset.module.css";
 
 import { axiosReq } from "../../api/axiosDefaults";
 import Asset from "../../components/Asset";
-import Upload from "../../assets/upload.png"
+import Upload from "../../assets/upload.png";
 
 function TaskCreateForm() {
   const [errors, setErrors] = useState();
@@ -36,7 +36,7 @@ function TaskCreateForm() {
   const history = useHistory();
 
   const [fileName, setFileName] = useState("");
-  
+
   const handleChange = (event) => {
     setTaskData({
       ...taskData,
@@ -79,7 +79,7 @@ function TaskCreateForm() {
 
   const textFields = (
     <div>
-      <Form.Group>
+      <Form.Group className="mt-3">
         <Form.Label className="mt-2">Task Name</Form.Label>
         <Form.Control
           type="text"
@@ -94,7 +94,7 @@ function TaskCreateForm() {
           {message}
         </Alert>
       ))}
-      <Form.Group>
+      <Form.Group className="mt-3">
         <Form.Label>Task Description (optional)</Form.Label>
         <Form.Control
           type="text"
@@ -109,7 +109,7 @@ function TaskCreateForm() {
           {message}
         </Alert>
       ))}
-      <Form.Group>
+      <Form.Group className="mt-3">
         <Form.Label>Due Date</Form.Label>
         <Form.Control
           type="date"
@@ -124,7 +124,7 @@ function TaskCreateForm() {
           {message}
         </Alert>
       ))}
-      <Form.Group>
+      <Form.Group className="mt-3">
         <Form.Label>Status</Form.Label>
         <Form.Control
           as="select"
@@ -143,7 +143,7 @@ function TaskCreateForm() {
           {message}
         </Alert>
       ))}
-      <Form.Group>
+      <Form.Group className="mt-3">
         {attachment ? (
           <>
             <figure>
@@ -168,11 +168,12 @@ function TaskCreateForm() {
             <Asset src={Upload} message="Click or Tap here to upload a file" />
           </Form.Label>
         )}
-
-        <Form.File
+        <Form.Control
           className="d-none"
-          id="file-upload"
+          type="file"
+          name="attachment"
           accept=".docx"
+          id="file-upload"
           onChange={handleChangeFile}
         />
       </Form.Group>
