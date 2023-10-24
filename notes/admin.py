@@ -6,7 +6,7 @@ class NotesAdmin(admin.ModelAdmin):
     list_display = (
         'owner',
         'created_at',
-        'task_description',
+        'content',
     )
 
 

@@ -25,7 +25,7 @@ class NotesSerializer(serializers.ModelSerializer):
         model = Notes
         fields = [
             'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
-            'task', 'created_at', 'updated_at', 'task_description',
+            'task', 'created_at', 'updated_at', 'content',
         ]
 
 
