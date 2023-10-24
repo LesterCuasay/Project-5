@@ -55,7 +55,7 @@ const SignInForm = () => {
             <h1 className={styles.FormTitle}>Sign In</h1>
           </div>
           <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="username">
+            <Form.Group controlId="username" >
               <Form.Label className="d-none">Username</Form.Label>
               <Form.Control
                 className={styles.Input}
@@ -73,7 +73,7 @@ const SignInForm = () => {
               </Alert>
             ))}
 
-            <Form.Group controlId="password2">
+            <Form.Group controlId="password" className="mt-3">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
                 className={styles.Input}
@@ -86,7 +86,7 @@ const SignInForm = () => {
             </Form.Group>
 
             <Button
-              className={`${btnStyles.Wide} ${btnStyles.Button}`}
+              className={`mt-3 ${btnStyles.Wide} ${btnStyles.Button}`}
               type="submit"
             >
               Sign In

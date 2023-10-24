@@ -68,7 +68,7 @@ const SignUpForm = () => {
               </Alert>
             ))}
 
-            <Form.Group controlId="password">
+            <Form.Group controlId="password1" className="mt-3">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
                 className={styles.Input}
@@ -86,7 +86,7 @@ const SignUpForm = () => {
               </Alert>
             ))}
 
-            <Form.Group controlId="password2">
+            <Form.Group controlId="password2" className="mt-3">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
                 className={styles.Input}
@@ -104,7 +104,7 @@ const SignUpForm = () => {
               </Alert>
             ))}
             <Button
-              className={`${btnStyles.Wide} ${btnStyles.Button}`}
+              className={`mt-3 ${btnStyles.Wide} ${btnStyles.Button}`}
               type="submit"
             >
               Sign Up
