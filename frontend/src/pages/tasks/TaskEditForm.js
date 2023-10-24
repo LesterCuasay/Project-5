@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useHistory, useParams } from "react-router";
 
 import Button from "react-bootstrap/Button";
@@ -35,6 +35,7 @@ function TaskEditForm() {
 
   const history = useHistory();
   const { id } = useParams();
+  const fileInput = useRef(null);
 
   useEffect(() => {
     const handleMount = async () => {
@@ -78,12 +79,13 @@ function TaskEditForm() {
   const handleChangeFile = (event) => {
     if (event.target.files.length) {
       const selectedFile = event.target.files[0];
-      setFileName(selectedFile.name);
+      const fileName = selectedFile.name;
       URL.revokeObjectURL(attachment);
       setTaskData({
         ...taskData,
-        attachment: selectedFile,
+        attachment: URL.createObjectURL(selectedFile),
       });
+      setFileName(fileName);
     }
   };
 
@@ -95,7 +97,10 @@ function TaskEditForm() {
     formData.append("task_description", task_description);
     formData.append("status", status);
     formData.append("due_date", due_date);
-    formData.append("attachment", attachment);
+
+    if (fileInput?.current?.files[0]) {
+      formData.append("attachment", fileInput.current.files[0]);
+    }
 
     try {
       await axiosReq.put(`/tasks/${id}/`, formData);
@@ -178,12 +183,10 @@ function TaskEditForm() {
         {attachment ? (
           <>
             <figure>
-              {fileName && (
-                <div className={assetStyles.Asset}>
-                  <i className="mt-3 fa-solid fa-file-arrow-up"></i>
-                  <p>Selected File: {fileName}</p>
-                </div>
-              )}
+              <div className={assetStyles.Asset}>
+                <i className="mt-3 fa-solid fa-file-arrow-up"></i>
+                <p>Selected File: {fileName}</p>
+              </div>
             </figure>
             <div>
               <Form.Label
@@ -206,6 +209,7 @@ function TaskEditForm() {
           accept=".docx"
           id="file-upload"
           onChange={handleChangeFile}
+          ref={fileInput}
         />
       </Form.Group>
       <Button

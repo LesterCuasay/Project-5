@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useHistory } from "react-router";
 
 import Button from "react-bootstrap/Button";
@@ -34,6 +34,7 @@ function TaskCreateForm() {
     taskData;
 
   const history = useHistory();
+  const fileInput = useRef(null);
 
   const [fileName, setFileName] = useState("");
 
@@ -47,12 +48,13 @@ function TaskCreateForm() {
   const handleChangeFile = (event) => {
     if (event.target.files.length) {
       const selectedFile = event.target.files[0];
-      setFileName(selectedFile.name);
+      const fileName = selectedFile.name;
       URL.revokeObjectURL(attachment);
       setTaskData({
         ...taskData,
-        attachment: selectedFile,
+        attachment: URL.createObjectURL(selectedFile),
       });
+      setFileName(fileName);
     }
   };
 
@@ -64,7 +66,7 @@ function TaskCreateForm() {
     formData.append("task_description", task_description);
     formData.append("status", status);
     formData.append("due_date", due_date);
-    formData.append("attachment", attachment);
+    formData.append("attachment", fileInput.current.files[0]);
 
     try {
       const { data } = await axiosReq.post("/tasks/", formData);
@@ -147,12 +149,10 @@ function TaskCreateForm() {
         {attachment ? (
           <>
             <figure>
-              {fileName && (
-                <div className={assetStyles.Asset}>
-                  <i className="mt-3 fa-solid fa-file-arrow-up"></i>
-                  <p>Selected File: {fileName}</p>
-                </div>
-              )}
+              <div className={assetStyles.Asset}>
+                <i className="mt-3 fa-solid fa-file-arrow-up"></i>
+                <p>Selected File: {fileName}</p>
+              </div>
             </figure>
             <div>
               <Form.Label
@@ -175,6 +175,7 @@ function TaskCreateForm() {
           accept=".docx"
           id="file-upload"
           onChange={handleChangeFile}
+          ref={fileInput}
         />
       </Form.Group>
       <Button
@@ -195,7 +196,7 @@ function TaskCreateForm() {
   return (
     <Container className={appStyles.Container}>
       <Row className="justify-content-center">
-        <Col md={6} className={`mb-5 ${appStyles.Content}`}>
+        <Col md={8} className={`mb-5 ${appStyles.Content}`}>
           <h1 className={styles.Header}>Create Task</h1>
           <Form className="text-center" onSubmit={handleSubmit}>
             {textFields}
