@@ -39,38 +39,46 @@ const TaskPage = () => {
   }, [id]);
 
   return (
-    <Container className={appStyles.Container}>
-      <Row className="justify-content-center">
-        <Col md={8}>
-          <Task {...task.results[0]} setTasks={setTask} taskPage />
-        </Col>
-      </Row>
-      <Row className="justify-content-center">
-        <Col md={8} className={appStyles.Content}>
-          {currentUser ? (
-            <NoteCreateForm
-              profile_id={currentUser.profile_id}
-              profileImage={profile_image}
-              task={id}
-              setTask={setTask}
-              setNotes={setNotes}
-            />
-          ) : notes.results.length ? (
-            "Notes"
-          ) : null}
-          {notes.results.length ? (
-            notes.results.map(notes => (
-              <Note key={notes.id} {...notes} />
-            ))
-          ) : currentUser ?(
-            <span>No notes yet, be the first one to add a note!</span>
-          ) : (
-            <span>No notes...yet</span>
-          )}
-        </Col>
-        
-      </Row>
-    </Container>
+    <>
+      <Container className={`${appStyles.Container} ${appStyles.Content}`}>
+        <Row className="justify-content-center">
+          <Col lg={12}>
+            <Task {...task.results[0]} setTasks={setTask} taskPage />
+          </Col>
+        </Row>
+      </Container>
+      <Container className="mt-3">
+        <Row className="justify-content-center">
+          <Col lg={12} className={appStyles.Content}>
+            {currentUser ? (
+              <NoteCreateForm
+                profile_id={currentUser.profile_id}
+                profileImage={profile_image}
+                task={id}
+                setTask={setTask}
+                setNotes={setNotes}
+              />
+            ) : notes.results.length ? (
+              "Notes"
+            ) : null}
+            {notes.results.length ? (
+              notes.results.map((notes) => (
+                <Note
+                  key={notes.id}
+                  {...notes}
+                  setTask={setTask}
+                  setNotes={setNotes}
+                />
+              ))
+            ) : currentUser ? (
+              <span>No notes yet, be the first one to add a note!</span>
+            ) : (
+              <span>No notes...yet</span>
+            )}
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 

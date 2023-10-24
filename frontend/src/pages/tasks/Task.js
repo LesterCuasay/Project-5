@@ -137,7 +137,7 @@ const Task = (props) => {
         </Col>
       </Row>
 
-      <Card.Body>
+      <Card.Body className={`${styles.Stars}`}>
         <div>
           {is_owner ? (
             <OverlayTrigger
@@ -168,7 +168,7 @@ const Task = (props) => {
           )}
           {favourites_count}
           <Link to={`/tasks/${id}`}>
-            <i className="fa-regular fa-comments"></i>
+            <i className={`fa-regular fa-comments ml-3 ${styles.Stars}`}></i>
           </Link>
           {notes_count}
         </div>
