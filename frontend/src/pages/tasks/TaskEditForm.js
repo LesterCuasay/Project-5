@@ -226,7 +226,7 @@ function TaskEditForm() {
   return (
     <Container className={appStyles.Container}>
       <Row className="justify-content-center">
-        <Col md={6} className={`mb-5 ${appStyles.Content}`}>
+        <Col md={8} className={`mb-5 ${appStyles.Content}`}>
           <h1 className={styles.Header}>Create Task</h1>
           <Form className="text-center" onSubmit={handleSubmit}>
             {textFields}

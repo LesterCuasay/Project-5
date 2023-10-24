@@ -26,7 +26,7 @@ function App() {
             path="/"
             render={() => (
               <TasksPage message="No results found. Adjust the search keyword." 
-              filter={`owner__profile=${profile_id}&`}/>
+              />
             )}
           />
           <Route
