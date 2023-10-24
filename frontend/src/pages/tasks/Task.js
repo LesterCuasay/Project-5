@@ -110,7 +110,7 @@ const Task = (props) => {
           </Col>
           <Col xs={6} className="d-flex justify-content-end align-items-center">
             <span>{updated_at}</span>
-            {is_owner && taskPage && <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />}
+            {is_owner && taskPage && <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete}/>}
           </Col>
         </Row>
       </Card.Body>
