@@ -11,6 +11,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import Task from "./Task";
 import NoteCreateForm from "../notes/NoteCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import Note from "../notes/Note";
 
 const TaskPage = () => {
   const { id } = useParams();
@@ -23,10 +24,12 @@ const TaskPage = () => {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: task }] = await Promise.all([
+        const [{ data: task }, { data: notes }] = await Promise.all([
           axiosReq.get(`/tasks/${id}`),
+          axiosReq.get(`/notes/?tasks/${id}`),
         ]);
         setTask({ results: [task] });
+        setNotes(notes);
         console.log(task);
       } catch (err) {
         console.log(err);
@@ -43,7 +46,7 @@ const TaskPage = () => {
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col md={8}>
+        <Col md={8} className={appStyles.Content}>
           {currentUser ? (
             <NoteCreateForm
               profile_id={currentUser.profile_id}
@@ -55,7 +58,17 @@ const TaskPage = () => {
           ) : notes.results.length ? (
             "Notes"
           ) : null}
+          {notes.results.length ? (
+            notes.results.map(notes => (
+              <Note key={notes.id} {...notes} />
+            ))
+          ) : currentUser ?(
+            <span>No notes yet, be the first one to add a note!</span>
+          ) : (
+            <span>No notes...yet</span>
+          )}
         </Col>
+        
       </Row>
     </Container>
   );

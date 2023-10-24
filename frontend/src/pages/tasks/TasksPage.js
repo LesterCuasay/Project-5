@@ -46,7 +46,7 @@ function TasksPage({ message, filter = "" }) {
   return (
     <Container className={appStyles.Container}>
       <Row className="justify-content-center">
-        <Col lg={12} md={8}>
+        <Col lg={12}>
           <i className={`fas fa-search ${styles.SearchIcon}`} />
           <Form
             className={styles.SearchBar}
