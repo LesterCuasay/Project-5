@@ -1,6 +1,6 @@
 import React from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
@@ -12,7 +12,7 @@ import styles from "../../styles/Task.module.css";
 
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
-import { format } from "date-fns";
+import { MoreDropdown } from "../../components/MoreDropdown";
 
 const Task = (props) => {
   const {
@@ -34,7 +34,21 @@ const Task = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  const history = useHistory();
 
+  const handleEdit = () => {
+    history.push(`/tasks/${id}/edit`);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/tasks/${id}/`)
+      history.goBack()
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  
   const formattedDueDate = new Date(due_date).toLocaleDateString(undefined, {
     day: "2-digit",
     month: "short",
@@ -96,7 +110,7 @@ const Task = (props) => {
           </Col>
           <Col xs={6} className="d-flex justify-content-end align-items-center">
             <span>{updated_at}</span>
-            {is_owner && taskPage && "..."}
+            {is_owner && taskPage && <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />}
           </Col>
         </Row>
       </Card.Body>
@@ -113,9 +127,13 @@ const Task = (props) => {
         </Col>
         <Col xs={6}>
           {due_date && (
-            <Card.Title className="text-right mr-5">{formattedDueDate}</Card.Title>
+            <Card.Title className="text-right mr-5">
+              {formattedDueDate}
+            </Card.Title>
           )}
-          {status && <Card.Title className="text-right mr-5">{status}</Card.Title>}
+          {status && (
+            <Card.Title className="text-right mr-5">{status}</Card.Title>
+          )}
         </Col>
       </Row>
 
