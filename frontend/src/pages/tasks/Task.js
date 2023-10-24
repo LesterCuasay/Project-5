@@ -3,7 +3,8 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
 
 import Card from "react-bootstrap/Card";
-import Media from "react-bootstrap/Media";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
@@ -11,7 +12,7 @@ import styles from "../../styles/Task.module.css";
 
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
-import { format } from "date-fns"
+import { format } from "date-fns";
 
 const Task = (props) => {
   const {
@@ -34,9 +35,12 @@ const Task = (props) => {
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
 
-  const dueDate = new Date(props.due_date)
-  const formattedDueDate = format(dueDate, 'dd MMMM yyyy')
-  
+  const formattedDueDate = new Date(due_date).toLocaleDateString(undefined, {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+
   const handleFavourite = async () => {
     try {
       const { data } = await axiosRes.post("/favourites/", { task: id });
@@ -80,35 +84,49 @@ const Task = (props) => {
   return (
     <Card className={`mb-4 ${styles.Task}`}>
       <Card.Body>
-        <Media className="align-items-center justify-content-between">
-          <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profile_image} height={55} />
-            {owner}
-          </Link>
-          <div className="d-flex align-items-center">
+        <Row>
+          <Col xs={6}>
+            <Link
+              className="d-flex justify-content-start align-items-center"
+              to={`/profiles/${profile_id}`}
+            >
+              <Avatar src={profile_image} height={55} />
+              {owner}
+            </Link>
+          </Col>
+          <Col xs={6} className="d-flex justify-content-end align-items-center">
             <span>{updated_at}</span>
             {is_owner && taskPage && "..."}
-          </div>
-        </Media>
+          </Col>
+        </Row>
       </Card.Body>
-      <Link to={`tasks/${id}`}>
-        <div className="text-center">{task_name}</div>
-      </Link>
+      <Row>
+        <Col xs={6}>
+          <Link to={`tasks/${id}`}>
+            <div className="text-left ml-5">{task_name}</div>
+          </Link>
+          {task_description && (
+            <Card.Title className="text-left text-muted ml-5">
+              {task_description}
+            </Card.Title>
+          )}
+        </Col>
+        <Col xs={6}>
+          {due_date && (
+            <Card.Title className="text-right mr-5">{formattedDueDate}</Card.Title>
+          )}
+          {status && <Card.Title className="text-right mr-5">{status}</Card.Title>}
+        </Col>
+      </Row>
+
       <Card.Body>
-        {task_description && (
-          <Card.Title className="text-center text-muted">
-            {task_description}
-          </Card.Title>
-        )}
-        {due_date && (
-          <Card.Title className="text-center">{formattedDueDate}</Card.Title>
-        )}
-        {status && <Card.Title className="text-center">{status}</Card.Title>}
         <div>
           {is_owner ? (
             <OverlayTrigger
               placement="top"
               overlay={<Tooltip>You can't favourite your own task!</Tooltip>}
+              animation={null}
+              transition={false}
             >
               <i className="fa-regular fa-star"></i>
             </OverlayTrigger>
@@ -124,6 +142,8 @@ const Task = (props) => {
             <OverlayTrigger
               placement="top"
               overlay={<Tooltip>Log in to favourite tasks!</Tooltip>}
+              animation={null}
+              transition={false}
             >
               <i className="fa-regular fa-star"></i>
             </OverlayTrigger>
