@@ -178,6 +178,7 @@ const Task = (props) => {
           </Link>
           {notes_count}
         </div>
+      <hr />
       </Card.Body>
     </Card>
   );

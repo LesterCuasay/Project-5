@@ -47,7 +47,8 @@ function TasksPage({ message, filter = "" }) {
   return (
     <Container className={appStyles.Container}>
       <Row className="justify-content-center">
-        <Col md={8}>
+        <Col lg={8}>
+          <PopularProfiles mobile />
           <i className={`fas fa-search ${styles.SearchIcon}`} />
           <Form
             className={styles.SearchBar}
@@ -86,7 +87,7 @@ function TasksPage({ message, filter = "" }) {
             </Container>
           )}
         </Col>
-        <Col md={4}>
+        <Col md={4} className="d-none d-lg-block p-lg-2 p-0">
           <PopularProfiles />
         </Col>
       </Row>
