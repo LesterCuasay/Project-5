@@ -3,6 +3,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link, useHistory } from "react-router-dom";
 
 import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
@@ -97,89 +98,85 @@ const Task = (props) => {
 
   return (
     <Card className={`mb-4 ${styles.Task}`}>
-      <Card.Body>
-        <Row>
-          <Col xs={6}>
-            <Link
-              className="d-flex justify-content-start align-items-center"
-              to={`/profiles/${profile_id}`}
-            >
-              <Avatar src={profile_image} height={55} />
-              {owner}
-            </Link>
-          </Col>
-          <Col xs={6} className="d-flex justify-content-end align-items-center">
-            <span>{updated_at}</span>
-            {is_owner && taskPage && (
-              <MoreDropdown
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />
-            )}
-          </Col>
-        </Row>
-        <hr />
-      </Card.Body>
+      <Row>
+        <Col xs={6}>
+          <Link
+            className="d-flex justify-content-start align-items-center"
+            to={`/profiles/${profile_id}`}
+          >
+            <Avatar src={profile_image} height={55} />
+            {owner}
+          </Link>
+        </Col>
+        <Col xs={6} className="d-flex justify-content-end align-items-center">
+          <span>{updated_at}</span>
+          {is_owner && taskPage && (
+            <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
+          )}
+        </Col>
+      </Row>
+      <hr />
       <Row>
         <Col xs={6}>
           <Link to={`tasks/${id}`}>
-            <div className="text-left ml-5">{task_name}</div>
+            <div className="text-left">{task_name}</div>
           </Link>
           {task_description && (
-            <Card.Title className="text-left text-muted ml-5">
+            <Card.Title className="text-left text-muted">
               {task_description}
             </Card.Title>
           )}
         </Col>
         <Col xs={6}>
           {due_date && (
-            <Card.Title className="text-right mr-5" >
+            <Card.Title className="text-right">
               {formattedDueDate}
             </Card.Title>
           )}
           {status && (
-            <Card.Title className="text-right mr-5">{status}</Card.Title>
+            <Card.Title className="text-right">{status}</Card.Title>
           )}
         </Col>
       </Row>
-
-      <Card.Body className={`${styles.Stars}`}>
-        <div>
-          {is_owner ? (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>You can't favourite your own task!</Tooltip>}
-              animation={null}
-              transition={false}
-            >
-              <i className="fa-regular fa-star"></i>
-            </OverlayTrigger>
-          ) : favourite_id ? (
-            <span onClick={handleUnfavourite}>
-              <i className={`fa-solid fa-star ${styles.Star}`}></i>
-            </span>
-          ) : currentUser ? (
-            <span onClick={handleFavourite}>
-              <i className={`fa-regular fa-star ${styles.StarOutline}`}></i>
-            </span>
-          ) : (
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip>Log in to favourite tasks!</Tooltip>}
-              animation={null}
-              transition={false}
-            >
-              <i className="fa-regular fa-star"></i>
-            </OverlayTrigger>
-          )}
-          {favourites_count}
-          <Link to={`/tasks/${id}`}>
-            <i className={`fa-regular fa-comments ml-3 ${styles.Stars}`}></i>
-          </Link>
-          {notes_count}
-        </div>
-      <hr />
-      </Card.Body>
+      <Row>
+        <Col>
+          <div className={`${styles.Stars}`}>
+            {is_owner ? (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>You can't favourite your own task!</Tooltip>}
+                animation={null}
+                transition={false}
+              >
+                <i className="fa-regular fa-star"></i>
+              </OverlayTrigger>
+            ) : favourite_id ? (
+              <span onClick={handleUnfavourite}>
+                <i className={`fa-solid fa-star ${styles.Star}`}></i>
+              </span>
+            ) : currentUser ? (
+              <span onClick={handleFavourite}>
+                <i className={`fa-regular fa-star ${styles.StarOutline}`}></i>
+              </span>
+            ) : (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>Log in to favourite tasks!</Tooltip>}
+                animation={null}
+                transition={false}
+              >
+                <i className="fa-regular fa-star"></i>
+              </OverlayTrigger>
+            )}
+            {favourites_count}
+            <Link to={`/tasks/${id}`}>
+              <i className={`fa-regular fa-comments ml-3 ${styles.Stars}`}></i>
+            </Link>
+            {notes_count}
+          </div>
+          <hr />
+        </Col>
+      </Row>
     </Card>
   );
 };
