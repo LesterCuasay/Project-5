@@ -6,13 +6,16 @@ import Col from "react-bootstrap/Col";
 
 import appStyles from "../../App.module.css";
 
-import { useParams } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
 import Task from "./Task";
 import NoteCreateForm from "../notes/NoteCreateForm";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Note from "../notes/Note";
 import Asset from "../../components/Asset";
+import InfiniteScroll from "react-infinite-scroll-component";
+
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useParams } from "react-router";
+import { axiosReq } from "../../api/axiosDefaults";
+import { fetchMoreData } from "../../utils/utils";
 
 const TaskPage = () => {
   const { id } = useParams();
@@ -71,14 +74,20 @@ const TaskPage = () => {
                     <h5>Notes</h5>
                   ) : null}
                   {notes.results.length ? (
-                    notes.results.map((notes) => (
-                      <Note
-                        key={notes.id}
-                        {...notes}
-                        setTask={setTask}
-                        setNotes={setNotes}
-                      />
-                    ))
+                    <InfiniteScroll className="overflow-hidden p-2"
+                      children={notes.results.map((notes) => (
+                        <Note
+                          key={notes.id}
+                          {...notes}
+                          setTask={setTask}
+                          setNotes={setNotes}
+                        />
+                      ))}
+                      dataLength={notes.results.length}
+                      loader={<Asset spinner />}
+                      hasMore={!!notes.next}
+                      next={() => fetchMoreData(notes, setNotes)}
+                    />
                   ) : currentUser ? (
                     <span>No notes yet, be the first to comment!</span>
                   ) : (

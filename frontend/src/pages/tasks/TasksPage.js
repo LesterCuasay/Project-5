@@ -63,7 +63,8 @@ function TasksPage({ message, filter = "" }) {
           {hasLoaded ? (
             <>
               {tasks.results.length ? (
-                <InfiniteScroll className="overflow-hidden"
+                <InfiniteScroll
+                  className="overflow-hidden"
                   children={tasks.results.map((task) => (
                     <Task key={task.id} {...task} setTasks={setTasks} />
                   ))}
