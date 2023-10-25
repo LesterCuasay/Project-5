@@ -16,6 +16,7 @@ import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
+import PopularProfiles from "../profiles/PopularProfiles";
 
 function TasksPage({ message, filter = "" }) {
   const [tasks, setTasks] = useState({ results: [] });
@@ -46,7 +47,7 @@ function TasksPage({ message, filter = "" }) {
   return (
     <Container className={appStyles.Container}>
       <Row className="justify-content-center">
-        <Col lg={12}>
+        <Col md={8}>
           <i className={`fas fa-search ${styles.SearchIcon}`} />
           <Form
             className={styles.SearchBar}
@@ -84,6 +85,9 @@ function TasksPage({ message, filter = "" }) {
               <Asset spinner />
             </Container>
           )}
+        </Col>
+        <Col md={4}>
+          <PopularProfiles />
         </Col>
       </Row>
     </Container>
