@@ -70,11 +70,17 @@ const TaskPage = () => {
                       setTask={setTask}
                       setNotes={setNotes}
                     />
-                  ) : notes.results.length ? (
-                    <h5>Notes</h5>
+                  ) : null}
+                </Container>
+                <Container
+                  className={`${appStyles.Container} ${appStyles.Content}`}
+                >
+                  {notes.results.length ? (
+                    <h5 className="text-center">Notes</h5>
                   ) : null}
                   {notes.results.length ? (
-                    <InfiniteScroll className="overflow-hidden p-2"
+                    <InfiniteScroll
+                      className="overflow-hidden p-2"
                       children={notes.results.map((notes) => (
                         <Note
                           key={notes.id}
