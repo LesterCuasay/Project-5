@@ -66,7 +66,10 @@ function TaskCreateForm() {
     formData.append("task_description", task_description);
     formData.append("status", status);
     formData.append("due_date", due_date);
-    formData.append("attachment", fileInput.current.files[0]);
+    
+    if (fileInput?.current?.files[0]) {
+      formData.append("attachment", fileInput.current.files[0]);
+    }
 
     try {
       const { data } = await axiosReq.post("/tasks/", formData);

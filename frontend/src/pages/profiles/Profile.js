@@ -4,17 +4,20 @@ import Button from "react-bootstrap/Button";
 
 import styles from "../../styles/Profile.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import Avatar from "../../components/Avatar";
 
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
-import Avatar from "../../components/Avatar";
+import { useSetProfileData } from "../../contexts/ProfileDataContext";
 
 const Profile = (props) => {
-    const { profile, mobile, imageSize = 55 } = props;
-    const { id, following_id, image, owner } = profile;
+  const { profile, mobile, imageSize = 55 } = props;
+  const { id, following_id, image, owner } = profile;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+
+  const { handleFollow } = useSetProfileData();
 
   return (
     <div
@@ -37,7 +40,10 @@ const Profile = (props) => {
               Unfollow
             </Button>
           ) : (
-            <Button className={`${btnStyles.Button}`} onClick={() => {}}>
+            <Button
+              className={`${btnStyles.Button}`}
+              onClick={() => handleFollow(profile)}
+            >
               Follow
             </Button>
           ))}

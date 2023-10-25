@@ -31,7 +31,7 @@ const TaskPage = () => {
       try {
         const [{ data: task }, { data: notes }] = await Promise.all([
           axiosReq.get(`/tasks/${id}`),
-          axiosReq.get(`/notes/?tasks/${id}`),
+          axiosReq.get(`/notes/?task=${id}`),
         ]);
         setTask({ results: [task] });
         setNotes(notes);

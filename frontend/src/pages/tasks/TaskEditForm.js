@@ -37,6 +37,8 @@ function TaskEditForm() {
   const { id } = useParams();
   const fileInput = useRef(null);
 
+  const [fileName, setFileName] = useState("");
+
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -67,7 +69,6 @@ function TaskEditForm() {
     handleMount();
   }, [history, id]);
 
-  const [fileName, setFileName] = useState("");
 
   const handleChange = (event) => {
     setTaskData({
