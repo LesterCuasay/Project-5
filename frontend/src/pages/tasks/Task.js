@@ -42,13 +42,13 @@ const Task = (props) => {
 
   const handleDelete = async () => {
     try {
-      await axiosRes.delete(`/tasks/${id}/`)
-      history.goBack()
+      await axiosRes.delete(`/tasks/${id}/`);
+      history.goBack();
     } catch (err) {
       console.log(err);
     }
-  }
-  
+  };
+
   const formattedDueDate = new Date(due_date).toLocaleDateString(undefined, {
     day: "2-digit",
     month: "short",
@@ -110,9 +110,15 @@ const Task = (props) => {
           </Col>
           <Col xs={6} className="d-flex justify-content-end align-items-center">
             <span>{updated_at}</span>
-            {is_owner && taskPage && <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete}/>}
+            {is_owner && taskPage && (
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            )}
           </Col>
         </Row>
+        <hr />
       </Card.Body>
       <Row>
         <Col xs={6}>
@@ -127,7 +133,7 @@ const Task = (props) => {
         </Col>
         <Col xs={6}>
           {due_date && (
-            <Card.Title className="text-right mr-5">
+            <Card.Title className="text-right mr-5" >
               {formattedDueDate}
             </Card.Title>
           )}

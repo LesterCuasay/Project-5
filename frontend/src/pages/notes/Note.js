@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Row from "react-bootstrap/Row";
@@ -11,6 +11,8 @@ import { MoreDropdown } from "../../components/MoreDropdown";
 import styles from "../../styles/Note.module.css";
 import { axiosRes } from "../../api/axiosDefaults";
 
+import NoteEditForm from "./NoteEditForm";
+
 const Note = (props) => {
   const {
     profile_id,
@@ -22,6 +24,8 @@ const Note = (props) => {
     setTask,
     setNotes,
   } = props;
+
+  const [showEditForm, setShowEditForm] = useState(false);
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
@@ -55,10 +59,21 @@ const Note = (props) => {
         <Col className="align-self-center ml-2">
           <span className={styles.Owner}>{owner}</span>
           <span className={styles.Date}>{updated_at}</span>
-          <p>{content}</p>
+          {showEditForm ? (
+            <NoteEditForm 
+            id={id}
+            profile_id={profile_id}
+            content={content}
+            profileImage={profile_image}
+            setNotes={setNotes}
+            setShowEditForm={setShowEditForm}
+            />
+          ) : (
+            <p>{content}</p>
+          )}
         </Col>
         {is_owner && (
-          <MoreDropdown handleEdit={() => {}} handleDelete={handleDelete} />
+          <MoreDropdown handleEdit={() => setShowEditForm(true)} handleDelete={handleDelete} />
         )}
       </Row>
     </div>
