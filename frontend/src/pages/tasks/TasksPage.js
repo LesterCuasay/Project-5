@@ -38,7 +38,7 @@ function TasksPage({ message, filter = "" }) {
     setHasLoaded(false);
     const timer = setTimeout(() => {
       fetchTasks();
-    }, 1000);
+    }, 300);
     return () => {
       clearTimeout(timer);
     };
@@ -65,7 +65,7 @@ function TasksPage({ message, filter = "" }) {
               {tasks.results.length ? (
                 <InfiniteScroll className="overflow-hidden"
                   children={tasks.results.map((task) => (
-                    <Task key={task.id} {...task} setPosts={setTasks} />
+                    <Task key={task.id} {...task} setTasks={setTasks} />
                   ))}
                   dataLength={tasks.results.length}
                   loader={<Asset spinner />}

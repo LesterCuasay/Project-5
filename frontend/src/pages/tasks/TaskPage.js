@@ -12,10 +12,12 @@ import Task from "./Task";
 import NoteCreateForm from "../notes/NoteCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Note from "../notes/Note";
+import Asset from "../../components/Asset";
 
 const TaskPage = () => {
   const { id } = useParams();
   const [task, setTask] = useState({ results: [] });
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
@@ -30,50 +32,64 @@ const TaskPage = () => {
         ]);
         setTask({ results: [task] });
         setNotes(notes);
-        console.log(task);
+        setHasLoaded(true);
       } catch (err) {
         console.log(err);
       }
     };
-    handleMount();
+
+    setHasLoaded(false);
+    const timer = setTimeout(() => {
+      handleMount();
+    }, 300);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [id]);
 
   return (
     <>
-      <Container className={`${appStyles.Container} ${appStyles.Content}`}>
+      <Container>
         <Row className="justify-content-center">
           <Col lg={12}>
-            <Task {...task.results[0]} setTasks={setTask} taskPage />
-          </Col>
-        </Row>
-      </Container>
-      <Container className="mt-3">
-        <Row className="justify-content-center">
-          <Col lg={12} className={appStyles.Content}>
-            {currentUser ? (
-              <NoteCreateForm
-                profile_id={currentUser.profile_id}
-                profileImage={profile_image}
-                task={id}
-                setTask={setTask}
-                setNotes={setNotes}
-              />
-            ) : notes.results.length ? (
-              "Notes"
-            ) : null}
-            {notes.results.length ? (
-              notes.results.map((notes) => (
-                <Note
-                  key={notes.id}
-                  {...notes}
-                  setTask={setTask}
-                  setNotes={setNotes}
-                />
-              ))
-            ) : currentUser ? (
-              <span>No notes yet, be the first one to add a note!</span>
+            {hasLoaded ? (
+              <>
+                <Container
+                  className={`${appStyles.Container} ${appStyles.Content}`}
+                >
+                  <Task {...task.results[0]} setTasks={setTask} taskPage />
+                  {currentUser ? (
+                    <NoteCreateForm
+                      profile_id={currentUser.profile_id}
+                      profileImage={profile_image}
+                      task={id}
+                      setTask={setTask}
+                      setNotes={setNotes}
+                    />
+                  ) : notes.results.length ? (
+                    <h5>Notes</h5>
+                  ) : null}
+                  {notes.results.length ? (
+                    notes.results.map((notes) => (
+                      <Note
+                        key={notes.id}
+                        {...notes}
+                        setTask={setTask}
+                        setNotes={setNotes}
+                      />
+                    ))
+                  ) : currentUser ? (
+                    <span>No notes yet, be the first to comment!</span>
+                  ) : (
+                    <span>No notes... yet</span>
+                  )}
+                </Container>
+              </>
             ) : (
-              <span>No notes...yet</span>
+              <Container>
+                <Asset spinner />
+              </Container>
             )}
           </Col>
         </Row>
