@@ -12,9 +12,11 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/SignInUpForm.module.css";
 
+import { useRedirect } from "../../hooks/useRedirect";
 import axios from "axios";
 
 const SignUpForm = () => {
+  useRedirect('loggedIn');
   const [signUpData, setSignUpData] = useState({
     username: "",
     password1: "",

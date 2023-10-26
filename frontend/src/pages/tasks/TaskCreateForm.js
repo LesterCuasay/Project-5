@@ -8,16 +8,19 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 
+import Asset from "../../components/Asset";
+import Upload from "../../assets/upload.png";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/TaskCreateEditForm.module.css";
 import assetStyles from "../../styles/Asset.module.css";
 
+import { useRedirect } from "../../hooks/useRedirect";
 import { axiosReq } from "../../api/axiosDefaults";
-import Asset from "../../components/Asset";
-import Upload from "../../assets/upload.png";
+
 
 function TaskCreateForm() {
+  useRedirect('loggedOut')
   const [errors, setErrors] = useState();
 
   const today = new Date().toISOString().substr(0, 10);
