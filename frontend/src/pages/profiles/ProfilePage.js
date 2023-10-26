@@ -6,16 +6,17 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 import InfiniteScroll from "react-infinite-scroll-component";
+
 import Task from "../tasks/Task";
+import PopularProfiles from "./PopularProfiles";
 
 import Asset from "../../components/Asset";
+import NoResults from "../../assets/no-results.png";
 
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-import PopularProfiles from "./PopularProfiles";
-import NoResults from "../../assets/no-results.png";
 import { fetchMoreData } from "../../utils/utils";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";

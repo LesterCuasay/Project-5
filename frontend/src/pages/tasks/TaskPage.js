@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import appStyles from "../../App.module.css";
 
@@ -10,13 +11,12 @@ import Task from "./Task";
 import NoteCreateForm from "../notes/NoteCreateForm";
 import Note from "../notes/Note";
 import Asset from "../../components/Asset";
-import InfiniteScroll from "react-infinite-scroll-component";
+import PopularProfiles from "../profiles/PopularProfiles";
 
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { fetchMoreData } from "../../utils/utils";
-import PopularProfiles from "../profiles/PopularProfiles";
 
 const TaskPage = () => {
   const { id } = useParams();

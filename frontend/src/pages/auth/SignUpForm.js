@@ -1,5 +1,5 @@
+import axios from "axios";
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -12,8 +12,8 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/SignInUpForm.module.css";
 
+import { Link, useHistory } from "react-router-dom";
 import { useRedirect } from "../../hooks/useRedirect";
-import axios from "axios";
 
 const SignUpForm = () => {
   useRedirect('loggedIn');

@@ -6,17 +6,17 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
 import { useParams, useHistory } from "react-router-dom";
+import { axiosReq } from "../../api/axiosDefaults";
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
-import { axiosReq } from "../../api/axiosDefaults";
-import { Image } from "react-bootstrap";
 
 const ProfileEditForm = () => {
   const [errors, setErrors] = useState({});

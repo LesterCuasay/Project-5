@@ -10,12 +10,12 @@ import Button from "react-bootstrap/Button";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
+import { axiosRes } from "../../api/axiosDefaults";
 import { useHistory, useParams } from "react-router-dom";
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
-import { axiosRes } from "../../api/axiosDefaults";
 
 const UsernameForm = () => {
   const [username, setUsername] = useState("");
@@ -65,7 +65,10 @@ const UsernameForm = () => {
               <Form.Label>
                 <h1>Change Username</h1>
                 <div>
-                  <p>Hey {currentUser.username}! What do you want to change your name to?</p>
+                  <p>
+                    Hey {currentUser.username}! What do you want to change your
+                    name to?
+                  </p>
                 </div>
               </Form.Label>
               <Form.Control

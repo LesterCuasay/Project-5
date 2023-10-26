@@ -6,8 +6,8 @@ import styles from "../../styles/Profile.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Avatar from "../../components/Avatar";
 
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useSetProfileData } from "../../contexts/ProfileDataContext";
 
 const Profile = (props) => {
@@ -36,7 +36,10 @@ const Profile = (props) => {
           currentUser &&
           !is_owner &&
           (following_id ? (
-            <Button className={`${btnStyles.Button}`} onClick={() => handleUnfollow(profile)}>
+            <Button
+              className={`${btnStyles.Button}`}
+              onClick={() => handleUnfollow(profile)}
+            >
               Unfollow
             </Button>
           ) : (

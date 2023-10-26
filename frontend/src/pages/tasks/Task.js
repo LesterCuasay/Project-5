@@ -1,6 +1,4 @@
 import React from "react";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Link, useHistory } from "react-router-dom";
 
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
@@ -11,6 +9,9 @@ import Tooltip from "react-bootstrap/Tooltip";
 import styles from "../../styles/Task.module.css";
 
 import Avatar from "../../components/Avatar";
+
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { Link, useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 
@@ -128,13 +129,9 @@ const Task = (props) => {
         </Col>
         <Col xs={6}>
           {due_date && (
-            <Card.Title className="text-right">
-              {formattedDueDate}
-            </Card.Title>
+            <Card.Title className="text-right">{formattedDueDate}</Card.Title>
           )}
-          {status && (
-            <Card.Title className="text-right">{status}</Card.Title>
-          )}
+          {status && <Card.Title className="text-right">{status}</Card.Title>}
         </Col>
       </Row>
       <Row>

@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Avatar from "../../components/Avatar";
+import NoteEditForm from "./NoteEditForm";
+
+import styles from "../../styles/Note.module.css";
 
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { MoreDropdown } from "../../components/MoreDropdown";
-
-import styles from "../../styles/Note.module.css";
+import { Link } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
-
-import NoteEditForm from "./NoteEditForm";
 
 const Note = (props) => {
   const {

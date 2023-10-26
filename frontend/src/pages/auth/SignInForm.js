@@ -1,5 +1,6 @@
+import axios from "axios";
+
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
 
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
@@ -12,9 +13,9 @@ import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
+import { Link, useHistory } from "react-router-dom";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
-import axios from "axios";
 import { setTokenTimestamp } from "../../utils/utils";
 
 const SignInForm = () => {

@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { useHistory } from 'react-router-dom'
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -10,17 +9,18 @@ import Alert from "react-bootstrap/Alert";
 
 import Asset from "../../components/Asset";
 import Upload from "../../assets/upload.png";
+
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import styles from "../../styles/TaskCreateEditForm.module.css";
 import assetStyles from "../../styles/Asset.module.css";
 
+import { useHistory } from "react-router-dom";
 import { useRedirect } from "../../hooks/useRedirect";
 import { axiosReq } from "../../api/axiosDefaults";
 
-
 function TaskCreateForm() {
-  useRedirect('loggedOut')
+  useRedirect("loggedOut");
   const [errors, setErrors] = useState();
 
   const today = new Date().toISOString().substr(0, 10);
@@ -69,7 +69,7 @@ function TaskCreateForm() {
     formData.append("task_description", task_description);
     formData.append("status", status);
     formData.append("due_date", due_date);
-    
+
     if (fileInput?.current?.files[0]) {
       formData.append("attachment", fileInput.current.files[0]);
     }

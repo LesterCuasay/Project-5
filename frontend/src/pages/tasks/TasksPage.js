@@ -4,19 +4,19 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-
-import Task from "./Task";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import styles from "../../styles/TasksPage.module.css";
 import appStyles from "../../App.module.css";
+
+import Task from "./Task";
+import NoResults from "../../assets/no-results.png";
+import Asset from "../../components/Asset";
+import PopularProfiles from "../profiles/PopularProfiles";
+
 import { useLocation } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
-
-import NoResults from "../../assets/no-results.png";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
-import PopularProfiles from "../profiles/PopularProfiles";
 
 function TasksPage({ message, filter = "" }) {
   const [tasks, setTasks] = useState({ results: [] });
