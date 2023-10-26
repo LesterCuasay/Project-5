@@ -54,13 +54,22 @@ const UsernameForm = () => {
   };
 
   return (
-    <Container className={`${appStyles.Content} ${appStyles.Container}`}>
-      <Row>
-        <Col>
+    <Container className="mt-5">
+      <Row className="justify-content-center">
+        <Col
+          md={8}
+          className={`${appStyles.Content} ${appStyles.Container} text-center`}
+        >
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-              <Form.Label>Change Username</Form.Label>
+              <Form.Label>
+                <h1>Change Username</h1>
+                <div>
+                  <p>Hey {currentUser.username}! What do you want to change your name to?</p>
+                </div>
+              </Form.Label>
               <Form.Control
+                className="mt-2 text-center"
                 placeholder="Username"
                 type="text"
                 value={username}
@@ -72,15 +81,17 @@ const UsernameForm = () => {
                 {message}
               </Alert>
             ))}
-            <Button
-              onClick={() => history.goBack()}
-              className={btnStyles.Button}
-            >
-              Cancel
-            </Button>
-            <Button className={btnStyles.Button} type="submit">
-              Save
-            </Button>
+            <div>
+              <Button
+                onClick={() => history.goBack()}
+                className={`mt-3 ${btnStyles.Button}`}
+              >
+                Cancel
+              </Button>
+              <Button className={`mt-3 ${btnStyles.Button}`} type="submit">
+                Save
+              </Button>
+            </div>
           </Form>
         </Col>
       </Row>
