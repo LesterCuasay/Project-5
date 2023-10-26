@@ -45,7 +45,7 @@ const Note = (props) => {
         results: prevNotes.results.filter((note) => note.id !== id),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
   return (
