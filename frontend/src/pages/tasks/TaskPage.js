@@ -16,6 +16,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { fetchMoreData } from "../../utils/utils";
+import PopularProfiles from "../profiles/PopularProfiles";
 
 const TaskPage = () => {
   const { id } = useParams();
@@ -55,7 +56,8 @@ const TaskPage = () => {
     <>
       <Container>
         <Row className="justify-content-center">
-          <Col lg={12}>
+          <Col lg={8}>
+            <PopularProfiles mobile />
             {hasLoaded ? (
               <>
                 <Container
@@ -106,6 +108,9 @@ const TaskPage = () => {
                 <Asset spinner />
               </Container>
             )}
+          </Col>
+          <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
+            <PopularProfiles />
           </Col>
         </Row>
       </Container>
