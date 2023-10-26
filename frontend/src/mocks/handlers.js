@@ -5,7 +5,7 @@ const baseURL = "http://localhost:8000/";
 export const handlers = [
   rest.get(`${baseURL}dj-rest-auth/user/`, (req, res, ctx) => {
     return res(
-      ctx({
+      ctx.json({
         pk: 4,
         username: "rob",
         email: "",
