@@ -17,13 +17,16 @@ import PopularProfiles from "../profiles/PopularProfiles";
 import { useLocation } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { fetchMoreData } from "../../utils/utils";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function TasksPage({ message, filter = "" }) {
   const [tasks, setTasks] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [query, setQuery] = useState("");
+
   const { pathname } = useLocation();
 
-  const [query, setQuery] = useState("");
+  const currentUser = useCurrentUser();
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -43,7 +46,8 @@ function TasksPage({ message, filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query, pathname]);
+  }, [filter, query, pathname, currentUser]);
+
   return (
     <Container className={appStyles.Container}>
       <Row className="justify-content-center">
