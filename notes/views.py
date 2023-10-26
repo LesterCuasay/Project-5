@@ -7,7 +7,7 @@ from .serializers import NotesSerializer, NotesDetailSerializer
 
 class NotesList(generics.ListCreateAPIView):
     serializer_class = NotesSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Notes.objects.all()
 
     filter_backends = [
