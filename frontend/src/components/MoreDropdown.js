@@ -1,6 +1,8 @@
 import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 
+import { useHistory } from "react-router-dom";
+
 import styles from "../styles/MoreDropdown.module.css";
 
 // The forwardRef is important!!
@@ -16,12 +18,15 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   />
 ));
 
-export const MoreDropdown = ({handleEdit, handleDelete}) => {
+export const MoreDropdown = ({ handleEdit, handleDelete }) => {
   return (
     <Dropdown className="ml-2" drop="start">
       <Dropdown.Toggle as={ThreeDots} />
 
-      <Dropdown.Menu className="text-center" popperConfig={{ strategy: "fixed" }}>
+      <Dropdown.Menu
+        className="text-center"
+        popperConfig={{ strategy: "fixed" }}
+      >
         <Dropdown.Item
           className={styles.DropdownItem}
           onClick={handleEdit}
@@ -40,3 +45,29 @@ export const MoreDropdown = ({handleEdit, handleDelete}) => {
     </Dropdown>
   );
 };
+
+export function ProfileEditDropdown({ id }) {
+  const history = useHistory();
+
+  return (
+    <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="start">
+      <Dropdown.Toggle as={ThreeDots} />
+      <Dropdown.Menu>
+        <Dropdown.Item
+          onClick={() => history.push(`/profiles/${id}/edit`)}
+          aria-label="edit-profile"
+        >
+          <i className="far fa-id-card" />
+          Change Username
+        </Dropdown.Item>
+        <Dropdown.Item
+          onClick={() => history.push(`/profiles/${id}/edit/password`)}
+          aria-label="edit-password"
+        >
+          <i className="fas fa-key" />
+          Change Password
+        </Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  );
+}

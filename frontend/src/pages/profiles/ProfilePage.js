@@ -18,6 +18,7 @@ import PopularProfiles from "./PopularProfiles";
 import NoResults from "../../assets/no-results.png";
 import { fetchMoreData } from "../../utils/utils";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { ProfileEditDropdown } from "../../components/MoreDropdown";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import {
@@ -28,7 +29,7 @@ import {
 function ProfilePage() {
   const { id } = useParams();
 
-  const {setProfileData, handleFollow, handleUnfollow} = useSetProfileData();
+  const { setProfileData, handleFollow, handleUnfollow } = useSetProfileData();
   const { pageProfile } = useProfileData();
   const [profile] = pageProfile.results;
 
@@ -61,6 +62,7 @@ function ProfilePage() {
   const mainProfile = (
     <>
       <Row noGutters className="px-3 text-center">
+        {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
         <Col lg={3} className="text-lg-left">
           <Image
             className={styles.ProfileImage}
@@ -89,11 +91,17 @@ function ProfilePage() {
           {currentUser &&
             !is_owner &&
             (profile?.following_id ? (
-              <Button className={`${btnStyles.Button}`} onClick={() => handleUnfollow(profile)}>
+              <Button
+                className={`${btnStyles.Button}`}
+                onClick={() => handleUnfollow(profile)}
+              >
                 Unfollow
               </Button>
             ) : (
-              <Button className={`${btnStyles.Button}`} onClick={() => handleFollow(profile)}>
+              <Button
+                className={`${btnStyles.Button}`}
+                onClick={() => handleFollow(profile)}
+              >
                 Follow
               </Button>
             ))}
