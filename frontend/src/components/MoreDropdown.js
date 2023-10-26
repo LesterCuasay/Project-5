@@ -24,7 +24,7 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
       <Dropdown.Toggle as={ThreeDots} />
 
       <Dropdown.Menu
-        className="text-center"
+        className={`text-center ${styles.DropdownMenu}`}
         popperConfig={{ strategy: "fixed" }}
       >
         <Dropdown.Item
@@ -52,8 +52,9 @@ export function ProfileEditDropdown({ id }) {
   return (
     <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="start">
       <Dropdown.Toggle as={ThreeDots} />
-      <Dropdown.Menu>
+      <Dropdown.Menu className={styles.DropdownMenu}>
         <Dropdown.Item
+          className={styles.ProfileDropdownItem}
           onClick={() => history.push(`/profiles/${id}/edit`)}
           aria-label="edit-profile"
         >
@@ -61,6 +62,7 @@ export function ProfileEditDropdown({ id }) {
           Change Username
         </Dropdown.Item>
         <Dropdown.Item
+          className={styles.ProfileDropdownItem}
           onClick={() => history.push(`/profiles/${id}/edit/password`)}
           aria-label="edit-password"
         >

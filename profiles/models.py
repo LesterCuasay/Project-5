@@ -11,6 +11,7 @@ class Profile(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default_profile_pmqhl9'
     )
+    content = models.TextField(blank=True)
 
     class Meta:
         ordering = ['-created_at']
