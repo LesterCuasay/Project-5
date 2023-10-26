@@ -117,7 +117,7 @@ const Task = (props) => {
       <hr />
       <Row>
         <Col xs={6}>
-          <Link to={`tasks/${id}`}>
+          <Link to={`/tasks/${id}`}>
             <div className="text-left">{task_name}</div>
           </Link>
           {task_description && (

@@ -9,7 +9,7 @@ import Task from "./Task";
 
 import styles from "../../styles/TasksPage.module.css";
 import appStyles from "../../App.module.css";
-import { useLocation } from "react-router";
+import { useLocation } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 
 import NoResults from "../../assets/no-results.png";
