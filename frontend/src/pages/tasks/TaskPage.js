@@ -22,6 +22,7 @@ const TaskPage = () => {
   const { id } = useParams();
   const [task, setTask] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [isTaskOverdue, setIsTaskOverdue] = useState(false);
 
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
@@ -34,6 +35,11 @@ const TaskPage = () => {
           axiosReq.get(`/tasks/${id}`),
           axiosReq.get(`/notes/?task=${id}`),
         ]);
+
+        const taskDueDate = new Date(task.due_date);
+        const isOverdue = taskDueDate < new Date();
+        setIsTaskOverdue(isOverdue);
+
         setTask({ results: [task] });
         setNotes(notes);
         setHasLoaded(true);
@@ -59,8 +65,12 @@ const TaskPage = () => {
           <PopularProfiles mobile />
           {hasLoaded ? (
             <>
+              {isTaskOverdue ? (
+                <p className="text-danger">This task is overdue!</p>
+              ) : null}
+              {console.log(isTaskOverdue)}
               <Task {...task.results[0]} setTasks={setTask} taskPage />
-
+              
               {currentUser && (
                 <Container className={appStyles.Content}>
                   <NoteCreateForm
