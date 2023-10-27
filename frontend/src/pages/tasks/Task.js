@@ -32,6 +32,7 @@ const Task = (props) => {
     taskPage,
     setTasks,
     attachment,
+    is_overdue,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -101,24 +102,37 @@ const Task = (props) => {
   return (
     <Card className={`mb-4 ${styles.Task}`}>
       <Row>
-        <Col className="d-flex align-items-center justify-content-between">
+        <Col className="d-flex align-items-center">
           <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profile_image} height={55} />
-            {owner}
+            <div className="mr-3">
+              <Avatar src={profile_image} height={55} />
+              {owner}
+            </div>
           </Link>
-          <span>{updated_at}</span>
-          {is_owner && taskPage && (
-            <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
+
+          {taskPage && is_overdue && is_owner && (
+            <div className="text-center mx-auto">
+              <p className="text-danger">This task is overdue!</p>
+            </div>
           )}
+
+          <div className="d-flex align-items-center">
+            <span>{updated_at}</span>
+
+            {is_owner && taskPage && (
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            )}
+          </div>
         </Col>
       </Row>
       <hr />
       <Row>
         <Col className="mb-2">
           <Link to={`/tasks/${id}`}>
-            <Card.Title className="text-capitalize">
-              {task_name}
-            </Card.Title>
+            <Card.Title className="text-capitalize">{task_name}</Card.Title>
           </Link>
           {task_description && (
             <Card.Title className="text-left text-muted">
