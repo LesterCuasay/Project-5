@@ -94,9 +94,9 @@ const TaskPage = () => {
                     />
                   </>
                 ) : currentUser ? (
-                  <span>No notes yet, be the first to comment!</span>
+                  <p className="text-center m-0">No notes yet, be the first to comment!</p>
                 ) : (
-                  <span>No notes... yet</span>
+                  <p className="text-center m-0">No notes... yet</p>
                 )}
               </Container>
             </>

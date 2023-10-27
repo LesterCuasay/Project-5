@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
 import styles from "../../styles/NoteCreateEditForm.module.css";
+import btnStyles from "../../styles/Button.module.css"
 import Avatar from "../../components/Avatar";
 
 import { Link } from "react-router-dom";
@@ -60,7 +61,7 @@ function NoteCreateForm(props) {
         </InputGroup>
       </Form.Group>
       <button
-        className={`${styles.Button} btn d-block ml-auto`}
+        className={`${btnStyles.Button} d-block ml-auto`}
         disabled={!content.trim()}
         type="submit"
       >
