@@ -91,6 +91,18 @@ const SignInForm = () => {
                 ></Form.Control>
               </Form.Group>
 
+              {errors.password?.map((message, idx) => (
+                <Alert key={idx} variant="warning">
+                  {message}
+                </Alert>
+              ))}
+
+              {errors.non_field_errors?.map((message, idx) => (
+                <Alert key={idx} variant="warning" className="mt-3">
+                  {message}
+                </Alert>
+              ))}
+              
               <Button
                 className={`mt-3 ${btnStyles.Wide} ${btnStyles.Button}`}
                 type="submit"
