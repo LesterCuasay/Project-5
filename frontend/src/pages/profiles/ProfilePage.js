@@ -62,7 +62,7 @@ function ProfilePage() {
 
   const mainProfile = (
     <>
-      <Row className="px-3 text-center">
+      <Row className={`${appStyles.Content} px-3 text-center`}>
         {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
         <Col lg={3} className="text-lg-left">
           <Image
@@ -114,9 +114,9 @@ function ProfilePage() {
 
   const mainProfileTasks = (
     <>
-      <hr />
-      <p className={`text-center`}>{profile?.owner}'s tasks</p>
-      <hr />
+      <div className="mt-3 p-3">
+        <h4 className="text-center">{profile?.owner}'s active tasks</h4>
+      </div>
       {profileTasks.results.length ? (
         <InfiniteScroll
           className="overflow-hidden"
@@ -142,18 +142,12 @@ function ProfilePage() {
       <Row className="justify-content-center">
         <Col lg={8}>
           <PopularProfiles mobile />
-          <Container className={`${appStyles.Container} ${appStyles.Content}`}>
-            {hasLoaded ? (
-              <>
-                {mainProfile}
-                {mainProfileTasks}
-              </>
-            ) : (
-              <Asset spinner />
-            )}
+          <Container className={appStyles.Container}>
+            {hasLoaded ? <>{mainProfile}</> : <Asset spinner />}
           </Container>
+          <div>{hasLoaded ? mainProfileTasks : <Asset spinner />}</div>
         </Col>
-        <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
+        <Col lg={4} className="d-none d-lg-block p-lg-2 p-0">
           <PopularProfiles />
         </Col>
       </Row>

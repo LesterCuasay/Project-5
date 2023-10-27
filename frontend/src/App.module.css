@@ -36,7 +36,7 @@
 }
 
 a {
-  color: var(--main-text) !important;
+  color: var(--main-text);
   font-size: 1.2rem;
   transition: color ease-in-out 0.3s;
 }
