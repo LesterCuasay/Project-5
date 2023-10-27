@@ -53,56 +53,64 @@ const SignInForm = () => {
   };
 
   return (
-    <Container className={`mt-5 ${styles.Container}`}>
-      <Row className="justify-content-center">
-        <Col md={6} className={appStyles.Content}>
-          <div className={styles.TitleWrapper}>
-            <h1 className={styles.FormTitle}>Sign In</h1>
-          </div>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="username">
-              <Form.Label className="d-none">Username</Form.Label>
-              <Form.Control
-                className={styles.Input}
-                type="text"
-                placeholder="Username"
-                name="username"
-                value={username}
-                onChange={handleChange}
-              ></Form.Control>
-            </Form.Group>
+    <>
+      <Container className={`mt-5 ${styles.Container}`}>
+        <Row className="justify-content-center">
+          <Col lg={6} md={8} className={appStyles.Content}>
+            <div className={styles.TitleWrapper}>
+              <h1 className={styles.FormTitle}>Sign In</h1>
+            </div>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group controlId="username">
+                <Form.Label className="d-none">Username</Form.Label>
+                <Form.Control
+                  className={styles.Input}
+                  type="text"
+                  placeholder="Username"
+                  name="username"
+                  value={username}
+                  onChange={handleChange}
+                ></Form.Control>
+              </Form.Group>
 
-            {errors.username?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
+              {errors.username?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {message}
+                </Alert>
+              ))}
 
-            <Form.Group controlId="password" className="mt-3">
-              <Form.Label className="d-none">Password</Form.Label>
-              <Form.Control
-                className={styles.Input}
-                type="password"
-                placeholder="Password"
-                name="password"
-                value={password}
-                onChange={handleChange}
-              ></Form.Control>
-            </Form.Group>
+              <Form.Group controlId="password" className="mt-3">
+                <Form.Label className="d-none">Password</Form.Label>
+                <Form.Control
+                  className={styles.Input}
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  value={password}
+                  onChange={handleChange}
+                ></Form.Control>
+              </Form.Group>
 
-            <Button
-              className={`mt-3 ${btnStyles.Wide} ${btnStyles.Button}`}
-              type="submit"
-            >
-              Sign In
-            </Button>
-          </Form>
-          <Link className={styles.Link} to="/signup">
-            Already have an account? <span>Sign up here</span>
-          </Link>
-        </Col>
-      </Row>
-    </Container>
+              <Button
+                className={`mt-3 ${btnStyles.Wide} ${btnStyles.Button}`}
+                type="submit"
+              >
+                Sign In
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+      <Container>
+        <Row className="justify-content-center">
+          <Col lg={6} md={8} className={`p-0 mt-3 ${appStyles.Content}`}>
+            <Link className={styles.Link} to="/signup">
+              Don't have an account? <span>Sign up now!</span>
+            </Link>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 

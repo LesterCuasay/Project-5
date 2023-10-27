@@ -20,9 +20,10 @@
     text-decoration: none;
     text-align: center;
     display: block;
-    margin-top: 30px;
+    padding: 0.5rem;
 }
 
 .Link span {
-    color: #ff9254;
+    color: var(--second-text);
+    letter-spacing: 0.1rem;
 }
