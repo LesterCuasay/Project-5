@@ -1,33 +1,49 @@
 .Button {
-    background-color: var(--bg-color);
-    color: var(--main-text);
-    border-radius: 100px;
+  background-color: var(--bg-color);
+  color: var(--main-text);
+  border-radius: 100px;
+  border-color: transparent;
+  align-self: center;
+  padding: 4px 10px;
+  margin: 0 2px 0 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.Button:not(:disabled):not(.disabled):active {
+    color: black;
+    background: var(--bg-color);
     border-color: transparent;
-    align-self: center;
-    padding: 4px 10px;
-    margin: 0 2px 0 2px;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
+}
+
+.Button:not(:disabled):not(.disabled):active:focus {
+    box-shadow: none;
 }
 
 .Button:hover {
-    background-color: var(--card-color);
-    border-color: transparent;
-    color: var(--main-text);
-    opacity: 0.8;
-    cursor: pointer;
+  background-color: var(--card-color);
+  border-color: transparent;
+  color: var(--main-text);
+  opacity: 0.8;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 
 .Button:hover:active {
-    background-color: var(--card-color) !important;
-    border-color: transparent;
+  background-color: var(--card-color) !important;
+  border-color: transparent;
 }
 
 .Button:focus {
-    background-color: var(--card-color) !important;
+  background-color: var(--card-color) !important;
+  color: var(--main-text) !important;
+  border-color: transparent;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 
 .Wide {
-    padding: 10px 50px;
-    width: 100%;
+  padding: 10px 50px;
+  width: 100%;
 }
