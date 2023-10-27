@@ -24,3 +24,14 @@
 .StarOutline:hover {
   color: #ffd700;
 }
+
+
+@media screen and (max-width: 530px) {
+  .HeaderRow {
+    flex-direction:column;
+  }
+
+  .HeaderCol {
+    justify-content: center;
+  }
+}

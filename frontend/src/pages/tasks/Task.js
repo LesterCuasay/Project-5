@@ -101,31 +101,27 @@ const Task = (props) => {
 
   return (
     <Card className={`mb-4 ${styles.Task}`}>
-      <Row>
-        <Col className="d-flex align-items-center">
+      <Row className={`align-items-center ${styles.HeaderRow}`}>
+        <Col className={`d-flex ${styles.HeaderCol}`}>
           <Link to={`/profiles/${profile_id}`}>
-            <div className="mr-3">
+            <div className="mb-2">
               <Avatar src={profile_image} height={55} />
-              {owner}
+            </div>
+            <div className="mb-2">
+            {owner}
             </div>
           </Link>
-
+        </Col>
+        <Col className={`d-flex justify-content-center ${styles.HeaderCol}`}>
           {taskPage && is_overdue && is_owner && (
-            <div className="text-center mx-auto">
-              <p className="text-danger">This task is overdue!</p>
-            </div>
+            <p className="text-danger">This task is overdue!</p>
           )}
-
-          <div className="d-flex align-items-center">
-            <span>{updated_at}</span>
-
-            {is_owner && taskPage && (
-              <MoreDropdown
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />
-            )}
-          </div>
+        </Col>
+        <Col className={`d-flex justify-content-sm-end ${styles.HeaderCol}`}>
+          <span>{updated_at}</span>
+          {is_owner && taskPage && (
+            <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
+          )}
         </Col>
       </Row>
       <hr />
