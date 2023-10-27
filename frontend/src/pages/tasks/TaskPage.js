@@ -60,8 +60,9 @@ const TaskPage = () => {
           {hasLoaded ? (
             <>
               <Task {...task.results[0]} setTasks={setTask} taskPage />
-              <Container className={appStyles.Content}>
-                {currentUser ? (
+
+              {currentUser && (
+                <Container className={appStyles.Content}>
                   <NoteCreateForm
                     profile_id={currentUser.profile_id}
                     profileImage={profile_image}
@@ -69,8 +70,9 @@ const TaskPage = () => {
                     setTask={setTask}
                     setNotes={setNotes}
                   />
-                ) : null}
-              </Container>
+                </Container>
+              )}
+
               <Container
                 className={`${appStyles.Container} ${appStyles.Content}`}
               >
@@ -94,7 +96,9 @@ const TaskPage = () => {
                     />
                   </>
                 ) : currentUser ? (
-                  <p className="text-center m-0">No notes yet, be the first to comment!</p>
+                  <p className="text-center m-0">
+                    No notes yet, be the first to comment!
+                  </p>
                 ) : (
                   <p className="text-center m-0">No notes... yet</p>
                 )}
