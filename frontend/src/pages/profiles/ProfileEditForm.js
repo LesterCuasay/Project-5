@@ -17,9 +17,11 @@ import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
+import Asset from "../../components/Asset";
 
 const ProfileEditForm = () => {
   const [errors, setErrors] = useState({});
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   const history = useHistory();
   const { id } = useParams();
@@ -43,6 +45,7 @@ const ProfileEditForm = () => {
           const { data } = await axiosReq.get(`/profiles/${id}/`);
           const { name, image, content } = data;
           setProfileData({ name, image, content });
+          setHasLoaded(true);
         } catch (err) {
           // console.log(err);
           history.push("/");
@@ -51,8 +54,13 @@ const ProfileEditForm = () => {
         history.push("/");
       }
     };
-
-    handleMount();
+    setHasLoaded(false);
+    const timer = setTimeout(() => {
+      handleMount();
+    }, 300);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [currentUser, history, id]);
 
   const handleChange = (event) => {
@@ -115,11 +123,11 @@ const ProfileEditForm = () => {
   );
 
   return (
-    <Container
-      className={`${appStyles.Content} ${appStyles.Container} text-center`}
-    >
-      <Row>
-        <Col>
+    <Row className="justify-content-center">
+      {hasLoaded ? (
+        <Col
+          className={`${appStyles.Content} ${appStyles.Container} text-center`}
+        >
           <Form onSubmit={handleSubmit}>
             <Form.Group>
               {image && (
@@ -163,8 +171,10 @@ const ProfileEditForm = () => {
             </Col>
           </Form>
         </Col>
-      </Row>
-    </Container>
+      ) : (
+        <Asset spinner />
+      )}
+    </Row>
   );
 };
 
