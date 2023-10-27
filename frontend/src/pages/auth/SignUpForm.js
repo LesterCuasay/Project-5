@@ -120,7 +120,7 @@ const SignUpForm = () => {
         <Row className="justify-content-center">
           <Col lg={6} md={8} className={`p-0 mt-3 ${appStyles.Content}`}>
             <Link className={styles.Link} to="/signin">
-              Already have an account? <span>Sign in here</span>
+              Already have an account? <span>Sign in here!</span>
             </Link>
           </Col>
         </Row>

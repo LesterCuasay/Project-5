@@ -7,7 +7,6 @@ import Form from "react-bootstrap/Form";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import styles from "../../styles/TasksPage.module.css";
-import appStyles from "../../App.module.css";
 
 import Task from "./Task";
 import NoResults from "../../assets/no-results.png";
@@ -49,9 +48,8 @@ function TasksPage({ message, filter = "" }) {
   }, [filter, query, pathname, currentUser]);
 
   return (
-    <Container className={appStyles.Container}>
-      <Row className="justify-content-center">
-        <Col lg={8}>
+      <Row className="justify-content-center h-100 mt-2">
+        <Col lg={8} className="py-2 p-0 p-lg-2">
           <PopularProfiles mobile />
           <i className={`fas fa-search ${styles.SearchIcon}`} />
           <Form
@@ -95,7 +93,6 @@ function TasksPage({ message, filter = "" }) {
           <PopularProfiles />
         </Col>
       </Row>
-    </Container>
   );
 }
 

@@ -1,61 +1,63 @@
 :root {
-    --bg-color: #DEE2E6;
-    --second-bg-color: #CED4DA;
-    --main-text: #212529;
-    --second-text: #6C757D;
-    --card-color: #E9ECEF;
+  --bg-color: #dee2e6;
+  --second-bg-color: #ced4da;
+  --main-text: #212529;
+  --second-text: #6c757d;
+  --card-color: #e9ecef;
 }
 
 .Main {
-    padding-top: 6rem;
+  padding-top: 6rem;
 }
 
 .Content {
-    background-color: var(--second-bg-color);
-    padding: 30px;
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: var(--second-bg-color);
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 
 .Container {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .App {
-    font-family: "Poppins", sans-serif;
-    background-color: var(--bg-color);
-    min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg-color);
+  min-height: 100vh;
 }
 
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 a {
-    color: var(--main-text) !important;
-    font-size: 1.2rem;
-    transition: color ease-in-out 0.3s;
+  color: var(--main-text) !important;
+  font-size: 1.2rem;
+  transition: color ease-in-out 0.3s;
 }
 
 a:hover {
-    color: var(--second-text) !important;
-    text-decoration: none;
+  color: var(--second-text) !important;
+  text-decoration: none;
 }
 
 a:hover i {
-    color: var(--second-text);
-    transition: color ease-in-out 0.3s;
+  color: var(--second-text);
+  transition: color ease-in-out 0.3s;
 }
 
 i {
-    color: var(--main-text);
-    padding: 4px;
+  color: var(--main-text);
+  padding: 4px;
 }
 
 i:hover {
-    cursor: pointer;
-    color: var(--second-text);
-    transition: color ease-in-out 0.3s;
+  cursor: pointer;
+  color: var(--second-text);
+  transition: color ease-in-out 0.3s;
 }
