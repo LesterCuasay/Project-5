@@ -101,16 +101,11 @@ const Task = (props) => {
   return (
     <Card className={`mb-4 ${styles.Task}`}>
       <Row>
-        <Col xs={6}>
-          <Link
-            className="d-flex justify-content-start align-items-center"
-            to={`/profiles/${profile_id}`}
-          >
+        <Col className="d-flex align-items-center justify-content-between">
+          <Link to={`/profiles/${profile_id}`}>
             <Avatar src={profile_image} height={55} />
             {owner}
           </Link>
-        </Col>
-        <Col xs={6} className="d-flex justify-content-end align-items-center">
           <span>{updated_at}</span>
           {is_owner && taskPage && (
             <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
@@ -119,9 +114,11 @@ const Task = (props) => {
       </Row>
       <hr />
       <Row>
-        <Col xs={6}>
+        <Col className="mb-2">
           <Link to={`/tasks/${id}`}>
-            <div className="text-left">{task_name}</div>
+            <Card.Title className="text-capitalize">
+              {task_name}
+            </Card.Title>
           </Link>
           {task_description && (
             <Card.Title className="text-left text-muted">
@@ -129,18 +126,33 @@ const Task = (props) => {
             </Card.Title>
           )}
         </Col>
-        <Col xs={6}>
+      </Row>
+      <Row>
+        <Col className="d-flex align-items-center justify-content-between">
           {due_date && (
-            <Card.Title className="text-right">{formattedDueDate}</Card.Title>
+            <Card.Title>
+              <i className="fa-solid fa-calendar-days mr-2" />
+              {formattedDueDate}
+            </Card.Title>
           )}
-          {status && <Card.Title className="text-right">{status}</Card.Title>}
-          {attachment && <Card.Title>{fileName}</Card.Title>}
-          {console.log(fileName)}
+          {attachment && (
+            <Card.Title>
+              <i className="fa-solid fa-folder" />
+              {fileName}
+            </Card.Title>
+          )}
         </Col>
       </Row>
       <Row>
-        <Col>
-          <div className={`${styles.Stars}`}>
+        <Col className="d-flex align-items-center justify-content-between">
+          {status && (
+            <Card.Title>
+              <i className="fa-solid fa-bars-progress" />
+              {status}
+            </Card.Title>
+          )}
+
+          <div className={`${styles.Stars} mr-2`}>
             {is_owner ? (
               <OverlayTrigger
                 placement="top"
@@ -174,7 +186,6 @@ const Task = (props) => {
             </Link>
             {notes_count}
           </div>
-          <hr />
         </Col>
       </Row>
     </Card>

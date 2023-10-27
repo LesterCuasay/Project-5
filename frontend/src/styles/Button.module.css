@@ -33,6 +33,10 @@
   border-color: transparent;
 }
 
+.Button:active {
+  transform: translateY(2px);
+}
+
 .Button:focus {
   background-color: var(--card-color) !important;
   color: var(--main-text) !important;

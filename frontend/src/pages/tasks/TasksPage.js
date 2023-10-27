@@ -49,7 +49,7 @@ function TasksPage({ message, filter = "" }) {
 
   return (
       <Row className="justify-content-center h-100 mt-2">
-        <Col lg={8} className="py-2 p-0 p-lg-2">
+        <Col lg={8} className="p-2">
           <PopularProfiles mobile />
           <i className={`fas fa-search ${styles.SearchIcon}`} />
           <Form
