@@ -54,33 +54,29 @@ const TaskPage = () => {
 
   return (
     <>
-      <Container>
-        <Row className="justify-content-center">
-          <Col lg={8}>
-            <PopularProfiles mobile />
-            {hasLoaded ? (
-              <>
-                <Container
-                  className={`${appStyles.Container} ${appStyles.Content}`}
-                >
-                  <Task {...task.results[0]} setTasks={setTask} taskPage />
-                  {currentUser ? (
-                    <NoteCreateForm
-                      profile_id={currentUser.profile_id}
-                      profileImage={profile_image}
-                      task={id}
-                      setTask={setTask}
-                      setNotes={setNotes}
-                    />
-                  ) : null}
-                </Container>
-                <Container
-                  className={`${appStyles.Container} ${appStyles.Content}`}
-                >
-                  {notes.results.length ? (
+      <Row className="justify-content-center">
+        <Col lg={8} className={appStyles.Container}>
+          <PopularProfiles mobile />
+          {hasLoaded ? (
+            <>
+              <Task {...task.results[0]} setTasks={setTask} taskPage />
+              <Container className={appStyles.Content}>
+                {currentUser ? (
+                  <NoteCreateForm
+                    profile_id={currentUser.profile_id}
+                    profileImage={profile_image}
+                    task={id}
+                    setTask={setTask}
+                    setNotes={setNotes}
+                  />
+                ) : null}
+              </Container>
+              <Container
+                className={`${appStyles.Container} ${appStyles.Content}`}
+              >
+                {notes.results.length > 0 ? (
+                  <>
                     <h5 className="text-center">Notes</h5>
-                  ) : null}
-                  {notes.results.length ? (
                     <InfiniteScroll
                       className="overflow-hidden p-2"
                       children={notes.results.map((notes) => (
@@ -96,24 +92,24 @@ const TaskPage = () => {
                       hasMore={!!notes.next}
                       next={() => fetchMoreData(notes, setNotes)}
                     />
-                  ) : currentUser ? (
-                    <span>No notes yet, be the first to comment!</span>
-                  ) : (
-                    <span>No notes... yet</span>
-                  )}
-                </Container>
-              </>
-            ) : (
-              <Container>
-                <Asset spinner />
+                  </>
+                ) : currentUser ? (
+                  <span>No notes yet, be the first to comment!</span>
+                ) : (
+                  <span>No notes... yet</span>
+                )}
               </Container>
-            )}
-          </Col>
-          <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-            <PopularProfiles />
-          </Col>
-        </Row>
-      </Container>
+            </>
+          ) : (
+            <Container>
+              <Asset spinner />
+            </Container>
+          )}
+        </Col>
+        <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
+          <PopularProfiles />
+        </Col>
+      </Row>
     </>
   );
 };
