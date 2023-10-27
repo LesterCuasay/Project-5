@@ -31,10 +31,12 @@ const Task = (props) => {
     updated_at,
     taskPage,
     setTasks,
+    attachment,
   } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  const fileName = attachment ? attachment.split("/").pop() : "";
   const history = useHistory();
 
   const handleEdit = () => {
@@ -132,6 +134,8 @@ const Task = (props) => {
             <Card.Title className="text-right">{formattedDueDate}</Card.Title>
           )}
           {status && <Card.Title className="text-right">{status}</Card.Title>}
+          {attachment && <Card.Title>{fileName}</Card.Title>}
+          {console.log(fileName)}
         </Col>
       </Row>
       <Row>

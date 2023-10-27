@@ -53,6 +53,17 @@ function TaskEditForm() {
           is_owner,
         } = data;
 
+        const fileName = attachment ? attachment.split("/").pop() : "";
+
+        setTaskData({
+          task_name,
+          task_description,
+          status,
+          due_date,
+          attachment,
+        });
+        setFileName(fileName);
+
         is_owner
           ? setTaskData({
               task_name,

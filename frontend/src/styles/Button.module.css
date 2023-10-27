@@ -10,13 +10,11 @@
   letter-spacing: 0.1rem;
 }
 
-.Button:not(:disabled):not(.disabled):active {
+.Button:not(:disabled):not(.disabled):active,
+.Button:not(:disabled):not(.disabled):active:focus {
     color: black;
     background: var(--bg-color);
     border-color: transparent;
-}
-
-.Button:not(:disabled):not(.disabled):active:focus {
     box-shadow: none;
 }
 
