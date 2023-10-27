@@ -20,6 +20,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 
 function TaskEditForm() {
   const [errors, setErrors] = useState();
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   const today = new Date().toISOString().substr(0, 10);
 
@@ -73,12 +74,19 @@ function TaskEditForm() {
               attachment,
             })
           : history.push(`/`);
+        setHasLoaded(true);
       } catch (err) {
         // console.log(err);
       }
     };
 
-    handleMount();
+    setHasLoaded(false);
+    const timer = setTimeout(() => {
+      handleMount();
+    }, 300);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [history, id]);
 
   const handleChange = (event) => {
@@ -242,12 +250,16 @@ function TaskEditForm() {
   return (
     <Container className={appStyles.Container}>
       <Row className="justify-content-center">
-        <Col md={8} className={`mb-5 ${appStyles.Content}`}>
-          <h1 className={styles.Header}>Create Task</h1>
-          <Form className="text-center" onSubmit={handleSubmit}>
-            {textFields}
-          </Form>
-        </Col>
+        {hasLoaded ? (
+          <Col md={8} className={`mb-5 ${appStyles.Content}`}>
+            <h1 className={styles.Header}>Edit Task</h1>
+            <Form className="text-center" onSubmit={handleSubmit}>
+              {textFields}
+            </Form>
+          </Col>
+        ) : (
+          <Asset spinner />
+        )}
       </Row>
     </Container>
   );

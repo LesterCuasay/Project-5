@@ -23,8 +23,8 @@ function TaskCreateForm() {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState();
 
+  const [fileName, setFileName] = useState("");
   const today = new Date().toISOString().substr(0, 10);
-
   const [taskData, setTaskData] = useState({
     task_name: "",
     task_description: "",
@@ -32,14 +32,11 @@ function TaskCreateForm() {
     due_date: today,
     attachment: "",
   });
-
   const { task_name, task_description, status, due_date, attachment } =
     taskData;
 
   const history = useHistory();
   const fileInput = useRef(null);
-
-  const [fileName, setFileName] = useState("");
 
   const handleChange = (event) => {
     setTaskData({
