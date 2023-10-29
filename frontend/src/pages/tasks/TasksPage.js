@@ -18,7 +18,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { fetchMoreData } from "../../utils/utils";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
-function TasksPage({ message, filter = "" }) {
+function TasksPage({ isDark, message, filter = "" }) {
   const [tasks, setTasks] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const [query, setQuery] = useState("");
@@ -50,10 +50,10 @@ function TasksPage({ message, filter = "" }) {
   return (
       <Row className="justify-content-center h-100 mt-2">
         <Col lg={8} className="p-2">
-          <PopularProfiles mobile />
+          <PopularProfiles mobile isDark={isDark} />
           <i className={`fas fa-search ${styles.SearchIcon}`} />
           <Form
-            className={styles.SearchBar}
+            className={`${isDark? styles.SearchBarDarkMode : styles.SearchBar}`}
             onSubmit={(event) => event.preventDefault()}
           >
             <Form.Control
@@ -70,7 +70,7 @@ function TasksPage({ message, filter = "" }) {
                 <InfiniteScroll
                   className="overflow-hidden"
                   children={tasks.results.map((task) => (
-                    <Task key={task.id} {...task} setTasks={setTasks} />
+                    <Task key={task.id} {...task} setTasks={setTasks} isDark={isDark} />
                   ))}
                   dataLength={tasks.results.length}
                   loader={<Asset spinner />}
@@ -90,7 +90,7 @@ function TasksPage({ message, filter = "" }) {
           )}
         </Col>
         <Col md={4} className="d-none d-lg-block p-lg-2 p-0">
-          <PopularProfiles />
+          <PopularProfiles isDark={isDark} />
         </Col>
       </Row>
   );

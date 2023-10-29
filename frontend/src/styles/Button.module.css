@@ -4,7 +4,6 @@
   border-radius: 100px;
   border-color: transparent;
   align-self: center;
-  padding: 4px 10px;
   margin: 0 2px 0 2px;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
@@ -12,10 +11,9 @@
 
 .Button:not(:disabled):not(.disabled):active,
 .Button:not(:disabled):not(.disabled):active:focus {
-    color: black;
-    background: var(--bg-color);
-    border-color: transparent;
-    box-shadow: none;
+  background: var(--bg-color);
+  border-color: transparent;
+  box-shadow: none;
 }
 
 .Button:hover {
@@ -48,4 +46,51 @@
 .Wide {
   padding: 10px 50px;
   width: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+  .ButtonDarkMode {
+    background-color: var(--bg-color);
+    color: var(--main-text);
+    border-radius: 100px;
+    border-color: transparent;
+    align-self: center;
+    margin: 0 2px 0 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+  }
+
+  .ButtonDarkMode:not(:disabled):not(.disabled):active,
+  .ButtonDarkMode:not(:disabled):not(.disabled):active:focus {
+    background: var(--bg-color);
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  .ButtonDarkMode:hover {
+    background-color: var(--card-color);
+    border-color: transparent;
+    color: var(--main-text);
+    opacity: 0.8;
+    cursor: pointer;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 10px 15px -3px,
+      rgba(255, 255, 255, 0.05) 0px 4px 6px -2px;
+  }
+
+  .ButtonDarkMode:hover:active {
+    background-color: var(--card-color) !important;
+    border-color: transparent;
+  }
+
+  .ButtonDarkMode:active {
+    transform: translateY(2px);
+  }
+
+  .ButtonDarkMode:focus {
+    background-color: var(--card-color) !important;
+    color: var(--main-text) !important;
+    border-color: transparent;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 10px 15px -3px,
+      rgba(255, 255, 255, 0.05) 0px 4px 6px -2px;
+  }
 }

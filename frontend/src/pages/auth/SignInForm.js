@@ -18,7 +18,7 @@ import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
 import { setTokenTimestamp } from "../../utils/utils";
 
-const SignInForm = () => {
+const SignInForm = ({ isDark }) => {
   const setCurrentUser = useSetCurrentUser();
   useRedirect("loggedIn");
 
@@ -56,7 +56,13 @@ const SignInForm = () => {
     <>
       <Container className={`mt-5 ${styles.Container}`}>
         <Row className="justify-content-center">
-          <Col lg={6} md={8} className={appStyles.Content}>
+          <Col
+            lg={6}
+            md={8}
+            className={`${
+              isDark ? appStyles.ContentDarkMode : appStyles.Content
+            }`}
+          >
             <div className={styles.TitleWrapper}>
               <h1 className={styles.FormTitle}>Sign In</h1>
             </div>
@@ -102,9 +108,11 @@ const SignInForm = () => {
                   {message}
                 </Alert>
               ))}
-              
+
               <Button
-                className={`mt-3 ${btnStyles.Wide} ${btnStyles.Button}`}
+                className={`mt-3 ${btnStyles.Wide} ${
+                  isDark ? btnStyles.ButtonDarkMode : btnStyles.Button
+                } `}
                 type="submit"
               >
                 Sign In
@@ -115,7 +123,13 @@ const SignInForm = () => {
       </Container>
       <Container>
         <Row className="justify-content-center">
-          <Col lg={6} md={8} className={`p-0 mt-3 ${appStyles.Content}`}>
+          <Col
+            lg={6}
+            md={8}
+            className={`p-0 mt-3 ${
+              isDark ? appStyles.ContentDarkMode : appStyles.Content
+            }`}
+          >
             <Link className={styles.Link} to="/signup">
               Don't have an account? <span>Sign up now!</span>
             </Link>

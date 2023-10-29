@@ -15,7 +15,7 @@ import styles from "../../styles/SignInUpForm.module.css";
 import { Link, useHistory } from "react-router-dom";
 import { useRedirect } from "../../hooks/useRedirect";
 
-const SignUpForm = () => {
+const SignUpForm = ({ isDark }) => {
   useRedirect("loggedIn");
   const [signUpData, setSignUpData] = useState({
     username: "",
@@ -48,7 +48,13 @@ const SignUpForm = () => {
     <>
       <Container className={`mt-5 ${styles.Container}`}>
         <Row className="justify-content-center">
-          <Col lg={6} md={8} className={appStyles.Content}>
+          <Col
+            lg={6}
+            md={8}
+            className={`${
+              isDark ? appStyles.ContentDarkMode : appStyles.Content
+            }`}
+          >
             <div className={styles.TitleWrapper}>
               <h1 className={styles.FormTitle}>Sign Up</h1>
             </div>
@@ -112,9 +118,11 @@ const SignUpForm = () => {
                   {message}
                 </Alert>
               ))}
-              
+
               <Button
-                className={`mt-3 ${btnStyles.Wide} ${btnStyles.Button}`}
+                className={`mt-3 ${btnStyles.Wide} ${
+                  isDark ? btnStyles.ButtonDarkMode : btnStyles.Button
+                }`}
                 type="submit"
               >
                 Sign Up
@@ -125,7 +133,13 @@ const SignUpForm = () => {
       </Container>
       <Container>
         <Row className="justify-content-center">
-          <Col lg={6} md={8} className={`p-0 mt-3 ${appStyles.Content}`}>
+          <Col
+            lg={6}
+            md={8}
+            className={`p-0 mt-3 ${
+              isDark ? appStyles.ContentDarkMode : appStyles.Content
+            }`}
+          >
             <Link className={styles.Link} to="/signin">
               Already have an account? <span>Sign in here!</span>
             </Link>

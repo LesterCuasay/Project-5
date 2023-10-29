@@ -1,13 +1,14 @@
 .Asset {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 120px;
-    background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 120px;
+  background-color: transparent;
+  color: var(--main-text);
 }
 
 .Asset i {
-    font-size: 5rem;
-    margin-bottom: 10px;
+  font-size: 5rem;
+  margin-bottom: 10px;
 }

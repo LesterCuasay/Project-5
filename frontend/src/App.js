@@ -25,12 +25,13 @@ function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
   const preference = window.matchMedia("(prefers-color-scheme: dark").matches;
-  const initialIsDark = localStorage.getItem("isDark") === "true" ? true : preference;
+  const initialIsDark =
+    localStorage.getItem("isDark") === "true" ? true : preference;
   const [isDark, setIsDark] = useState(initialIsDark);
 
   useEffect(() => {
-    localStorage.setItem("isDark", isDark)
-  }, [isDark])
+    localStorage.setItem("isDark", isDark);
+  }, [isDark]);
 
   return (
     <div className={styles.App} data-theme={isDark ? "dark" : "light"}>
@@ -41,7 +42,10 @@ function App() {
             exact
             path="/"
             render={() => (
-              <TasksPage message="No results found. Adjust the search keyword." />
+              <TasksPage
+                message="No results found. Adjust the search keyword."
+                isDark={isDark}
+              />
             )}
           />
           <Route
@@ -51,6 +55,7 @@ function App() {
               <TasksPage
                 message="No results found, Adjust the search keyword or follow a user."
                 filter={`owner__followed__owner__profile=${profile_id}&`}
+                isDark={isDark}
               />
             )}
           />
@@ -61,31 +66,56 @@ function App() {
               <TasksPage
                 message="No results found, Adjust the search keyword or favourite a task."
                 filter={`favourites__owner__profile=${profile_id}&ordering=-favourites__created_at&`}
+                isDark={isDark}
               />
             )}
           />
-          <Route exact path="/signin" render={() => <SignInForm />} />
-          <Route exact path="/signup" render={() => <SignUpForm />} />
-          <Route exact path="/tasks/create" render={() => <TaskCreateForm />} />
-          <Route exact path="/tasks/:id/" render={() => <TaskPage />} />
-          <Route exact path="/tasks/:id/edit" render={() => <TaskEditForm />} />
-          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+          <Route
+            exact
+            path="/signin"
+            render={() => <SignInForm isDark={isDark} />}
+          />
+          <Route
+            exact
+            path="/signup"
+            render={() => <SignUpForm isDark={isDark} />}
+          />
+          <Route
+            exact
+            path="/tasks/create"
+            render={() => <TaskCreateForm isDark={isDark} />}
+          />
+          <Route
+            exact
+            path="/tasks/:id/"
+            render={() => <TaskPage isDark={isDark} />}
+          />
+          <Route
+            exact
+            path="/tasks/:id/edit"
+            render={() => <TaskEditForm isDark={isDark} />}
+          />
+          <Route
+            exact
+            path="/profiles/:id"
+            render={() => <ProfilePage isDark={isDark} />}
+          />
           <Route
             exact
             path="/profiles/:id/edit/username"
-            render={() => <UsernameForm />}
+            render={() => <UsernameForm isDark={isDark} />}
           />
           <Route
             exact
             path="/profiles/:id/edit/password"
-            render={() => <UserPasswordForm />}
+            render={() => <UserPasswordForm isDark={isDark} />}
           />
           <Route
             exact
             path="/profiles/:id/edit"
-            render={() => <ProfileEditForm />}
+            render={() => <ProfileEditForm isDark={isDark} />}
           />
-          <Route render={() => <NotFound />} />
+          <Route render={() => <NotFound isDark={isDark} />} />
         </Switch>
       </Container>
       <Footer />

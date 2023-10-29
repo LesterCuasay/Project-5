@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-
-import Form from "react-bootstrap/Form";
-
-import styles from "../../styles/NoteCreateEditForm.module.css";
-
 import { axiosRes } from "../../api/axiosDefaults";
 
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
+import styles from "../../styles/NoteCreateEditForm.module.css";
+import btnStyles from "../../styles/Button.module.css";
+
 const NoteEditForm = (props) => {
-  const { id, content, setShowEditForm, setNotes } = props;
+  const { id, content, setShowEditForm, setNotes, isDark } = props;
 
   const [formContent, setFormContent] = useState(content);
 
@@ -46,20 +47,20 @@ const NoteEditForm = (props) => {
         />
       </Form.Group>
       <div className="text-right">
-        <button
-          className={styles.Button}
+        <Button
+          className={`${isDark ? btnStyles.ButtonDarkMode : btnStyles.Button}`}
           onClick={() => setShowEditForm(false)}
           type="button"
         >
           Cancel
-        </button>
-        <button
-          className={styles.Button}
+        </Button>
+        <Button
+          className={`${isDark ? btnStyles.ButtonDarkMode : btnStyles.Button}`}
           disabled={!content.trim()}
           type="submit"
         >
           Save
-        </button>
+        </Button>
       </div>
     </Form>
   );

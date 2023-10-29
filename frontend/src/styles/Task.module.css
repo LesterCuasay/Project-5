@@ -31,19 +31,34 @@
   color: #ffd700;
 }
 
-@media screen and (max-width: 575px) {
-  .HeaderCol {
-    justify-content: center;
-  }
-}
-
 .OverdueTask,
 .OverdueTask a,
-.OverdueTask i {
-  background-color: #800000;
+.OverdueTask i,
+.OverdueTask i:hover {
+  background-color: #800000 !important;
   color: #f5f5dc;
 }
 
 .OverdueDropDown {
   background-color: #800000 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .TaskDarkMode {
+    background-color: var(--second-bg-color);
+    color: var(--main-text);
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    padding: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 10px 15px -3px,
+      rgba(255, 255, 255, 0.05) 0px 4px 6px -2px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .HeaderCol {
+    justify-content: center;
+  }
 }

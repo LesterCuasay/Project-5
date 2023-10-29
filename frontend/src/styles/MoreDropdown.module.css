@@ -4,11 +4,16 @@
   padding: 0px;
 }
 
-.DropdownItem:hover > i,
-.ProfileDropdownItem:hover > i,
+.ProfileDropdownItem {
+  color: var(--main-text);
+}
+
+.DropdownItem i:hover,
+.ProfileDropdownItem i:hover,
 .DropdownItem:hover,
 .ProfileDropdownItem:hover {
   background-color: var(--bg-color);
+  color: var(--second-text);
   border-radius: 30px;
 }
 

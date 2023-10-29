@@ -12,10 +12,23 @@
   font-size: 1.2rem;
   padding: 9px;
   padding-left: 15px;
-  color: var(--main-text);
 }
 
 .SearchIcon:hover {
   cursor: default;
   color: #cfced3;
+}
+
+@media (prefers-color-scheme: dark) {
+  .SearchBarDarkMode input,
+  .SearchBarDarkMode input:focus {
+    background-color: var(--bg-color);
+    border-color: none;
+    border-radius: 20px;
+    color: var(--main-text);
+    padding-left: 40px;
+    margin-bottom: 16px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 10px 15px -3px,
+      rgba(255, 255, 255, 0.05) 0px 4px 6px -2px;
+  }
 }

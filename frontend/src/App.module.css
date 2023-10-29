@@ -4,8 +4,8 @@
   --main-text: #212529;
   --second-text: #6c757d;
   --card-color: #e9ecef;
-  --toggle-bg: #f0eb9d;
-  --toggle-fg: #ffd000;
+  --toggle-bg: #fff;
+  --toggle-fg: #dcd7d7;
 }
 
 [data-theme="dark"] {
@@ -50,13 +50,13 @@
 }
 
 a {
-  color: var(--main-text) !important;
+  color: var(--main-text);
   font-size: 1.2rem;
   transition: color ease-in-out 0.3s;
 }
 
 a:hover {
-  color: var(--second-text) !important;
+  color: var(--second-text);
   text-decoration: none;
 }
 
@@ -74,4 +74,16 @@ i:hover {
   cursor: pointer;
   color: var(--second-text);
   transition: color ease-in-out 0.3s;
+}
+
+@media (prefers-color-scheme: dark) {
+  .ContentDarkMode {
+    background-color: var(--second-bg-color);
+    color: var(--main-text);
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 10px 15px -3px,
+      rgba(255, 255, 255, 0.05) 0px 4px 6px -2px;
+  }
 }

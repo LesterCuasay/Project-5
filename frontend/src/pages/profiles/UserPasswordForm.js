@@ -14,7 +14,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
-const UserPasswordForm = () => {
+const UserPasswordForm = ({ isDark }) => {
   const [errors, setErrors] = useState({});
   const [userData, setUserData] = useState({
     new_password1: "",
@@ -56,7 +56,9 @@ const UserPasswordForm = () => {
       <Row className="justify-content-center">
         <Col
           md={8}
-          className={`${appStyles.Content} ${appStyles.Container} text-center`}
+          className={`${
+            isDark ? appStyles.ContentDarkMode : appStyles.Content
+          } ${appStyles.Container} text-center`}
         >
           <Form onSubmit={handleSubmit}>
             <h1>Change Password</h1>
@@ -103,11 +105,18 @@ const UserPasswordForm = () => {
             <div>
               <Button
                 onClick={() => history.goBack()}
-                className={`mt-3 ${btnStyles.Button}`}
+                className={`mt-3 ${
+                  isDark ? btnStyles.ButtonDarkMode : btnStyles.Button
+                }`}
               >
                 Cancel
               </Button>
-              <Button className={`mt-3 ${btnStyles.Button}`} type="submit">
+              <Button
+                className={`mt-3 ${
+                  isDark ? btnStyles.ButtonDarkMode : btnStyles.Button
+                }`}
+                type="submit"
+              >
                 Save
               </Button>
             </div>

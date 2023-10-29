@@ -28,7 +28,7 @@ import {
   useSetProfileData,
 } from "../../contexts/ProfileDataContext";
 
-function ProfilePage() {
+function ProfilePage({ isDark }) {
   const { id } = useParams();
 
   const { setProfileData, handleFollow, handleUnfollow } = useSetProfileData();
@@ -65,7 +65,11 @@ function ProfilePage() {
 
   const mainProfile = (
     <>
-      <Row className={`${appStyles.Content} px-3 text-center`}>
+      <Row
+        className={`${
+          isDark ? appStyles.ContentDarkMode : appStyles.Content
+        } px-3 text-center`}
+      >
         {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
         <Col lg={3} className="text-lg-left">
           <Image
@@ -96,14 +100,18 @@ function ProfilePage() {
             !is_owner &&
             (profile?.following_id ? (
               <Button
-                className={`${btnStyles.Button}`}
+                className={`${
+                  isDark ? btnStyles.ButtonDarkMode : btnStyles.Button
+                }`}
                 onClick={() => handleUnfollow(profile)}
               >
                 Unfollow
               </Button>
             ) : (
               <Button
-                className={`${btnStyles.Button}`}
+                className={`${
+                  isDark ? btnStyles.ButtonDarkMode : btnStyles.Button
+                }`}
                 onClick={() => handleFollow(profile)}
               >
                 Follow
@@ -147,6 +155,7 @@ function ProfilePage() {
                 key={task.id}
                 {...task}
                 setTasks={setProfileTasks}
+                isDark={isDark}
                 profilePage
               />
             ))}
@@ -168,14 +177,14 @@ function ProfilePage() {
     <>
       <Row className="justify-content-center">
         <Col lg={8}>
-          <PopularProfiles mobile />
+          <PopularProfiles mobile isDark={isDark} />
           <Container className={appStyles.Container}>
             {hasLoaded ? <>{mainProfile}</> : <Asset spinner />}
           </Container>
           <div>{hasLoaded ? mainProfileTasks : <Asset spinner />}</div>
         </Col>
         <Col lg={4} className="d-none d-lg-block p-lg-2 p-0">
-          <PopularProfiles />
+          <PopularProfiles isDark={isDark} />
         </Col>
       </Row>
     </>

@@ -18,7 +18,7 @@ import assetStyles from "../../styles/Asset.module.css";
 import { useHistory, useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 
-function TaskEditForm() {
+function TaskEditForm({ isDark }) {
   const [errors, setErrors] = useState();
   const [hasLoaded, setHasLoaded] = useState(false);
 
@@ -251,7 +251,7 @@ function TaskEditForm() {
     <Container className={appStyles.Container}>
       <Row className="justify-content-center">
         {hasLoaded ? (
-          <Col md={8} className={`mb-5 ${appStyles.Content}`}>
+          <Col md={8} className={`mb-5 ${isDark ? appStyles.ContentDarkMode : appStyles.Content}`}>
             <h1 className={styles.Header}>Edit Task</h1>
             <Form className="text-center" onSubmit={handleSubmit}>
               {textFields}

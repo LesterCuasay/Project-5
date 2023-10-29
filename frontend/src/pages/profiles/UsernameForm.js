@@ -17,7 +17,7 @@ import {
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
 
-const UsernameForm = () => {
+const UsernameForm = ({ isDark }) => {
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState({});
 
@@ -58,7 +58,9 @@ const UsernameForm = () => {
       <Row className="justify-content-center">
         <Col
           md={8}
-          className={`${appStyles.Content} ${appStyles.Container} text-center`}
+          className={`${
+            isDark ? appStyles.ContentDarkMode : appStyles.Content
+          } ${appStyles.Container} text-center`}
         >
           <Form onSubmit={handleSubmit}>
             <Form.Group>
@@ -87,11 +89,18 @@ const UsernameForm = () => {
             <div>
               <Button
                 onClick={() => history.goBack()}
-                className={`mt-3 ${btnStyles.Button}`}
+                className={`mt-3 ${
+                  isDark ? btnStyles.ButtonDarkMode : btnStyles.Button
+                }`}
               >
                 Cancel
               </Button>
-              <Button className={`mt-3 ${btnStyles.Button}`} type="submit">
+              <Button
+                className={`mt-3 ${
+                  isDark ? btnStyles.ButtonDarkMode : btnStyles.Button
+                }`}
+                type="submit"
+              >
                 Save
               </Button>
             </div>

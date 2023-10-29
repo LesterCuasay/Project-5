@@ -22,6 +22,7 @@ const Note = (props) => {
     id,
     setTask,
     setNotes,
+    isDark,
   } = props;
 
   const [showEditForm, setShowEditForm] = useState(false);
@@ -66,6 +67,7 @@ const Note = (props) => {
             profileImage={profile_image}
             setNotes={setNotes}
             setShowEditForm={setShowEditForm}
+            isDark={isDark}
             />
           ) : (
             <p>{content}</p>

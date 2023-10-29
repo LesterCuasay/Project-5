@@ -4,14 +4,14 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
 import styles from "../../styles/NoteCreateEditForm.module.css";
-import btnStyles from "../../styles/Button.module.css"
+import btnStyles from "../../styles/Button.module.css";
 import Avatar from "../../components/Avatar";
 
 import { Link } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 
 function NoteCreateForm(props) {
-  const { task, setTask, setNotes, profileImage, profile_id } = props;
+  const { task, setTask, setNotes, profileImage, profile_id, isDark } = props;
 
   const [content, setContent] = useState("");
   const handleChange = (event) => {
@@ -61,7 +61,9 @@ function NoteCreateForm(props) {
         </InputGroup>
       </Form.Group>
       <button
-        className={`${btnStyles.Button} d-block ml-auto`}
+        className={`${
+          isDark ? btnStyles.ButtonDarkMode : btnStyles.Button
+        } d-block ml-auto px-2`}
         disabled={!content.trim()}
         type="submit"
       >

@@ -11,7 +11,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useSetProfileData } from "../../contexts/ProfileDataContext";
 
 const Profile = (props) => {
-  const { profile, mobile, imageSize = 55 } = props;
+  const { isDark, profile, mobile, imageSize = 55 } = props;
   const { id, following_id, image, owner } = profile;
 
   const currentUser = useCurrentUser();
@@ -37,14 +37,18 @@ const Profile = (props) => {
           !is_owner &&
           (following_id ? (
             <Button
-              className={`${btnStyles.Button}`}
+              className={`${
+                isDark ? btnStyles.ButtonDarkMode : btnStyles.Button
+              }`}
               onClick={() => handleUnfollow(profile)}
             >
               Unfollow
             </Button>
           ) : (
             <Button
-              className={`${btnStyles.Button}`}
+              className={`${
+                isDark ? btnStyles.ButtonDarkMode : btnStyles.Button
+              }`}
               onClick={() => handleFollow(profile)}
             >
               Follow

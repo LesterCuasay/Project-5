@@ -7,14 +7,14 @@ import Profile from "./Profile";
 
 import { useProfileData } from "../../contexts/ProfileDataContext";
 
-const PopularProfiles = ({ mobile }) => {
+const PopularProfiles = ({ isDark, mobile }) => {
   const { popularProfiles } = useProfileData();
 
   return (
     <Container
-      className={`p-md-2 ${appStyles.Content} ${
-        mobile && "d-lg-none text-center mb-3"
-      }`}
+      className={`p-md-2 ${
+        isDark ? appStyles.ContentDarkMode : appStyles.Content
+      } ${mobile && "d-lg-none text-center mb-3"}`}
     >
       {popularProfiles.results.length ? (
         <>
@@ -27,7 +27,7 @@ const PopularProfiles = ({ mobile }) => {
             </div>
           ) : (
             popularProfiles.results.map((profile) => (
-              <Profile key={profile.id} profile={profile} />
+              <Profile key={profile.id} profile={profile} isDark={isDark} />
             ))
           )}
         </>

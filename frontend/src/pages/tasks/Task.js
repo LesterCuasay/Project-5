@@ -34,6 +34,7 @@ const Task = (props) => {
     attachment,
     is_overdue,
     profilePage,
+    isDark,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -110,7 +111,7 @@ const Task = (props) => {
 
   return (
     <Card
-      className={`mb-4 ${styles.Task} ${
+      className={`mb-4 ${isDark ? styles.TaskDarkMode : styles.Task} ${
         taskPage && is_overdue && is_owner ? styles.OverdueTask : ""
       } ${profilePage && is_overdue && is_owner ? styles.OverdueTask : ""}`}
     >

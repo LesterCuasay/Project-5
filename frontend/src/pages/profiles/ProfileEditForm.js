@@ -19,7 +19,7 @@ import {
 } from "../../contexts/CurrentUserContext";
 import Asset from "../../components/Asset";
 
-const ProfileEditForm = () => {
+const ProfileEditForm = ({ isDark }) => {
   const [errors, setErrors] = useState({});
   const [hasLoaded, setHasLoaded] = useState(false);
 
@@ -112,10 +112,16 @@ const ProfileEditForm = () => {
         </Alert>
       ))}
       <div className="mt-3">
-        <Button onClick={() => history.goBack()} className={btnStyles.Button}>
+        <Button
+          onClick={() => history.goBack()}
+          className={`${isDark ? btnStyles.ButtonDarkMode : btnStyles.Button}`}
+        >
           Cancel
         </Button>
-        <Button className={btnStyles.Button} type="submit">
+        <Button
+          className={`${isDark ? btnStyles.ButtonDarkMode : btnStyles.Button}`}
+          type="submit"
+        >
           Save
         </Button>
       </div>
@@ -126,7 +132,9 @@ const ProfileEditForm = () => {
     <Row className="justify-content-center">
       {hasLoaded ? (
         <Col
-          className={`${appStyles.Content} ${appStyles.Container} text-center`}
+          className={`${
+            isDark ? appStyles.ContentDarkMode : appStyles.Content
+          } ${appStyles.Container} text-center`}
         >
           <Form onSubmit={handleSubmit}>
             <Form.Group>

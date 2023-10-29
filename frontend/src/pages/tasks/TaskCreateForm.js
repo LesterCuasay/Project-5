@@ -19,7 +19,7 @@ import { useHistory } from "react-router-dom";
 import { useRedirect } from "../../hooks/useRedirect";
 import { axiosReq } from "../../api/axiosDefaults";
 
-function TaskCreateForm() {
+function TaskCreateForm({ isDark }) {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState();
 
@@ -199,7 +199,7 @@ function TaskCreateForm() {
   return (
     <Container className={appStyles.Container}>
       <Row className="justify-content-center">
-        <Col md={8} className={`mb-5 ${appStyles.Content}`}>
+        <Col md={8} className={`mb-5 ${isDark ? appStyles.ContentDarkMode : appStyles.Content}`}>
           <h1 className={styles.Header}>Create Task</h1>
           <Form className="text-center" onSubmit={handleSubmit}>
             {textFields}

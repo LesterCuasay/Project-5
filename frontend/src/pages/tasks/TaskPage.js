@@ -18,7 +18,7 @@ import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { fetchMoreData } from "../../utils/utils";
 
-const TaskPage = () => {
+const TaskPage = ({ isDark }) => {
   const { id } = useParams();
 
   const [task, setTask] = useState({ results: [] });
@@ -62,22 +62,34 @@ const TaskPage = () => {
           <PopularProfiles mobile />
           {hasLoaded ? (
             <>
-              <Task {...task.results[0]} setTasks={setTask} taskPage />
-              
+              <Task
+                {...task.results[0]}
+                setTasks={setTask}
+                isDark={isDark}
+                taskPage
+              />
+
               {currentUser && (
-                <Container className={appStyles.Content}>
+                <Container
+                  className={`${
+                    isDark ? appStyles.ContentDarkMode : appStyles.Content
+                  }`}
+                >
                   <NoteCreateForm
                     profile_id={currentUser.profile_id}
                     profileImage={profile_image}
                     task={id}
                     setTask={setTask}
                     setNotes={setNotes}
+                    isDark={isDark}
                   />
                 </Container>
               )}
 
               <Container
-                className={`${appStyles.Container} ${appStyles.Content}`}
+                className={`${appStyles.Container} ${
+                  isDark ? appStyles.ContentDarkMode : appStyles.Content
+                }`}
               >
                 {notes.results.length > 0 ? (
                   <>
@@ -90,6 +102,7 @@ const TaskPage = () => {
                           {...notes}
                           setTask={setTask}
                           setNotes={setNotes}
+                          isDark={isDark}
                         />
                       ))}
                       dataLength={notes.results.length}
