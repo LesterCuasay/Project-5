@@ -33,6 +33,7 @@ const Task = (props) => {
     setTasks,
     attachment,
     is_overdue,
+    profilePage,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -47,7 +48,7 @@ const Task = (props) => {
   };
 
   const classOverride = taskPage && is_overdue && is_owner;
-  
+
   const handleEdit = () => {
     history.push(`/tasks/${id}/edit`);
   };
@@ -111,11 +112,18 @@ const Task = (props) => {
     <Card
       className={`mb-4 ${styles.Task} ${
         taskPage && is_overdue && is_owner ? styles.OverdueTask : ""
+      } ${
+        profilePage && is_overdue && is_owner ? styles.OverdueTask : ""
       }`}
+      
     >
       {taskPage && is_overdue && is_owner && (
-        <p className="text-danger">This task is overdue!</p>
+        <h4 className="text-danger">This task is overdue!</h4>
       )}
+      {profilePage && is_overdue && is_owner && (
+        <h4 className="text-danger">This task is overdue!</h4>
+      )}
+      {console.log(profilePage && is_overdue && is_owner)}
       <Row className={`align-items-center ${styles.HeaderRow}`}>
         <Col xs={6} className={`d-flex ${styles.HeaderCol}`}>
           <Link to={`/profiles/${profile_id}`}>

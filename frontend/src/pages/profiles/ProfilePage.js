@@ -144,7 +144,7 @@ function ProfilePage() {
               (task) => selectedStatus === "" || task.status === selectedStatus
             )
             .map((task) => (
-              <Task key={task.id} {...task} setTasks={setProfileTasks} />
+              <Task key={task.id} {...task} setTasks={setProfileTasks} profilePage />
             ))}
           dataLength={profileTasks.results.length}
           loader={<Asset spinner />}

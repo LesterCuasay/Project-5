@@ -46,7 +46,3 @@
 .OverdueDropDown {
   background-color: #800000 !important;
 }
-
-.OverDueDropdownItem:hover {
-  background-color: none;
-}
