@@ -175,7 +175,7 @@ function TaskCreateForm() {
           className="d-none"
           type="file"
           name="attachment"
-          accept=".docx"
+          accept=".docx, .pdf"
           id="file-upload"
           onChange={handleChangeFile}
           ref={fileInput}

@@ -37,14 +37,14 @@ const Task = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
-  const fileName = attachment ? attachment.split("/").pop() : "";
+  const fileName = attachment ? attachment.split("/").pop().split("_")[0] : "";
   const history = useHistory();
 
   const statusOverride = {
     TODO: "To Do",
     IN_PROGRESS: "In Progress",
     COMPLETED: "Completed",
-  }
+  };
 
   const handleEdit = () => {
     history.push(`/tasks/${id}/edit`);
@@ -113,9 +113,7 @@ const Task = (props) => {
             <div className="mb-2">
               <Avatar src={profile_image} height={55} />
             </div>
-            <div className="mb-2">
-            {owner}
-            </div>
+            <div className="mb-2">{owner}</div>
           </Link>
         </Col>
         <Col className={`d-flex justify-content-center ${styles.HeaderCol}`}>
@@ -153,8 +151,10 @@ const Task = (props) => {
           )}
           {attachment && (
             <Card.Title>
-              <i className="fa-solid fa-folder" />
-              {fileName}
+              <a href={attachment} target="_blank" rel="noopener noreferrer">
+                <i className="fa-solid fa-folder" />
+                {fileName}
+              </a>
             </Card.Title>
           )}
         </Col>
