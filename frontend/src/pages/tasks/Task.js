@@ -112,10 +112,7 @@ const Task = (props) => {
     <Card
       className={`mb-4 ${styles.Task} ${
         taskPage && is_overdue && is_owner ? styles.OverdueTask : ""
-      } ${
-        profilePage && is_overdue && is_owner ? styles.OverdueTask : ""
-      }`}
-      
+      } ${profilePage && is_overdue && is_owner ? styles.OverdueTask : ""}`}
     >
       {taskPage && is_overdue && is_owner && (
         <h4 className="text-danger">This task is overdue!</h4>

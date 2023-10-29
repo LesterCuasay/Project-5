@@ -48,7 +48,7 @@ function ProfilePage() {
         const [{ data: pageProfile }, { data: profileTasks }] =
           await Promise.all([
             axiosReq.get(`/profiles/${id}/`),
-            axiosReq.get(`/tasks/?owner__profile=${id}`),
+            axiosReq.get(`/tasks/?owner__profile=${id}&ordering=due_date&`),
             axiosReq.get(`/tasks/?owner__task__status=${selectedStatus}`),
           ]);
         setProfileData((prevState) => ({
@@ -144,7 +144,12 @@ function ProfilePage() {
               (task) => selectedStatus === "" || task.status === selectedStatus
             )
             .map((task) => (
-              <Task key={task.id} {...task} setTasks={setProfileTasks} profilePage />
+              <Task
+                key={task.id}
+                {...task}
+                setTasks={setProfileTasks}
+                profilePage
+              />
             ))}
           dataLength={profileTasks.results.length}
           loader={<Asset spinner />}
