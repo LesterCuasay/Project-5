@@ -106,9 +106,16 @@ const Task = (props) => {
   };
 
   return (
-    <Card className={`mb-4 ${styles.Task}`}>
+    <Card
+      className={`mb-4 ${styles.Task} ${
+        taskPage && is_overdue && is_owner ? styles.OverdueTask : ""
+      }`}
+    >
+      {taskPage && is_overdue && is_owner && (
+        <p className="text-danger">This task is overdue!</p>
+      )}
       <Row className={`align-items-center ${styles.HeaderRow}`}>
-        <Col className={`d-flex ${styles.HeaderCol}`}>
+        <Col xs={6} className={`d-flex ${styles.HeaderCol}`}>
           <Link to={`/profiles/${profile_id}`}>
             <div className="mb-2">
               <Avatar src={profile_image} height={55} />
@@ -116,12 +123,10 @@ const Task = (props) => {
             <div className="mb-2">{owner}</div>
           </Link>
         </Col>
-        <Col className={`d-flex justify-content-center ${styles.HeaderCol}`}>
-          {taskPage && is_overdue && is_owner && (
-            <p className="text-danger">This task is overdue!</p>
-          )}
-        </Col>
-        <Col className={`d-flex justify-content-sm-end ${styles.HeaderCol}`}>
+        <Col
+          xs={6}
+          className={`d-flex justify-content-sm-end ${styles.HeaderCol}`}
+        >
           <span>{updated_at}</span>
           {is_owner && taskPage && (
             <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
@@ -132,10 +137,12 @@ const Task = (props) => {
       <Row>
         <Col className="mb-2">
           <Link to={`/tasks/${id}`}>
-            <Card.Title className="text-capitalize">{task_name}</Card.Title>
+            <Card.Title className="text-capitalize">
+              <h3>{task_name}</h3>
+            </Card.Title>
           </Link>
           {task_description && (
-            <Card.Title className="text-left text-muted">
+            <Card.Title className={styles.TaskDescription}>
               {task_description}
             </Card.Title>
           )}

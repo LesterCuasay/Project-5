@@ -9,6 +9,11 @@
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 
+.TaskDescription {
+  text-align: left;
+  opacity: 0.5;
+}
+
 .Stars {
   font-size: 1.5rem;
 }
@@ -25,13 +30,15 @@
   color: #ffd700;
 }
 
-
-@media screen and (max-width: 530px) {
-  .HeaderRow {
-    flex-direction:column;
-  }
-
+@media screen and (max-width: 575px) {
   .HeaderCol {
     justify-content: center;
   }
+}
+
+.OverdueTask,
+.OverdueTask a,
+.OverdueTask i {
+  background-color: #800000;
+  color: #f5f5dc;
 }
