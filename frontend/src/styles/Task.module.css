@@ -42,3 +42,11 @@
   background-color: #800000;
   color: #f5f5dc;
 }
+
+.OverdueDropDown {
+  background-color: #800000 !important;
+}
+
+.OverDueDropdownItem:hover {
+  background-color: none;
+}

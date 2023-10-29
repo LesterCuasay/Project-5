@@ -46,6 +46,8 @@ const Task = (props) => {
     COMPLETED: "Completed",
   };
 
+  const classOverride = taskPage && is_overdue && is_owner;
+  
   const handleEdit = () => {
     history.push(`/tasks/${id}/edit`);
   };
@@ -129,7 +131,11 @@ const Task = (props) => {
         >
           <span>{updated_at}</span>
           {is_owner && taskPage && (
-            <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
+            <MoreDropdown
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
+              overDueDropdown={`${classOverride ? styles.OverdueDropDown : ""}`}
+            />
           )}
         </Col>
       </Row>
