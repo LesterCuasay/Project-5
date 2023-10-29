@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
+import Form from "react-bootstrap/Form";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import Task from "../tasks/Task";
@@ -39,6 +40,7 @@ function ProfilePage() {
 
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profileTasks, setProfileTasks] = useState({ results: [] });
+  const [selectedStatus, setSelectedStatus] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,6 +49,7 @@ function ProfilePage() {
           await Promise.all([
             axiosReq.get(`/profiles/${id}/`),
             axiosReq.get(`/tasks/?owner__profile=${id}`),
+            axiosReq.get(`/tasks/?owner__task__status=${selectedStatus}`),
           ]);
         setProfileData((prevState) => ({
           ...prevState,
@@ -58,7 +61,7 @@ function ProfilePage() {
     };
 
     fetchData();
-  }, [id, setProfileData]);
+  }, [id, setProfileData, selectedStatus]);
 
   const mainProfile = (
     <>
@@ -117,12 +120,32 @@ function ProfilePage() {
       <div className="mt-3 p-3">
         <h4 className="text-center">{profile?.owner}'s active tasks</h4>
       </div>
+      <Form>
+        <Form.Group className="mt-3">
+          <Form.Label>Filter Tasks by Status</Form.Label>
+          <Form.Control
+            as="select"
+            className={styles.Input}
+            value={selectedStatus}
+            onChange={(event) => setSelectedStatus(event.target.value)}
+          >
+            <option value="">All</option>
+            <option value="TODO">To Do</option>
+            <option value="IN_PROGRESS">In Progress</option>
+            <option value="COMPLETED">Completed</option>
+          </Form.Control>
+        </Form.Group>
+      </Form>
       {profileTasks.results.length ? (
         <InfiniteScroll
           className="overflow-hidden"
-          children={profileTasks.results.map((task) => (
-            <Task key={task.id} {...task} setTasks={setProfileTasks} />
-          ))}
+          children={profileTasks.results
+            .filter(
+              (task) => selectedStatus === "" || task.status === selectedStatus
+            )
+            .map((task) => (
+              <Task key={task.id} {...task} setTasks={setProfileTasks} />
+            ))}
           dataLength={profileTasks.results.length}
           loader={<Asset spinner />}
           hasMore={!!profileTasks.next}

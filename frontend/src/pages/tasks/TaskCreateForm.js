@@ -138,9 +138,9 @@ function TaskCreateForm() {
           value={status}
           onChange={handleChange}
         >
-          <option>To Do</option>
-          <option>In Progress</option>
-          <option>Completed</option>
+          <option value="TODO">To Do</option>
+          <option value="IN_PROGRESS">In Progress</option>
+          <option value="COMPLETED">Completed</option>
         </Form.Control>
       </Form.Group>
       {errors?.status?.map((message, idx) => (
