@@ -37,7 +37,7 @@ REST_FRAMEWORK = {
     'DATETIME_FORMAT': '%d %m %Y',
 }
 
-if 'DEV' not in os.environ:
+if 'DEBUG' not in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer',
     ]
@@ -121,7 +121,8 @@ ROOT_URLCONF = 'taskmaster_api.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'staticfiles', 'build')],
+        'DIRS': [],
+        # os.path.join(BASE_DIR, 'staticfiles', 'build')
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

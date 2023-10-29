@@ -20,6 +20,7 @@ class TaskList(generics.ListCreateAPIView):
         DjangoFilterBackend,
     ]
     filterset_fields = [
+        'owner__task__status',
         'owner__followed__owner__profile',
         'favourites__owner__profile',
         'owner__profile',
@@ -32,6 +33,7 @@ class TaskList(generics.ListCreateAPIView):
         'favourites_count',
         'notes_count',
         'favourites__created_at',
+        'due_date'
     ]
 
     def perform_create(self, serializer):
