@@ -120,7 +120,6 @@ const Task = (props) => {
       {profilePage && is_overdue && is_owner && (
         <h4 className="text-danger">This task is overdue!</h4>
       )}
-      {console.log(profilePage && is_overdue && is_owner)}
       <Row className={`align-items-center ${styles.HeaderRow}`}>
         <Col xs={6} className={`d-flex ${styles.HeaderCol}`}>
           <Link to={`/profiles/${profile_id}`}>

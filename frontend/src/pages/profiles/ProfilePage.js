@@ -118,14 +118,13 @@ function ProfilePage() {
   const mainProfileTasks = (
     <>
       <div className="mt-3 p-3">
-        <h4 className="text-center">{profile?.owner}'s active tasks</h4>
+        <h4 className={styles.Header}>{profile?.owner}'s active tasks</h4>
       </div>
       <Form>
-        <Form.Group className="mt-3">
+        <Form.Group className={`mt-3 ${styles.Header}`}>
           <Form.Label>Filter Tasks by Status</Form.Label>
           <Form.Control
             as="select"
-            className={styles.Input}
             value={selectedStatus}
             onChange={(event) => setSelectedStatus(event.target.value)}
           >

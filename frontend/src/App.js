@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import styles from "./App.module.css";
 import Container from "react-bootstrap/Container";
 
@@ -13,29 +15,33 @@ import ProfilePage from "./pages/profiles/ProfilePage";
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
-import NotFound from "./components/NotFound"
+import NotFound from "./components/NotFound";
 
 import { Route, Switch } from "react-router-dom";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import "./api/axiosDefaults";
 
-
-
 function App() {
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
+  const preference = window.matchMedia("(prefers-color-scheme: dark").matches;
+  const initialIsDark = localStorage.getItem("isDark") === "true" ? true : preference;
+  const [isDark, setIsDark] = useState(initialIsDark);
+
+  useEffect(() => {
+    localStorage.setItem("isDark", isDark)
+  }, [isDark])
 
   return (
-    <div className={styles.App}>
-      <NavBar />
+    <div className={styles.App} data-theme={isDark ? "dark" : "light"}>
+      <NavBar isDark={isDark} setIsDark={setIsDark} />
       <Container className={styles.Main}>
         <Switch>
           <Route
             exact
             path="/"
             render={() => (
-              <TasksPage message="No results found. Adjust the search keyword." 
-              />
+              <TasksPage message="No results found. Adjust the search keyword." />
             )}
           />
           <Route
@@ -64,10 +70,22 @@ function App() {
           <Route exact path="/tasks/:id/" render={() => <TaskPage />} />
           <Route exact path="/tasks/:id/edit" render={() => <TaskEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
-          <Route exact path="/profiles/:id/edit/username" render={() => <UsernameForm />} />
-          <Route exact path="/profiles/:id/edit/password" render={() => <UserPasswordForm />} />
-          <Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />} />
-          <Route render={() =>  <NotFound /> } />
+          <Route
+            exact
+            path="/profiles/:id/edit/username"
+            render={() => <UsernameForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit/password"
+            render={() => <UserPasswordForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit"
+            render={() => <ProfileEditForm />}
+          />
+          <Route render={() => <NotFound />} />
         </Switch>
       </Container>
       <Footer />

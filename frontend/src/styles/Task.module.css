@@ -1,5 +1,6 @@
 .Task {
   background-color: var(--second-bg-color);
+  color: var(--main-text);
   border: none;
   border-radius: 10px;
   text-align: center;

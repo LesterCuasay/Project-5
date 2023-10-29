@@ -4,6 +4,18 @@
   --main-text: #212529;
   --second-text: #6c757d;
   --card-color: #e9ecef;
+  --toggle-bg: #f0eb9d;
+  --toggle-fg: #ffd000;
+}
+
+[data-theme="dark"] {
+  --bg-color: #343a40;
+  --second-bg-color: #212529;
+  --main-text: #f8f9fa;
+  --second-text: #adb5bd;
+  --card-color: #6c757d;
+  --toggle-bg: #283452;
+  --toggle-fg: #00a6ff;
 }
 
 .Main {
@@ -12,6 +24,7 @@
 
 .Content {
   background-color: var(--second-bg-color);
+  color: var(--main-text);
   padding: 30px;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -27,6 +40,7 @@
   font-family: "Poppins", sans-serif;
   background-color: var(--bg-color);
   min-height: 100vh;
+  transition: background-color 0.25s ease-in-out;
 }
 
 * {
@@ -36,7 +50,7 @@
 }
 
 a {
-  color: var(--main-text);
+  color: var(--main-text) !important;
   font-size: 1.2rem;
   transition: color ease-in-out 0.3s;
 }
