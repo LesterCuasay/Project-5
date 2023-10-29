@@ -40,6 +40,12 @@ const Task = (props) => {
   const fileName = attachment ? attachment.split("/").pop() : "";
   const history = useHistory();
 
+  const statusOverride = {
+    TODO: "To Do",
+    IN_PROGRESS: "In Progress",
+    COMPLETED: "Completed",
+  }
+
   const handleEdit = () => {
     history.push(`/tasks/${id}/edit`);
   };
@@ -158,7 +164,7 @@ const Task = (props) => {
           {status && (
             <Card.Title>
               <i className="fa-solid fa-bars-progress" />
-              {status}
+              {statusOverride[status]}
             </Card.Title>
           )}
 
