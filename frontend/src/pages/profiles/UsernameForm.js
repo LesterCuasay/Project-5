@@ -85,7 +85,7 @@ const UsernameForm = ({ isDark }) => {
               />
             </Form.Group>
             {errors?.username?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
+              <Alert className={appStyles.Alert} key={idx}>
                 {message}
               </Alert>
             ))}

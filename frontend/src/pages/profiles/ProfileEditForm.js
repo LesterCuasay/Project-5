@@ -111,7 +111,7 @@ const ProfileEditForm = ({ isDark }) => {
       </Form.Group>
 
       {errors?.content?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
+        <Alert className={appStyles.Alert} key={idx}>
           {message}
         </Alert>
       ))}
@@ -149,7 +149,7 @@ const ProfileEditForm = ({ isDark }) => {
               )}
 
               {errors?.image?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
+                <Alert className={appStyles.Alert} key={idx}>
                   {message}
                 </Alert>
               ))}

@@ -72,7 +72,7 @@ const SignUpForm = ({ isDark }) => {
               </Form.Group>
 
               {errors.username?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
+                <Alert className={appStyles.Alert} key={idx}>
                   {message}
                 </Alert>
               ))}
@@ -90,7 +90,7 @@ const SignUpForm = ({ isDark }) => {
               </Form.Group>
 
               {errors.password1?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
+                <Alert className={appStyles.Alert} key={idx}>
                   {message}
                 </Alert>
               ))}
@@ -108,13 +108,13 @@ const SignUpForm = ({ isDark }) => {
               </Form.Group>
 
               {errors.password2?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
+                <Alert className={appStyles.Alert} key={idx}>
                   {message}
                 </Alert>
               ))}
 
               {errors.non_field_errors?.map((message, idx) => (
-                <Alert key={idx} variant="warning" className="mt-3">
+                <Alert key={idx} className={`mt-3 ${appStyles.Alert}`}>
                   {message}
                 </Alert>
               ))}

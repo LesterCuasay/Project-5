@@ -95,7 +95,7 @@ function TaskCreateForm({ isDark }) {
         />
       </Form.Group>
       {errors?.task_name?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
+        <Alert className={appStyles.Alert} key={idx}>
           {message}
         </Alert>
       ))}
@@ -110,7 +110,7 @@ function TaskCreateForm({ isDark }) {
         />
       </Form.Group>
       {errors?.task_description?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
+        <Alert className={appStyles.Alert} key={idx}>
           {message}
         </Alert>
       ))}
@@ -125,7 +125,7 @@ function TaskCreateForm({ isDark }) {
         />
       </Form.Group>
       {errors?.due_date?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
+        <Alert className={appStyles.Alert} key={idx}>
           {message}
         </Alert>
       ))}
@@ -144,7 +144,7 @@ function TaskCreateForm({ isDark }) {
         </Form.Control>
       </Form.Group>
       {errors?.status?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
+        <Alert className={appStyles.Alert} key={idx}>
           {message}
         </Alert>
       ))}
