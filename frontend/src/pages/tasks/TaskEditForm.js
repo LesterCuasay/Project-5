@@ -140,7 +140,7 @@ function TaskEditForm({ isDark }) {
         <Form.Control
           type="text"
           name="task_name"
-          className={styles.Input}
+          className={`${isDark ? styles.InputDarkMode : styles.Input}`}
           value={task_name}
           onChange={handleChange}
         />
@@ -155,7 +155,7 @@ function TaskEditForm({ isDark }) {
         <Form.Control
           type="text"
           name="task_description"
-          className={styles.Input}
+          className={`${isDark ? styles.InputDarkMode : styles.Input}`}
           value={task_description}
           onChange={handleChange}
         />
@@ -170,7 +170,7 @@ function TaskEditForm({ isDark }) {
         <Form.Control
           type="date"
           name="due_date"
-          className={styles.Input}
+          className={`${isDark ? styles.InputDarkMode : styles.Input}`}
           value={due_date}
           onChange={handleChange}
         />
@@ -185,7 +185,7 @@ function TaskEditForm({ isDark }) {
         <Form.Control
           as="select"
           name="status"
-          className={styles.Input}
+          className={`${isDark ? styles.InputDarkMode : styles.Input}`}
           value={status}
           onChange={handleChange}
         >
@@ -210,7 +210,7 @@ function TaskEditForm({ isDark }) {
             </figure>
             <div>
               <Form.Label
-                className={`${btnStyles.Button} ${btnStyles.Wide} mt-2`}
+                className={`${isDark? btnStyles.ButtonDarkMode : btnStyles.Button} ${btnStyles.Wide} mt-2`}
                 htmlFor="file-upload"
               >
                 Change File
@@ -233,14 +233,14 @@ function TaskEditForm({ isDark }) {
         />
       </Form.Group>
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Wide} mt-2`}
+        className={`${isDark? btnStyles.ButtonDarkMode : btnStyles.Button} ${btnStyles.Wide} mt-2`}
         onClick={() => history.goBack()}
         type="submit"
       >
         Cancel
       </Button>
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Wide} mt-2`}
+        className={`${isDark? btnStyles.ButtonDarkMode : btnStyles.Button} ${btnStyles.Wide} mt-2`}
         type="submit"
       >
         Create

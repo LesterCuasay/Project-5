@@ -59,7 +59,7 @@ const TaskPage = ({ isDark }) => {
     <>
       <Row className="justify-content-center">
         <Col lg={8} className={appStyles.Container}>
-          <PopularProfiles mobile />
+          <PopularProfiles mobile isDark={isDark} />
           {hasLoaded ? (
             <>
               <Task
@@ -127,7 +127,7 @@ const TaskPage = ({ isDark }) => {
           )}
         </Col>
         <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-          <PopularProfiles />
+          <PopularProfiles isDark={isDark} />
         </Col>
       </Row>
     </>
