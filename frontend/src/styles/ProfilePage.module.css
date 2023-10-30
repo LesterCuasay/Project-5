@@ -16,3 +16,10 @@
     height: 250px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .ProfileImage {
+    width: 200px;
+    height: 200px;
+  }
+}
