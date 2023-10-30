@@ -48,51 +48,56 @@ function TasksPage({ isDark, message, filter = "" }) {
   }, [filter, query, pathname, currentUser]);
 
   return (
-      <Row className="justify-content-center h-100 mt-2">
-        <Col lg={8} className="p-2">
-          <PopularProfiles mobile isDark={isDark} />
-          <i className={`fas fa-search ${styles.SearchIcon}`} />
-          <Form
-            className={`${isDark? styles.SearchBarDarkMode : styles.SearchBar}`}
-            onSubmit={(event) => event.preventDefault()}
-          >
-            <Form.Control
-              type="text"
-              className="mr-sm-2"
-              placeholder="Search tasks"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-            />
-          </Form>
-          {hasLoaded ? (
-            <>
-              {tasks.results.length ? (
-                <InfiniteScroll
-                  className="overflow-hidden"
-                  children={tasks.results.map((task) => (
-                    <Task key={task.id} {...task} setTasks={setTasks} isDark={isDark} />
-                  ))}
-                  dataLength={tasks.results.length}
-                  loader={<Asset spinner />}
-                  hasMore={!!tasks.next}
-                  next={() => fetchMoreData(tasks, setTasks)}
-                />
-              ) : (
-                <Container className="text-center">
-                  <Asset src={NoResults} message={message} />
-                </Container>
-              )}
-            </>
-          ) : (
-            <Container>
-              <Asset spinner />
-            </Container>
-          )}
-        </Col>
-        <Col md={4} className="d-none d-lg-block p-lg-2 p-0">
-          <PopularProfiles isDark={isDark} />
-        </Col>
-      </Row>
+    <Row className="justify-content-center h-100 mt-2">
+      <Col lg={8} className="p-2">
+        <PopularProfiles mobile isDark={isDark} />
+        <i className={`fas fa-search ${styles.SearchIcon}`} />
+        <Form
+          className={`${isDark ? styles.SearchBarDarkMode : styles.SearchBar}`}
+          onSubmit={(event) => event.preventDefault()}
+        >
+          <Form.Control
+            type="text"
+            className="mr-sm-2"
+            placeholder="Search tasks"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+          />
+        </Form>
+        {hasLoaded ? (
+          <>
+            {tasks.results.length ? (
+              <InfiniteScroll
+                className="overflow-hidden"
+                children={tasks.results.map((task) => (
+                  <Task
+                    key={task.id}
+                    {...task}
+                    setTasks={setTasks}
+                    isDark={isDark}
+                  />
+                ))}
+                dataLength={tasks.results.length}
+                loader={<Asset spinner />}
+                hasMore={!!tasks.next}
+                next={() => fetchMoreData(tasks, setTasks)}
+              />
+            ) : (
+              <Container className="text-center">
+                <Asset src={NoResults} message={message} />
+              </Container>
+            )}
+          </>
+        ) : (
+          <Container>
+            <Asset spinner />
+          </Container>
+        )}
+      </Col>
+      <Col md={4} className="d-none d-lg-block p-lg-2 p-0">
+        <PopularProfiles isDark={isDark} />
+      </Col>
+    </Row>
   );
 }
 

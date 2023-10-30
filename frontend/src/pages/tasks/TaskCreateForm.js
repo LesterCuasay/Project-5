@@ -159,7 +159,9 @@ function TaskCreateForm({ isDark }) {
             </figure>
             <div>
               <Form.Label
-                className={`${isDark? btnStyles.ButtonDarkMode : btnStyles.Button} ${btnStyles.Wide} mt-2`}
+                className={`${
+                  isDark ? btnStyles.ButtonDarkMode : btnStyles.Button
+                } ${btnStyles.Wide} mt-2`}
                 htmlFor="file-upload"
               >
                 Change File
@@ -182,14 +184,18 @@ function TaskCreateForm({ isDark }) {
         />
       </Form.Group>
       <Button
-        className={`${isDark? btnStyles.ButtonDarkMode : btnStyles.Button} ${btnStyles.Wide} mt-2`}
+        className={`${isDark ? btnStyles.ButtonDarkMode : btnStyles.Button} ${
+          btnStyles.Wide
+        } mt-2`}
         onClick={() => history.goBack()}
         type="submit"
       >
         Cancel
       </Button>
       <Button
-        className={`${isDark? btnStyles.ButtonDarkMode : btnStyles.Button} ${btnStyles.Wide} mt-2`}
+        className={`${isDark ? btnStyles.ButtonDarkMode : btnStyles.Button} ${
+          btnStyles.Wide
+        } mt-2`}
         type="submit"
       >
         Create
@@ -199,7 +205,12 @@ function TaskCreateForm({ isDark }) {
   return (
     <Container className={appStyles.Container}>
       <Row className="justify-content-center">
-        <Col md={8} className={`mb-5 ${isDark ? appStyles.ContentDarkMode : appStyles.Content}`}>
+        <Col
+          md={8}
+          className={`mb-5 ${
+            isDark ? appStyles.ContentDarkMode : appStyles.Content
+          }`}
+        >
           <h1 className={styles.Header}>Create Task</h1>
           <Form className="text-center" onSubmit={handleSubmit}>
             {textFields}

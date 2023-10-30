@@ -70,7 +70,7 @@ const SignInForm = ({ isDark }) => {
               <Form.Group controlId="username">
                 <Form.Label className="d-none">Username</Form.Label>
                 <Form.Control
-                  className={styles.Input}
+                  className={`${isDark ? styles.InputDarkMode : styles.Input}`}
                   type="text"
                   placeholder="Username"
                   name="username"
@@ -88,7 +88,7 @@ const SignInForm = ({ isDark }) => {
               <Form.Group controlId="password" className="mt-3">
                 <Form.Label className="d-none">Password</Form.Label>
                 <Form.Control
-                  className={styles.Input}
+                  className={`${isDark ? styles.InputDarkMode : styles.Input}`}
                   type="password"
                   placeholder="Password"
                   name="password"
