@@ -3,6 +3,7 @@
     width: 100%;
     position: sticky;
     top: 100vh;
+    color: var(--main-text);
 }
 
 .Footer i {
