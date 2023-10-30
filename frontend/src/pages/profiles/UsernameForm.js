@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 
+import styles from "../../styles/TaskCreateEditForm.module.css"
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
@@ -74,7 +75,7 @@ const UsernameForm = ({ isDark }) => {
                 </div>
               </Form.Label>
               <Form.Control
-                className="mt-2 text-center"
+                className={`${isDark ? styles.InputDarkMode : styles.Input } mt-2`}
                 placeholder="Username"
                 type="text"
                 value={username}

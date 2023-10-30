@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 
+import styles from "../../styles/TaskCreateEditForm.module.css"
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
@@ -71,7 +72,7 @@ const UserPasswordForm = ({ isDark }) => {
             <Form.Group>
               <Form.Label>New Password</Form.Label>
               <Form.Control
-                className="mt-2 text-center"
+                className={`${isDark ? styles.InputDarkMode : styles.Input } mt-2`}
                 type="password"
                 value={new_password1}
                 onChange={handleChange}
@@ -88,7 +89,7 @@ const UserPasswordForm = ({ isDark }) => {
             <Form.Group className="mt-2">
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control
-                className="text-center"
+                className={`${isDark ? styles.InputDarkMode : styles.Input } mt-2`}
                 type="password"
                 value={new_password2}
                 onChange={handleChange}

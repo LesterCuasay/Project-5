@@ -8,6 +8,7 @@ import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 
+import styles from "../../styles/TaskCreateEditForm.module.css"
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
@@ -103,6 +104,7 @@ const ProfileEditForm = ({ isDark }) => {
           onChange={handleChange}
           name="content"
           rows={7}
+          className={`${isDark ? styles.InputDarkMode : styles.Input} text-left`}
         />
       </Form.Group>
 
