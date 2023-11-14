@@ -6,11 +6,13 @@ import Button from "react-bootstrap/Button";
 
 import styles from "../../styles/NoteCreateEditForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import useAlert from "../../hooks/useAlert";
 
 const NoteEditForm = (props) => {
   const { id, content, setShowEditForm, setNotes, isDark } = props;
 
   const [formContent, setFormContent] = useState(content);
+  const { setAlert } = useAlert();
 
   const handleChange = (event) => {
     setFormContent(event.target.value);
@@ -31,6 +33,7 @@ const NoteEditForm = (props) => {
         }),
       }));
       setShowEditForm(false);
+      setAlert("Note Updated!", "success");
     } catch (err) {
       // console.log(err);
     }

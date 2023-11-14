@@ -11,6 +11,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { Link } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
+import useAlert from "../../hooks/useAlert";
 
 const Note = (props) => {
   const {
@@ -26,6 +27,7 @@ const Note = (props) => {
   } = props;
 
   const [showEditForm, setShowEditForm] = useState(false);
+  const { setAlert } = useAlert();
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
@@ -45,6 +47,7 @@ const Note = (props) => {
         ...prevNotes,
         results: prevNotes.results.filter((note) => note.id !== id),
       }));
+      setAlert("Note deleted!", "danger");
     } catch (err) {
       // console.log(err);
     }
@@ -60,21 +63,24 @@ const Note = (props) => {
           <span className={styles.Owner}>{owner}</span>
           <span className={styles.Date}>{updated_at}</span>
           {showEditForm ? (
-            <NoteEditForm 
-            id={id}
-            profile_id={profile_id}
-            content={content}
-            profileImage={profile_image}
-            setNotes={setNotes}
-            setShowEditForm={setShowEditForm}
-            isDark={isDark}
+            <NoteEditForm
+              id={id}
+              profile_id={profile_id}
+              content={content}
+              profileImage={profile_image}
+              setNotes={setNotes}
+              setShowEditForm={setShowEditForm}
+              isDark={isDark}
             />
           ) : (
             <p>{content}</p>
           )}
         </Col>
         {is_owner && (
-          <MoreDropdown handleEdit={() => setShowEditForm(true)} handleDelete={handleDelete} />
+          <MoreDropdown
+            handleEdit={() => setShowEditForm(true)}
+            handleDelete={handleDelete}
+          />
         )}
       </Row>
     </div>

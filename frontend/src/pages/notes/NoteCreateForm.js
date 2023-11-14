@@ -9,11 +9,13 @@ import Avatar from "../../components/Avatar";
 
 import { Link } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
+import useAlert from "../../hooks/useAlert";
 
 function NoteCreateForm(props) {
   const { task, setTask, setNotes, profileImage, profile_id, isDark } = props;
 
   const [content, setContent] = useState("");
+  const { setAlert } = useAlert();
   const handleChange = (event) => {
     setContent(event.target.value);
   };
@@ -39,6 +41,7 @@ function NoteCreateForm(props) {
         ],
       }));
       setContent("");
+      setAlert("Note created!", "success");
     } catch (err) {
       // console.log(err);
     }
