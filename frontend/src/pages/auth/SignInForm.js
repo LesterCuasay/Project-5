@@ -17,6 +17,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
 import { setTokenTimestamp } from "../../utils/utils";
+import useAlert from "../../hooks/useAlert";
 
 const SignInForm = ({ isDark }) => {
   const setCurrentUser = useSetCurrentUser();
@@ -30,6 +31,7 @@ const SignInForm = ({ isDark }) => {
   const { username, password } = signInData;
 
   const [errors, setErrors] = useState({});
+  const { setAlert } = useAlert();
 
   const history = useHistory();
 
@@ -47,6 +49,7 @@ const SignInForm = ({ isDark }) => {
       setCurrentUser(data.user);
       setTokenTimestamp(data);
       history.goBack();
+      setAlert(`${username} you logged in successfully!`, "success");
     } catch (err) {
       setErrors(err.response?.data);
     }

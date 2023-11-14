@@ -23,12 +23,11 @@ export const AlertProvider = ({ children }) => {
       setAlertType("");
     }, 3000);
   };
+  return (
+    <AlertContext.Provider value={{ alertMessage, alertType, setAlert }}>
+      {children}
+    </AlertContext.Provider>
+  );
 };
-
-return (
-  <AlertContext.Provider value={{ alertMessage, alertType, setAlert }}>
-    {children}
-  </AlertContext.Provider>
-);
 
 export default AlertContext;

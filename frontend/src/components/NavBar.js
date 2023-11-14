@@ -17,6 +17,7 @@ import { removeTokenTimestamp } from "../utils/utils";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import DarkModeToggle from "../components/DarkModeToggle";
+import AlertPopup from "./AlertPopup";
 
 const NavBar = ({ isDark, setIsDark }) => {
   const currentUser = useCurrentUser();
@@ -102,6 +103,7 @@ const NavBar = ({ isDark, setIsDark }) => {
         <NavLink to="/">
           <Navbar.Brand className={styles.NavBarBrand}>TaskMaster</Navbar.Brand>
         </NavLink>
+        <AlertPopup />
         <DarkModeToggle
           isChecked={isDark}
           handleChange={() => setIsDark(!isDark)}
