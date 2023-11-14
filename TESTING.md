@@ -5,8 +5,21 @@ Head back to the [README.md](README.md) file.
 &nbsp;
 ## __Table of Contents__
 - [Automated Jest Testing Results](#automated-jest-testing-results)
+- [Manual Testing](#manual-testing)
+    - [HTML Validator](#html-validator)
+    - [CSS Validator](#css-validator)
+    - [ESLint Validation](#eslint-validation)
+    - [Lighthouse](#lighthouse)
+    - [Console](#console)
+    - [Alerts](#alerts)
+        - [Authentication](#authentication)
+        - [Tasks](#tasks)
+        - [Notes](#notes)
+        - [Profile](#profile)
+    - [Bugs](#bugs)
 
-### __Automated Jest Testing Results__
+
+## __Automated Jest Testing Results__
 
 Jest was setup by adding the below code to the [setupTests.js](https://github.com/LesterCuasay/Project-5/blob/main/frontend/src/setupTests.js) to utilise the mocks/handler.js file to simulate users logging in and logging out. The code stated below starts a simulated browser and shits it down after each test is run. The handler.js creates a user object and accesses the base url and dj-rest-auth/logout/ to test user authentication.
 
@@ -66,3 +79,142 @@ After these changes the tests will pass, this was the only fix I could find to g
 Test results:
 
 ![navbar-test](documentation/testing/navbar-test.png)
+
+&nbsp;
+## __Manual Testing__
+
+### __HTML Validator__
+![html-validator](documentation/testing/html-validator.png)
+
+&nbsp;
+### __CSS Validator__
+![css-validator](documentation/testing/css-validator.png)
+
+ - CSS was validated through W3C Jigsaw, which passed. However there were warnings displayed although this was related to React Bootstrap which does not affect my Custom CSS's performance.
+
+&nbsp;
+### __ESLint Validation__
+
+- All validation fixes recommended by ESLint were fixed shown in this [commit #6c20706](https://github.com/LesterCuasay/Project-5/commit/6c2070656907dddb6ed0be046c246045ed2a8094)
+
+&nbsp;
+### __Lighthouse__
+
+- Lighthouse Desktop
+
+![lighthouse-desktop](documentation/testing/lighthouse-desktop.png)
+
+- Lighthouse Mobile
+
+![lighthouse-mobile](documentation/testing/lighthouse-mobile.png)
+
+&nbsp;
+
+### __Console__
+
+#### __Logged Out__
+![console-errors-loggedout](documentation/testing/console-errors-loggedout.png)
+
+ - The browser shows 3 errors, but this is expected as the user is logged out so there are no user/token to get/post
+
+&nbsp;
+#### __Logged In__
+![console-errors-loggedin](documentation/testing/console-errors-loggedin.png)
+
+ - The browser errors are now gone as the user is logged in
+
+&nbsp;
+### __Alerts__
+
+- All the alerts shown in this section is displayed next to the navbar so it is easily seen by the user:
+
+![alert](documentation/testing/alert.png)
+
+#### __Authentication__
+- On the signup page if a user clicks the sign up button without any entry this error will show:
+
+![signup-blank](documentation/testing/signup-blank.png)
+
+- If the username they choose already exists this error will show:
+
+![signup-exist](documentation/testing/signup-exist.png)
+
+- If the password is too short this error will show:
+
+![signup-password-short](documentation/testing/signup-password-short.png)
+
+- If the password does not match this error will show:
+
+![signup-password-match](documentation/testing/signup-password-match.png)
+
+- On successful signup this prompt will show:
+
+![signup-successful](documentation/testing/signup-successful.png)
+
+- On the signin page if a user clicks the sign in button without any entry this error will show:
+
+![login-blank](documentation/testing/login-blank.png)
+
+- If the user does not exist this error will show:
+
+![login-notfound](documentation/testing/login-notfound.png)
+
+- On successful signin this prompt will show:
+
+![login-successful](documentation/testing/login-successful.png)
+ 
+&nbsp;
+#### __Tasks__
+
+- On the Create Task form, if the user clicks the create buttom without any entry this error will show:
+
+![task-blank](documentation/testing/task-blank.png)
+
+- On successful creation this prompt will show:
+
+![task-successful](documentation/testing/task-successful.png)
+
+- On successful update this prompt will show:
+
+![task-updated](documentation/testing/task-updated.png)
+
+- On successful deletion this prompt will show:
+
+![task-deleted](documentation/testing/task-deleted.png)
+
+&nbsp;
+#### __Notes__
+
+- On the notes section of the TaskPage, when a user creates a note this prompt will show:
+
+![note-created](documentation/testing/note-created.png)
+
+- On successful update this prompt will show:
+
+![note-updated](documentation/testing/note-updated.png)
+
+- On successful deletion this prompt will show:
+
+![note-deleted](documentation/testing/note-deleted.png)
+
+&nbsp;
+#### __Profile__
+
+- On the ProfilePage, when a user edits their profile this prompt will show:
+
+![profile-updated](documentation/testing/profile-updated.png)
+
+- On the ProfilePage, when a user edits their username this prompt will show:
+
+![username-updated](documentation/testing/username-updated.png)
+
+- On the ProfilePage, when a user edits their password this prompt will show:
+
+![password-updated](documentation/testing/password-updated.png)
+
+&nbsp;
+### __Bugs__
+
+- There are no bugs that I am aware of.
+
+&nbsp;
