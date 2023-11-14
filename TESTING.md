@@ -21,7 +21,7 @@ Head back to the [README.md](README.md) file.
 
 ## __Automated Jest Testing Results__
 
-Jest was setup by adding the below code to the [setupTests.js](https://github.com/LesterCuasay/Project-5/blob/main/frontend/src/setupTests.js) to utilise the mocks/handler.js file to simulate users logging in and logging out. The code stated below starts a simulated browser and shits it down after each test is run. The handler.js creates a user object and accesses the base url and dj-rest-auth/logout/ to test user authentication.
+Jest was setup by adding the below code to the [setupTests.js](https://github.com/LesterCuasay/Project-5/blob/main/frontend/src/setupTests.js) to utilise the mocks/handler.js file to simulate users logging in and logging out. The code stated below starts a simulated browser and shuts it down after each test is run. The handler.js creates a user object and accesses the base url and dj-rest-auth/logout/ to test user authentication.
 
 ```js
 import "@testing-library/jest-dom";
@@ -90,7 +90,7 @@ Test results:
 ### __CSS Validator__
 ![css-validator](documentation/testing/css-validator.png)
 
- - CSS was validated through W3C Jigsaw, which passed. However there were warnings displayed although this was related to React Bootstrap which does not affect my Custom CSS's performance.
+- CSS was validated through W3C Jigsaw, which passed. However there were warnings displayed although this was related to React Bootstrap which does not affect my Custom CSS's performance.
 
 &nbsp;
 ### __ESLint Validation__
@@ -115,13 +115,13 @@ Test results:
 #### __Logged Out__
 ![console-errors-loggedout](documentation/testing/console-errors-loggedout.png)
 
- - The browser shows 3 errors, but this is expected as the user is logged out so there are no user/token to get/post
+- The browser shows 3 errors, but this is expected as the user is logged out so there are no user/token to get/post
 
 &nbsp;
 #### __Logged In__
 ![console-errors-loggedin](documentation/testing/console-errors-loggedin.png)
 
- - The browser errors are now gone as the user is logged in
+- The browser errors are now gone as the user is logged in
 
 &nbsp;
 ### __Alerts__
