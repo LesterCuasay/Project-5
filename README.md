@@ -77,6 +77,8 @@ Whilst I was working through my websited, the Kanban board included three sectio
 - In Progress
 - Done
 
+(Unfortunately, the issues that can be seen in the picture below was connected to a repository that has been deleted, I have re-implemented the issues)
+
 ![agile](documentation/agile.png)
 
 &nbsp;
