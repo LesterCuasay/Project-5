@@ -40,6 +40,7 @@ The deployed project can be found here - [TaskMaster](https://taskmaster-project
 - [Custom Components](#custom-components)
 - [Custom Hooks](#custom-hooks)
 - [Custom Context](#custom-context)
+- [Testing](#testing)
 - [Deployment](#deployment)
 
 ## __UX & Design__
@@ -291,6 +292,11 @@ Custom components were created to enable the code and functionality to re-used t
 - [CurrentUserContext.js](https://github.com/LesterCuasay/Project-5/blob/main/frontend/src/contexts/CurrentUserContext.js) was created to get the current users authentication state and redirect the user to the signin page if not signed in.
 
 - [ProfileDataContext.js](https://github.com/LesterCuasay/Project-5/blob/main/frontend/src/contexts/ProfileDataContext.js) was created to setProfileData, handleFollow, handleUnfollow of user profiles and access this data throughout the app.
+
+&nbsp;  
+## __Testing__
+
+The testing for this website can be found in the [TESTING.md](TESTING.md) file.
 
 ## __Deployment__
 
