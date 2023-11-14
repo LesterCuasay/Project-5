@@ -127,7 +127,7 @@ function TaskEditForm({ isDark }) {
     try {
       await axiosReq.put(`/tasks/${id}/`, formData);
       history.push(`/tasks/${id}`);
-      setAlert("Task Updated!", "success")
+      setAlert("Task Updated!", "success");
     } catch (err) {
       // console.log(err);
       if (err.response?.status !== 401) {

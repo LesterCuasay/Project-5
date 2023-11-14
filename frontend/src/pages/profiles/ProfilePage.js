@@ -57,7 +57,9 @@ function ProfilePage({ isDark }) {
         }));
         setProfileTasks(profileTasks);
         setHasLoaded(true);
-      } catch (err) {}
+      } catch (err) {
+        // console.log(err)
+      }
     };
 
     fetchData();
@@ -126,7 +128,7 @@ function ProfilePage({ isDark }) {
   const mainProfileTasks = (
     <>
       <div className="mt-3 p-3">
-        <h4 className={styles.Header}>{profile?.owner}'s active tasks</h4>
+        <h4 className={styles.Header}>{profile?.owner}&#39;s active tasks</h4>
       </div>
       <Form>
         <Form.Group className={`mt-3 ${styles.Header}`}>
@@ -178,10 +180,16 @@ function ProfilePage({ isDark }) {
       <Row className="justify-content-center">
         <Col lg={8}>
           <PopularProfiles mobile isDark={isDark} />
-          <Container className={appStyles.Container}>
-            {hasLoaded ? <>{mainProfile}</> : <Asset spinner />}
-          </Container>
-          <div>{hasLoaded ? mainProfileTasks : <Asset spinner />}</div>
+          {hasLoaded ? (
+            <>
+              <Container className={appStyles.Container}>
+                {mainProfile}
+              </Container>
+              <div>{mainProfileTasks}</div>
+            </>
+          ) : (
+            <Asset spinner />
+          )}
         </Col>
         <Col lg={4} className="d-none d-lg-block p-lg-2 p-0">
           <PopularProfiles isDark={isDark} />

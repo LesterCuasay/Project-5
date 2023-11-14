@@ -39,7 +39,7 @@ export const ProfileDataProvider = ({ children }) => {
           ),
         },
       }));
-      setAlert("User Followed!", "success")
+      setAlert("User Followed!", "success");
     } catch (err) {
       // console.log(err);
     }
@@ -62,7 +62,7 @@ export const ProfileDataProvider = ({ children }) => {
           ),
         },
       }));
-      setAlert("User Unfollowed!", "danger")
+      setAlert("User Unfollowed!", "danger");
     } catch (err) {
       // console.log(err);
     }

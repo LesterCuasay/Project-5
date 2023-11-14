@@ -50,7 +50,7 @@ const UsernameForm = ({ isDark }) => {
         username,
       }));
       history.goBack();
-      setAlert("Username changed!", "success")
+      setAlert("Username changed!", "success");
     } catch (err) {
       // console.log(err);
       setErrors(err.response?.data);

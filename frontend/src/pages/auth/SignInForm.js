@@ -134,7 +134,7 @@ const SignInForm = ({ isDark }) => {
             }`}
           >
             <Link className={styles.Link} to="/signup">
-              Don't have an account? <span>Sign up now!</span>
+              Don&#39;t have an account? <span>Sign up now!</span>
             </Link>
           </Col>
         </Row>

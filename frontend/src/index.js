@@ -11,11 +11,11 @@ import { AlertProvider } from "./contexts/AlertContext";
 ReactDOM.render(
   <Router>
     <AlertProvider>
-    <CurrentUserProvider>
-      <ProfileDataProvider>
-        <App />
-      </ProfileDataProvider>
-    </CurrentUserProvider>
+      <CurrentUserProvider>
+        <ProfileDataProvider>
+          <App />
+        </ProfileDataProvider>
+      </CurrentUserProvider>
     </AlertProvider>
   </Router>,
   document.getElementById("root")

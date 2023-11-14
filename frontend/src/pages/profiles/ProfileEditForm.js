@@ -90,7 +90,7 @@ const ProfileEditForm = ({ isDark }) => {
         profile_image: data.image,
       }));
       history.goBack();
-      setAlert("Profile Updated!", "success")
+      setAlert("Profile Updated!", "success");
     } catch (err) {
       // console.log(err);
       setErrors(err.response?.data);

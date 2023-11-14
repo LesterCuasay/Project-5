@@ -76,7 +76,7 @@ function TaskCreateForm({ isDark }) {
     try {
       const { data } = await axiosReq.post("/tasks/", formData);
       history.push(`/tasks/${data.id}`);
-      setAlert("Task Created!", "success")
+      setAlert("Task Created!", "success");
     } catch (err) {
       // console.log(err);
       if (err.response?.status !== 401) {

@@ -48,7 +48,7 @@ const UserPasswordForm = ({ isDark }) => {
     try {
       await axiosRes.post("/dj-rest-auth/password/change/", userData);
       history.goBack();
-      setAlert("Password Changed!", "success")
+      setAlert("Password Changed!", "success");
     } catch (err) {
       // console.log(err);
       setErrors(err.response?.data);

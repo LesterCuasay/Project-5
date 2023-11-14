@@ -60,7 +60,7 @@ const Task = (props) => {
     try {
       await axiosRes.delete(`/tasks/${id}/`);
       history.goBack();
-    setAlert('Task Deleted!', "danger")
+      setAlert("Task Deleted!", "danger");
     } catch (err) {
       // console.log(err);
     }
@@ -193,7 +193,9 @@ const Task = (props) => {
             {is_owner ? (
               <OverlayTrigger
                 placement="top"
-                overlay={<Tooltip>You can't favourite your own task!</Tooltip>}
+                overlay={
+                  <Tooltip>You can&#39;t favourite your own task!</Tooltip>
+                }
                 animation={null}
                 transition={false}
               >

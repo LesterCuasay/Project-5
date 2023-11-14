@@ -42,7 +42,7 @@ const SignUpForm = ({ isDark }) => {
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
       history.push("/signin");
-      setAlert("Signed up successfully!", "success")
+      setAlert("Signed up successfully!", "success");
     } catch (err) {
       setErrors(err.response?.data);
     }
