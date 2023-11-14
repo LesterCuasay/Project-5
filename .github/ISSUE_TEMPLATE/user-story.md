@@ -1,7 +1,7 @@
 ---
 name: User Story
 about: Default User story template
-title: As a **role** I can **capability** so that **benefit**
+title: 'USER STORY: <TITLE>'
 labels: ''
 assignees: ''
 
