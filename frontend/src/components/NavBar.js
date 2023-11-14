@@ -18,10 +18,12 @@ import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import DarkModeToggle from "../components/DarkModeToggle";
 import AlertPopup from "./AlertPopup";
+import useAlert from "../hooks/useAlert";
 
 const NavBar = ({ isDark, setIsDark }) => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+  const { setAlert } = useAlert();
 
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
@@ -30,6 +32,7 @@ const NavBar = ({ isDark, setIsDark }) => {
       await axios.post("/dj-rest-auth/logout/");
       setCurrentUser(null);
       removeTokenTimestamp();
+      setAlert("You have successfully logged out", "success");
     } catch (err) {
       // console.log(err);
     }
