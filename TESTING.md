@@ -359,6 +359,29 @@ To validate my code written in Python, I will be using [Code Institute's Python 
 ![followers-views](documentation/testing/followers-views.png)
 
 &nbsp;
+### __Favourites App__
+
+#### __Models__
+
+[favourites/models.py](https://github.com/LesterCuasay/Project-5/blob/main/favourites/models.py)
+
+![favourites-model](documentation/testing/favourites-model.png)
+
+&nbsp;
+#### __Serializers__
+
+[favourites/serializers.py](https://github.com/LesterCuasay/Project-5/blob/main/favourites/serializers.py)
+
+![favourites-serializers](documentation/testing/favourites-serializers.png)
+
+&nbsp;
+#### __Views__
+
+[favourites/views.py](https://github.com/LesterCuasay/Project-5/blob/main/favourites/views.py)
+
+![favourites-views](documentation/testing/favourites-views.png)
+
+&nbsp;
 
 
 
