@@ -19,9 +19,11 @@ import {
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
 import Asset from "../../components/Asset";
+import useAlert from "../../hooks/useAlert";
 
 const ProfileEditForm = ({ isDark }) => {
   const [errors, setErrors] = useState({});
+  const { setAlert } = useAlert();
   const [hasLoaded, setHasLoaded] = useState(false);
 
   const history = useHistory();
@@ -88,6 +90,7 @@ const ProfileEditForm = ({ isDark }) => {
         profile_image: data.image,
       }));
       history.goBack();
+      setAlert("Profile Updated!", "success")
     } catch (err) {
       // console.log(err);
       setErrors(err.response?.data);

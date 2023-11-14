@@ -17,10 +17,12 @@ import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
+import useAlert from "../../hooks/useAlert";
 
 const UsernameForm = ({ isDark }) => {
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState({});
+  const { setAlert } = useAlert();
 
   const history = useHistory();
   const { id } = useParams();
@@ -48,6 +50,7 @@ const UsernameForm = ({ isDark }) => {
         username,
       }));
       history.goBack();
+      setAlert("Username changed!", "success")
     } catch (err) {
       // console.log(err);
       setErrors(err.response?.data);

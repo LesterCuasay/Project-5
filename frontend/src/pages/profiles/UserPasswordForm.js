@@ -14,9 +14,11 @@ import appStyles from "../../App.module.css";
 import { useHistory, useParams } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import useAlert from "../../hooks/useAlert";
 
 const UserPasswordForm = ({ isDark }) => {
   const [errors, setErrors] = useState({});
+  const { setAlert } = useAlert();
   const [userData, setUserData] = useState({
     new_password1: "",
     new_password2: "",
@@ -46,6 +48,7 @@ const UserPasswordForm = ({ isDark }) => {
     try {
       await axiosRes.post("/dj-rest-auth/password/change/", userData);
       history.goBack();
+      setAlert("Password Changed!", "success")
     } catch (err) {
       // console.log(err);
       setErrors(err.response?.data);
