@@ -22,6 +22,7 @@ The deployed project can be found here - [TaskMaster](https://taskmaster-project
     - [Typography](#typography)
 - [Features](#features)
     - [Navigation](#navigation)
+    - [Alert Prompt](#alert-prompt)
     - [Dark Mode](#dark-mode)
     - [Footer](#footer)
     - [Create Task](#create-task)
@@ -135,6 +136,15 @@ At the beginning I wanted to implement Poppins as the font as it is easy to read
 
 ![loggedin](documentation/logged-in.png)
 ![loggedout](documentation/logged-out.png)
+
+&nbsp;  
+### __Alert Prompt__
+
+- After a successful interaction i.e Login, Logout, Task created the user will be prompt with an alert displaying their successful actions.
+
+![alert](documentation/alert.png)
+![alert-logout](documentation/alert-logout.png)
+![task-delete](documentation/task-delete.png)
 
 &nbsp;  
 ### __Dark Mode__
