@@ -5,7 +5,7 @@ Head back to the [README.md](README.md) file.
 &nbsp;
 ## __Table of Contents__
 - [Frontend](#frontend)
-    - [Automated Jest Testing Results](#automated-jest-testing-results)
+    - [Automated Testing](#automated-testing)
     - [Manual Testing](#manual-testing)
         - [HTML Validator](#html-validator)
         - [CSS Validator](#css-validator)
@@ -19,12 +19,34 @@ Head back to the [README.md](README.md) file.
             - [Profile](#profile)
         - [Bugs](#bugs)
 - [Backend](#backend)
-
+    - [Automated Testing](#automated-testing-1)
+    - [Manual Testing](#manual-testing-1)
+        - [Tasks App](#tasks-app)
+            - [Models](#models)
+            - [Serializers](#serializers)
+            - [Views](#views)
+            - [Tests](#tests)
+        - [Notes App](#notes-app)
+            - [Models](#models-1)
+            - [Serializers](#serializers-1)
+            - [Views](#views-1)
+        - [Profiles App](#profiles-app)
+            - [Models](#models-2)
+            - [Serializers](#serializers-2)
+            - [Views](#views-2)
+        - [Followers App](#followers-app)
+            - [Models](#models-3)
+            - [Serializers](#serializers-3)
+            - [Views](#views-3)
+        - [Favourites App](#favourites-app)
+            - [Models](#models-4)
+            - [Serializers](#serializers-4)
+            - [Views](#views-4)
 
 # __Frontend__
 
 &nbsp;
-## __Automated Jest Testing Results__
+## __Automated Testing__
 
 Jest was setup by adding the below code to the [setupTests.js](https://github.com/LesterCuasay/Project-5/blob/main/frontend/src/setupTests.js) to utilise the mocks/handler.js file to simulate users logging in and logging out. The code stated below starts a simulated browser and shuts it down after each test is run. The handler.js creates a user object and accesses the base url and dj-rest-auth/logout/ to test user authentication.
 
@@ -225,4 +247,48 @@ Test results:
 &nbsp;
 # __Backend__
 
+## __Automated Testing__
+
+To check if my views are correctly working, I implemented automation testing, the results for all tests is shown below:
+
+![test-results](documentation/testing/test-results.png)
+
 &nbsp;
+## __Manual Testing__
+
+To validate my code written in Python, I will be using [Code Institute's Python Linter](https://pep8ci.herokuapp.com/) to make sure that my code has no errors.
+
+&nbsp;
+
+### __Tasks App__
+
+#### __Models__
+
+[tasks/models.py](https://github.com/LesterCuasay/Project-5/blob/main/tasks/models.py)
+
+![tasks-model](documentation/testing/tasks-model.png)
+
+&nbsp;
+#### __Serializers__
+
+[tasks/serializers.py](https://github.com/LesterCuasay/Project-5/blob/main/tasks/serializers.py)
+
+![tasks-serializers](documentation/testing/tasks-serializers.png)
+
+&nbsp;
+#### __Views__
+
+[tasks/views.py](https://github.com/LesterCuasay/Project-5/blob/main/tasks/views.py)
+
+![tasks-views](documentation/testing/tasks-views.png)
+
+&nbsp;
+#### __Tests__
+
+[tasks/tests.py](https://github.com/LesterCuasay/Project-5/blob/main/tasks/tests.py)
+
+![tasks-tests](documentation/testing/tasks-tests.png)
+
+&nbsp;
+
+
