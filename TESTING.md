@@ -4,21 +4,26 @@ Head back to the [README.md](README.md) file.
 
 &nbsp;
 ## __Table of Contents__
-- [Automated Jest Testing Results](#automated-jest-testing-results)
-- [Manual Testing](#manual-testing)
-    - [HTML Validator](#html-validator)
-    - [CSS Validator](#css-validator)
-    - [ESLint Validation](#eslint-validation)
-    - [Lighthouse](#lighthouse)
-    - [Console](#console)
-    - [Alerts](#alerts)
-        - [Authentication](#authentication)
-        - [Tasks](#tasks)
-        - [Notes](#notes)
-        - [Profile](#profile)
-    - [Bugs](#bugs)
+- [Frontend](#frontend)
+    - [Automated Jest Testing Results](#automated-jest-testing-results)
+    - [Manual Testing](#manual-testing)
+        - [HTML Validator](#html-validator)
+        - [CSS Validator](#css-validator)
+        - [ESLint Validation](#eslint-validation)
+        - [Lighthouse](#lighthouse)
+        - [Console](#console)
+        - [Alerts](#alerts)
+            - [Authentication](#authentication)
+            - [Tasks](#tasks)
+            - [Notes](#notes)
+            - [Profile](#profile)
+        - [Bugs](#bugs)
+- [Backend](#backend)
 
 
+# __Frontend__
+
+&nbsp;
 ## __Automated Jest Testing Results__
 
 Jest was setup by adding the below code to the [setupTests.js](https://github.com/LesterCuasay/Project-5/blob/main/frontend/src/setupTests.js) to utilise the mocks/handler.js file to simulate users logging in and logging out. The code stated below starts a simulated browser and shuts it down after each test is run. The handler.js creates a user object and accesses the base url and dj-rest-auth/logout/ to test user authentication.
@@ -216,5 +221,8 @@ Test results:
 ### __Bugs__
 
 - There are no bugs that I am aware of.
+
+&nbsp;
+# __Backend__
 
 &nbsp;
