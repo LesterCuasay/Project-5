@@ -21,27 +21,31 @@ Head back to the [README.md](README.md) file.
 - [Backend](#backend)
     - [Automated Testing](#automated-testing-1)
     - [Manual Testing](#manual-testing-1)
-        - [Tasks App](#tasks-app)
-            - [Models](#models)
+        - [taskmaster_api](#taskmaster_api)
+            - [Permissions](#permissions)
             - [Serializers](#serializers)
             - [Views](#views)
+        - [Tasks App](#tasks-app)
+            - [Models](#models)
+            - [Serializers](#serializers-1)
+            - [Views](#views-1)
             - [Tests](#tests)
         - [Notes App](#notes-app)
             - [Models](#models-1)
-            - [Serializers](#serializers-1)
-            - [Views](#views-1)
-        - [Profiles App](#profiles-app)
-            - [Models](#models-2)
             - [Serializers](#serializers-2)
             - [Views](#views-2)
-        - [Followers App](#followers-app)
-            - [Models](#models-3)
+        - [Profiles App](#profiles-app)
+            - [Models](#models-2)
             - [Serializers](#serializers-3)
             - [Views](#views-3)
-        - [Favourites App](#favourites-app)
-            - [Models](#models-4)
+        - [Followers App](#followers-app)
+            - [Models](#models-3)
             - [Serializers](#serializers-4)
             - [Views](#views-4)
+        - [Favourites App](#favourites-app)
+            - [Models](#models-4)
+            - [Serializers](#serializers-5)
+            - [Views](#views-5)
 
 # __Frontend__
 
@@ -259,7 +263,28 @@ To check if my views are correctly working, I implemented automation testing, th
 To validate my code written in Python, I will be using [Code Institute's Python Linter](https://pep8ci.herokuapp.com/) to make sure that my code has no errors.
 
 &nbsp;
+### __taskmaster_api__
 
+#### __Permissions__
+
+[taskmaster_api/permissions.py](https://github.com/LesterCuasay/Project-5/blob/main/taskmaster_api/permissions.py)
+
+![taskmaster_api-permissions](documentation/testing/taskmaster_api-permissions.png)
+
+&nbsp;
+#### __Serializers__
+
+[taskmaster_api/serializers.py](https://github.com/LesterCuasay/Project-5/blob/main/taskmaster_api/serializers.py)
+
+![taskmaster_api-serializers](documentation/testing/taskmaster_api-serializers.png)
+
+#### __Views__
+
+[taskmaster_api/views.py](https://github.com/LesterCuasay/Project-5/blob/main/taskmaster_api/views.py)
+
+![taskmaster_api-views](documentation/testing/taskmaster_api-views.png)
+
+&nbsp;
 ### __Tasks App__
 
 #### __Models__
