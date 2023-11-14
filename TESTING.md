@@ -290,5 +290,29 @@ To validate my code written in Python, I will be using [Code Institute's Python 
 ![tasks-tests](documentation/testing/tasks-tests.png)
 
 &nbsp;
+### __Notes App__
+
+#### __Models__
+
+[notes/models.py](https://github.com/LesterCuasay/Project-5/blob/main/notes/models.py)
+
+![notes-model](documentation/testing/notes-model.png)
+
+&nbsp;
+#### __Serializers__
+
+[notes/serializers.py](https://github.com/LesterCuasay/Project-5/blob/main/notes/serializers.py)
+
+![notes-serializers](documentation/testing/notes-serializers.png)
+
+&nbsp;
+#### __Views__
+
+[notes/views.py](https://github.com/LesterCuasay/Project-5/blob/main/notes/views.py)
+
+![notes-views](documentation/testing/notes-views.png)
+
+&nbsp;
+
 
 
