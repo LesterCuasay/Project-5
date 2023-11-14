@@ -313,6 +313,29 @@ To validate my code written in Python, I will be using [Code Institute's Python 
 ![notes-views](documentation/testing/notes-views.png)
 
 &nbsp;
+### __Profiles App__
+
+#### __Models__
+
+[profiles/models.py](https://github.com/LesterCuasay/Project-5/blob/main/profiles/models.py)
+
+![profiles-model](documentation/testing/profiles-model.png)
+
+&nbsp;
+#### __Serializers__
+
+[profiles/serializers.py](https://github.com/LesterCuasay/Project-5/blob/main/profiles/serializers.py)
+
+![profiles-serializers](documentation/testing/profiles-serializers.png)
+
+&nbsp;
+#### __Views__
+
+[profiles/views.py](https://github.com/LesterCuasay/Project-5/blob/main/profiles/views.py)
+
+![profiles-views](documentation/testing/profiles-views.png)
+
+&nbsp;
 
 
 
