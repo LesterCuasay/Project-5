@@ -336,6 +336,30 @@ To validate my code written in Python, I will be using [Code Institute's Python 
 ![profiles-views](documentation/testing/profiles-views.png)
 
 &nbsp;
+### __Followers App__
+
+#### __Models__
+
+[followers/models.py](https://github.com/LesterCuasay/Project-5/blob/main/followers/models.py)
+
+![followers-model](documentation/testing/followers-model.png)
+
+&nbsp;
+#### __Serializers__
+
+[followers/serializers.py](https://github.com/LesterCuasay/Project-5/blob/main/followers/serializers.py)
+
+![followers-serializers](documentation/testing/followers-serializers.png)
+
+&nbsp;
+#### __Views__
+
+[followers/views.py](https://github.com/LesterCuasay/Project-5/blob/main/followers/views.py)
+
+![followers-views](documentation/testing/followers-views.png)
+
+&nbsp;
+
 
 
 
