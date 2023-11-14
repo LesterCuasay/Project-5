@@ -14,6 +14,7 @@ import styles from "../../styles/SignInUpForm.module.css";
 
 import { Link, useHistory } from "react-router-dom";
 import { useRedirect } from "../../hooks/useRedirect";
+import useAlert from "../../hooks/useAlert";
 
 const SignUpForm = ({ isDark }) => {
   useRedirect("loggedIn");
@@ -25,6 +26,7 @@ const SignUpForm = ({ isDark }) => {
   const { username, password1, password2 } = signUpData;
 
   const [errors, setErrors] = useState({});
+  const { setAlert } = useAlert();
 
   const history = useHistory();
 
@@ -40,6 +42,7 @@ const SignUpForm = ({ isDark }) => {
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
       history.push("/signin");
+      setAlert("Signed up successfully!", "success")
     } catch (err) {
       setErrors(err.response?.data);
     }
