@@ -23,7 +23,7 @@
   .SearchBarDarkMode input,
   .SearchBarDarkMode input:focus {
     background-color: var(--bg-color);
-    border-color: none;
+    border: 1px solid var(--main-text);
     border-radius: 20px;
     color: var(--main-text);
     padding-left: 40px;

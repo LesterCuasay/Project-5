@@ -35,7 +35,7 @@
   .InputDarkMode:focus {
     background-color: var(--bg-color);
     color: var(--main-text);
-    border-color: 1px solid var(--second-bg-color);
+    border: 1px solid var(--main-text);
     text-align: center;
     padding: 20px;
     border-radius: 20px;
