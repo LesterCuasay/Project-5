@@ -17,10 +17,12 @@ import assetStyles from "../../styles/Asset.module.css";
 
 import { useHistory, useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
+import useAlert from "../../hooks/useAlert";
 
 function TaskEditForm({ isDark }) {
   const [errors, setErrors] = useState();
   const [hasLoaded, setHasLoaded] = useState(false);
+  const { setAlert } = useAlert();
 
   const today = new Date().toISOString().substr(0, 10);
 
@@ -125,6 +127,7 @@ function TaskEditForm({ isDark }) {
     try {
       await axiosReq.put(`/tasks/${id}/`, formData);
       history.push(`/tasks/${id}`);
+      setAlert("Task Updated!", "success")
     } catch (err) {
       // console.log(err);
       if (err.response?.status !== 401) {
@@ -189,9 +192,9 @@ function TaskEditForm({ isDark }) {
           value={status}
           onChange={handleChange}
         >
-          <option>To Do</option>
-          <option>In Progress</option>
-          <option>Completed</option>
+          <option value="TODO">To Do</option>
+          <option value="IN_PROGRESS">In Progress</option>
+          <option value="COMPLETED">Completed</option>
         </Form.Control>
       </Form.Group>
       {errors?.status?.map((message, idx) => (

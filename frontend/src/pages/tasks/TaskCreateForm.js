@@ -18,10 +18,12 @@ import assetStyles from "../../styles/Asset.module.css";
 import { useHistory } from "react-router-dom";
 import { useRedirect } from "../../hooks/useRedirect";
 import { axiosReq } from "../../api/axiosDefaults";
+import useAlert from "../../hooks/useAlert";
 
 function TaskCreateForm({ isDark }) {
   useRedirect("loggedOut");
   const [errors, setErrors] = useState();
+  const { setAlert } = useAlert();
 
   const [fileName, setFileName] = useState("");
   const today = new Date().toISOString().substr(0, 10);
@@ -74,6 +76,7 @@ function TaskCreateForm({ isDark }) {
     try {
       const { data } = await axiosReq.post("/tasks/", formData);
       history.push(`/tasks/${data.id}`);
+      setAlert("Task Created!", "success")
     } catch (err) {
       // console.log(err);
       if (err.response?.status !== 401) {

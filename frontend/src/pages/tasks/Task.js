@@ -14,6 +14,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link, useHistory } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
+import useAlert from "../../hooks/useAlert";
 
 const Task = (props) => {
   const {
@@ -41,6 +42,7 @@ const Task = (props) => {
   const is_owner = currentUser?.username === owner;
   const fileName = attachment ? attachment.split("/").pop().split("_")[0] : "";
   const history = useHistory();
+  const { setAlert } = useAlert();
 
   const statusOverride = {
     TODO: "To Do",
@@ -58,6 +60,7 @@ const Task = (props) => {
     try {
       await axiosRes.delete(`/tasks/${id}/`);
       history.goBack();
+    setAlert('Task Deleted!', "danger")
     } catch (err) {
       // console.log(err);
     }
